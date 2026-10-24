@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import PreFooterCTA from "@/components/PreFooterCTA";
 import Accordion, { AccordionItem } from "@/components/Accordion";
 
@@ -34,279 +34,248 @@ const BEFORE_WE_BEGIN_FAQS: AccordionItem[] = [
 
 export default function FlairAndFlavorsPage() {
   return (
-    <div className="space-y-24 sm:space-y-32 pb-12">
-      {/* 1. HERO SECTION */}
-      <section className="bg-[#F7F4EC] pt-12 sm:pt-20 pb-16 border-b border-[#DCDDD4]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+    <div className="bg-white">
+      {/* 1. HERO SECTION (Figma 32:84) */}
+      <section className="relative min-h-[640px] lg:min-h-[720px] flex items-center overflow-hidden bg-[#F8F9FA]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/figma/7f58801bb0.jpg"
+            alt="Flair & Flavors Silk Texture"
+            fill
+            priority
+            className="object-cover object-center opacity-85"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-20 lg:py-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
-                EVENTS & HOSPITALITY ATELIER
-              </span>
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#183C32] font-normal leading-tight">
-                Moments made{" "}
+            <div className="lg:col-span-7 space-y-6 max-w-2xl">
+              <h1 className="font-serif text-5xl sm:text-6xl lg:text-[76px] font-normal leading-[1.08] tracking-tight text-[#20211E]">
+                Moments made <br />
                 <span className="italic text-[#B96F52]">unforgettable.</span>
               </h1>
-              <p className="text-base sm:text-lg text-[#4B5563] font-light leading-relaxed max-w-xl">
-                We create gatherings with soul: beautifully presented food, thoughtful details, and a calm, coordinated experience from beginning to end. Every celebration starts with listening.
+
+              <p className="text-base sm:text-lg text-[#20211E]/80 leading-relaxed max-w-xl font-normal">
+                We create gatherings with soul: beautifully presented food, thoughtful details and a calm, coordinated experience from beginning to end. Every celebration starts with listening. Our services can work independently or come together as one cohesive experience.
               </p>
+
               <div className="pt-2">
                 <Link
                   href="/faqs#enquiry"
-                  className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#B96F52] text-white px-8 py-3.5 rounded-xs text-xs uppercase tracking-widest font-semibold transition shadow-sm"
+                  className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#122E26] text-white px-8 py-4 rounded-xs text-[15px] font-medium tracking-wide transition shadow-sm"
                 >
-                  <span>Begin your enquiry</span>
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  Begin your enquiry
                 </Link>
               </div>
             </div>
 
-            {/* Right Photo Showcase */}
-            <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="relative h-64 sm:h-72 rounded-xs overflow-hidden shadow-md">
-                  <Image
-                    src="/images/events/fabric-backdrop.jpg"
-                    alt="Outdoor Stage Backdrop"
-                    fill
-                    priority
-                    className="object-cover"
-                  />
-                </div>
-                <div className="relative h-44 sm:h-52 rounded-xs overflow-hidden shadow-md">
-                  <Image
-                    src="/images/events/small-chops.jpg"
-                    alt="Canapés and Catering"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-4 pt-6">
-                <div className="relative h-44 sm:h-52 rounded-xs overflow-hidden shadow-md">
-                  <Image
-                    src="/images/events/cake.jpg"
-                    alt="Artisanal Cake"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="relative h-64 sm:h-72 rounded-xs overflow-hidden shadow-md">
-                  <Image
-                    src="/images/events/white-wedding.jpg"
-                    alt="White Wedding Coordination"
-                    fill
-                    priority
-                    className="object-cover"
-                  />
-                </div>
+            {/* Right Hero Graphic: Seaside Altar Grid (User Uploaded media_1792849143576.jpg) */}
+            <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[460px] aspect-[4/5] rounded-xs overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/uploaded/flair-hero-altar.jpg"
+                  alt="Flair & Flavors Bespoke Altar and Ceremony Styling"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. OUR APPROACH: 4 CORE SERVICES */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
-          <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
-            OUR APPROACH
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#183C32]">
-            Where warm hospitality meets{" "}
-            <span className="italic text-[#B96F52]">considered design.</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Service 1: Catering */}
-          <div className="bg-[#F7F4EC] border border-[#DCDDD4] rounded-xs overflow-hidden group">
-            <div className="relative h-64 sm:h-72 w-full">
-              <Image
-                src="/images/events/small-chops.jpg"
-                alt="Banqueting and Catering"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div className="p-8 space-y-3">
-              <span className="text-xs font-mono text-[#B96F52] font-bold">01</span>
-              <h3 className="font-serif text-2xl text-[#183C32]">Catering</h3>
-              <p className="text-sm text-[#4B5563] leading-relaxed">
-                Menus and presentation shaped around your event. Rich traditional Nigerian celebratory courses, gourmet small chops, and bespoke plated service.
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/faqs#enquiry"
-                  className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-[#183C32] group-hover:text-[#B96F52] transition"
-                >
-                  <span>Enquire about this service &rarr;</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Service 2: Event Planning */}
-          <div className="bg-[#F7F4EC] border border-[#DCDDD4] rounded-xs overflow-hidden group">
-            <div className="relative h-64 sm:h-72 w-full">
-              <Image
-                src="/images/events/venue-overview.jpg"
-                alt="Event Coordination"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div className="p-8 space-y-3">
-              <span className="text-xs font-mono text-[#B96F52] font-bold">02</span>
-              <h3 className="font-serif text-2xl text-[#183C32]">Event Planning</h3>
-              <p className="text-sm text-[#4B5563] leading-relaxed">
-                Clear coordination from first conversation to the final guest. We handle vendor synchronisation, venue scheduling, and day-of calm execution.
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/faqs#enquiry"
-                  className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-[#183C32] group-hover:text-[#B96F52] transition"
-                >
-                  <span>Enquire about this service &rarr;</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Service 3: Decoration & Styling */}
-          <div className="bg-[#F7F4EC] border border-[#DCDDD4] rounded-xs overflow-hidden group">
-            <div className="relative h-64 sm:h-72 w-full">
-              <Image
-                src="/images/events/chair-decor.jpg"
-                alt="Floral Decor & Scenography"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div className="p-8 space-y-3">
-              <span className="text-xs font-mono text-[#B96F52] font-bold">03</span>
-              <h3 className="font-serif text-2xl text-[#183C32]">Decoration & Styling</h3>
-              <p className="text-sm text-[#4B5563] leading-relaxed">
-                Layered details, fresh botanicals, ambient illumination, and bespoke backdrops designed with a distinctive artistic perspective.
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/faqs#enquiry"
-                  className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-[#183C32] group-hover:text-[#B96F52] transition"
-                >
-                  <span>Enquire about this service &rarr;</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Service 4: Cakes & Desserts */}
-          <div className="bg-[#F7F4EC] border border-[#DCDDD4] rounded-xs overflow-hidden group">
-            <div className="relative h-64 sm:h-72 w-full">
-              <Image
-                src="/images/events/cake.jpg"
-                alt="Artisanal Celebration Cakes"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div className="p-8 space-y-3">
-              <span className="text-xs font-mono text-[#B96F52] font-bold">04</span>
-              <h3 className="font-serif text-2xl text-[#183C32]">Cakes & Desserts</h3>
-              <p className="text-sm text-[#4B5563] leading-relaxed">
-                Celebratory sweets designed to delight both palate and aesthetic. Custom tiered wedding cakes, delicate macarons, and dessert tables.
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/faqs#enquiry"
-                  className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-[#183C32] group-hover:text-[#B96F52] transition"
-                >
-                  <span>Enquire about this service &rarr;</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. OUR PROCESS (Dark Section) */}
-      <section className="bg-[#183C32] text-white py-24 border-y border-[#26423A]">
+      {/* 2. "WHERE WARM HOSPITALITY MEETS CONSIDERED DESIGN" */}
+      <section className="py-24 sm:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="text-center max-w-2xl mx-auto mb-20">
+            <span className="text-xs uppercase tracking-widest text-[#705B38] font-semibold block mb-2">
+              OUR APPROACH
+            </span>
+            <h2 className="font-serif text-4xl sm:text-5xl text-[#20211E] font-normal">
+              Where warm hospitality meets <br />
+              <span className="italic text-[#B96F52]">considered design.</span>
+            </h2>
+          </div>
+
+          {/* 4 Service Offerings Grid with Overlapping Cream Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            {/* 01 Catering */}
+            <div className="relative group flex flex-col sm:flex-row items-center">
+              <div className="relative w-full sm:w-3/4 aspect-[4/3] rounded-xs overflow-hidden shadow-md">
+                <Image
+                  src="/images/figma/a87c966866.jpg"
+                  alt="Flair & Flavors Banquet Catering"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="sm:absolute sm:right-0 sm:w-3/5 bg-[#F7F4EC] p-6 sm:p-8 rounded-xs shadow-lg border border-[#E5E5E5] mt-[-2rem] sm:mt-0 z-10 space-y-3">
+                <span className="text-xs text-[#705B38] font-mono block">01</span>
+                <h3 className="font-serif text-2xl font-medium text-[#20211E]">Catering</h3>
+                <p className="text-xs sm:text-sm text-[#4D463C] leading-relaxed">
+                  Menus and presentation shaped around your event.
+                </p>
+                <Link
+                  href="/faqs#enquiry"
+                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-[#183C32] hover:text-[#B96F52] pt-2"
+                >
+                  <span>ENQUIRE ABOUT THIS SERVICE</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* 02 Event Planning */}
+            <div className="relative group flex flex-col sm:flex-row items-center">
+              <div className="relative w-full sm:w-3/4 aspect-[4/3] rounded-xs overflow-hidden shadow-md">
+                <Image
+                  src="/images/figma/50b8b5e557.jpg"
+                  alt="Wedding & Celebration Planning"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="sm:absolute sm:right-0 sm:w-3/5 bg-[#F7F4EC] p-6 sm:p-8 rounded-xs shadow-lg border border-[#E5E5E5] mt-[-2rem] sm:mt-0 z-10 space-y-3">
+                <span className="text-xs text-[#705B38] font-mono block">02</span>
+                <h3 className="font-serif text-2xl font-medium text-[#20211E]">Event Planning</h3>
+                <p className="text-xs sm:text-sm text-[#4D463C] leading-relaxed">
+                  Clear coordination from first conversation to final guest.
+                </p>
+                <Link
+                  href="/faqs#enquiry"
+                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-[#183C32] hover:text-[#B96F52] pt-2"
+                >
+                  <span>ENQUIRE ABOUT THIS SERVICE</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* 03 Decoration & Styling */}
+            <div className="relative group flex flex-col sm:flex-row items-center">
+              <div className="relative w-full sm:w-3/4 aspect-[4/3] rounded-xs overflow-hidden shadow-md">
+                <Image
+                  src="/images/figma/cfa582782f.jpg"
+                  alt="Bespoke Scenography & Floral Decoration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="sm:absolute sm:right-0 sm:w-3/5 bg-[#F7F4EC] p-6 sm:p-8 rounded-xs shadow-lg border border-[#E5E5E5] mt-[-2rem] sm:mt-0 z-10 space-y-3">
+                <span className="text-xs text-[#705B38] font-mono block">03</span>
+                <h3 className="font-serif text-2xl font-medium text-[#20211E]">Decoration & Styling</h3>
+                <p className="text-xs sm:text-sm text-[#4D463C] leading-relaxed">
+                  Layered details, florals and atmosphere with a distinctive point of view.
+                </p>
+                <Link
+                  href="/faqs#enquiry"
+                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-[#183C32] hover:text-[#B96F52] pt-2"
+                >
+                  <span>ENQUIRE ABOUT THIS SERVICE</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* 04 Cakes & Desserts */}
+            <div className="relative group flex flex-col sm:flex-row items-center">
+              <div className="relative w-full sm:w-3/4 aspect-[4/3] rounded-xs overflow-hidden shadow-md">
+                <Image
+                  src="/images/figma/57918bafa7.jpg"
+                  alt="Haute Patisserie Celebration Cakes"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="sm:absolute sm:right-0 sm:w-3/5 bg-[#F7F4EC] p-6 sm:p-8 rounded-xs shadow-lg border border-[#E5E5E5] mt-[-2rem] sm:mt-0 z-10 space-y-3">
+                <span className="text-xs text-[#705B38] font-mono block">04</span>
+                <h3 className="font-serif text-2xl font-medium text-[#20211E]">Cakes & Desserts</h3>
+                <p className="text-xs sm:text-sm text-[#4D463C] leading-relaxed">
+                  Celebratory sweets designed to delight and gather people around.
+                </p>
+                <Link
+                  href="/faqs#enquiry"
+                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-[#183C32] hover:text-[#B96F52] pt-2"
+                >
+                  <span>ENQUIRE ABOUT THIS SERVICE</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. "OUR PROCESS" (Dark Charcoal Section - 32:84) */}
+      <section className="py-24 sm:py-32 bg-[#2D332C] text-[#FCF9F3]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Title */}
             <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs uppercase tracking-widest text-[#E5B59C] font-semibold">
+              <span className="text-xs uppercase tracking-widest text-[#B1CCC7] font-semibold block">
                 WORKING TOGETHER
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#F7F4EC]">
-                Our Process
+              <h2 className="font-serif italic text-4xl sm:text-5xl lg:text-6xl text-white font-normal">
+                OUR PROCESS
               </h2>
-              <p className="text-sm text-[#A0AEC0] leading-relaxed pt-2">
-                A considered framework, tailored to the actual needs of your event. From initial concept dialogue to seamless celebration day.
+              <p className="text-sm sm:text-base text-white/70 max-w-sm leading-relaxed font-light">
+                A considered framework, tailored to the actual needs of your event.
               </p>
             </div>
 
+            {/* Right Steps */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="border-b border-[#26423A] pb-6 flex items-start justify-between gap-6">
-                <div>
-                  <span className="text-xs font-mono text-[#E5B59C] font-bold block mb-1">01</span>
-                  <h3 className="font-serif text-2xl text-white">Consultation</h3>
-                </div>
-                <p className="text-sm text-[#A0AEC0] max-w-md">
-                  Tell us about the occasion, priorities, guest scope, and practical details.
-                </p>
+              <div className="grid grid-cols-12 gap-4 pb-6 border-b border-white/10 items-baseline">
+                <span className="col-span-2 text-xs font-mono text-white/60">01</span>
+                <h3 className="col-span-4 font-serif text-xl sm:text-2xl text-white">Consultation</h3>
+                <p className="col-span-6 text-sm text-white/75 font-light">Tell us about the occasion, priorities and practical details.</p>
               </div>
 
-              <div className="border-b border-[#26423A] pb-6 flex items-start justify-between gap-6">
-                <div>
-                  <span className="text-xs font-mono text-[#E5B59C] font-bold block mb-1">02</span>
-                  <h3 className="font-serif text-2xl text-white">Planning</h3>
-                </div>
-                <p className="text-sm text-[#A0AEC0] max-w-md">
-                  We shape an agreed proposal, scope, tasting schedule, and aesthetic timeline.
-                </p>
+              <div className="grid grid-cols-12 gap-4 pb-6 border-b border-white/10 items-baseline">
+                <span className="col-span-2 text-xs font-mono text-white/60">02</span>
+                <h3 className="col-span-4 font-serif text-xl sm:text-2xl text-white">Planning</h3>
+                <p className="col-span-6 text-sm text-white/75 font-light">We shape an agreed proposal, scope and timeline.</p>
               </div>
 
-              <div className="border-b border-[#26423A] pb-6 flex items-start justify-between gap-6">
-                <div>
-                  <span className="text-xs font-mono text-[#E5B59C] font-bold block mb-1">03</span>
-                  <h3 className="font-serif text-2xl text-white">Preparation</h3>
-                </div>
-                <p className="text-sm text-[#A0AEC0] max-w-md">
-                  Menus, floral sourcing, styling assets, and logistics are carefully readied.
-                </p>
+              <div className="grid grid-cols-12 gap-4 pb-6 border-b border-white/10 items-baseline">
+                <span className="col-span-2 text-xs font-mono text-white/60">03</span>
+                <h3 className="col-span-4 font-serif text-xl sm:text-2xl text-white">Preparation</h3>
+                <p className="col-span-6 text-sm text-white/75 font-light">Menus, styling and logistics are carefully readied.</p>
               </div>
 
-              <div className="flex items-start justify-between gap-6">
-                <div>
-                  <span className="text-xs font-mono text-[#E5B59C] font-bold block mb-1">04</span>
-                  <h3 className="font-serif text-2xl text-white">Event Day</h3>
-                </div>
-                <p className="text-sm text-[#A0AEC0] max-w-md">
-                  Our team delivers the confirmed plan with attentive care and calm precision.
-                </p>
+              <div className="grid grid-cols-12 gap-4 pb-6 items-baseline">
+                <span className="col-span-2 text-xs font-mono text-white/60">04</span>
+                <h3 className="col-span-4 font-serif text-xl sm:text-2xl text-white">Event day</h3>
+                <p className="col-span-6 text-sm text-white/75 font-light">Our team delivers the confirmed plan with attentive care.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. BEFORE WE BEGIN FAQS */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-8 space-y-8">
-        <div className="text-center space-y-2">
-          <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
-            FREQUENTLY ASKED
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#183C32]">
-            Before We Begin
-          </h2>
-        </div>
+      {/* 4. "BEFORE WE BEGIN" (Accordions) */}
+      <section className="py-24 sm:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5 space-y-4">
+              <span className="text-xs uppercase tracking-widest text-[#705B38] font-semibold block">
+                FREQUENTLY ASKED
+              </span>
+              <h2 className="font-serif italic text-4xl sm:text-5xl text-[#20211E] font-normal">
+                BEFORE WE BEGIN
+              </h2>
+            </div>
 
-        <Accordion items={BEFORE_WE_BEGIN_FAQS} defaultOpenIndex={0} />
+            <div className="lg:col-span-7">
+              <Accordion items={BEFORE_WE_BEGIN_FAQS} allowMultiple />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* 5. PRE-FOOTER CTA */}
+      {/* 5. PRE-FOOTER CTA BANNER */}
       <PreFooterCTA />
     </div>
   );

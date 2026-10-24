@@ -1,441 +1,464 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getFeaturedProducts } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import PreFooterCTA from "@/components/PreFooterCTA";
 
 export default function HomePage() {
-  const featuredProducts = getFeaturedProducts();
+  const featuredProducts = getFeaturedProducts().slice(0, 4);
 
   return (
-    <div className="space-y-24 sm:space-y-32 pb-12">
-      {/* 1. HERO SECTION */}
-      <section className="relative pt-12 sm:pt-20 pb-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-6 space-y-6 sm:space-y-8">
-              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#B96F52] font-semibold bg-[#EEF1E9] px-3.5 py-1.5 rounded-full border border-[#DCDDD4]">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Premier Hospitality & Curated Retail • Ibadan</span>
-              </div>
+    <div className="bg-white">
+      {/* 1. HERO SECTION (Frame 32 - 32:750) */}
+      <section className="relative min-h-[750px] lg:min-h-[850px] flex items-center overflow-hidden bg-[#F8F9FA]">
+        {/* Background Fabric Drapery */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/figma/7f58801bb0.jpg"
+            alt="Harmony Hub Silk Texture"
+            fill
+            priority
+            className="object-cover object-right lg:object-center opacity-90"
+          />
+        </div>
 
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#183C32] font-normal leading-[1.1] tracking-tight">
-                For the moments you host.{" "}
-                <span className="italic font-normal text-[#B96F52] block mt-1">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-20 lg:py-28 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7 space-y-8 max-w-2xl">
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-[76px] font-normal leading-[1.08] tracking-tight text-[#20211E]">
+                For the moments <br />
+                you host. <br />
+                <span className="font-serif italic font-normal text-[#B96F52]">
                   And the life you live.
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-[#4B5563] leading-relaxed max-w-xl font-light">
+              <p className="text-base sm:text-lg text-[#20211E]/80 leading-relaxed max-w-xl font-normal">
                 From unforgettable celebrations and exceptional catering to thoughtfully selected products for everyday living, discover everything we bring together under one trusted brand.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
                 <Link
-                  href="/shop"
-                  className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#B96F52] text-white px-8 py-4 rounded-xs text-sm font-medium tracking-wide transition shadow-sm group"
+                  href="/flair-and-flavors"
+                  className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#122E26] text-white px-8 py-4 rounded-xs text-[15px] font-medium tracking-wide transition shadow-sm"
                 >
-                  <span>Shop Now</span>
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  Explore flair and Flavors
                 </Link>
                 <Link
-                  href="/flair-and-flavors"
-                  className="inline-flex items-center justify-center bg-transparent border border-[#183C32] text-[#183C32] hover:bg-[#183C32] hover:text-white px-8 py-4 rounded-xs text-sm font-medium tracking-wide transition"
+                  href="/shop"
+                  className="inline-flex items-center justify-center bg-transparent border border-[#CD927C] text-[#20211E] hover:bg-[#183C32] hover:text-white hover:border-[#183C32] px-8 py-4 rounded-xs text-[15px] font-medium tracking-wide transition"
                 >
-                  Plan Your Event
+                  Shop Products
                 </Link>
               </div>
-
-              {/* Little quote note */}
-              <div className="pt-4 border-t border-[#DCDDD4] flex items-center gap-4 text-xs text-[#666D65]">
-                <div className="relative w-12 h-12 rounded-xs overflow-hidden shrink-0 border border-[#DCDDD4]">
-                  <Image
-                    src="/images/products/container.jpg"
-                    alt="Everyday curated living"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <p className="italic font-serif text-sm text-[#183C32]">
-                  &ldquo;Architecture in taste, drama in atmosphere, timelessness in memory.&rdquo;
-                </p>
-              </div>
             </div>
 
-            {/* Right Diamond Visual Composition */}
-            <div className="lg:col-span-6 relative">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-4">
-                  <div className="relative h-64 sm:h-80 rounded-xs overflow-hidden shadow-md">
-                    <Image
-                      src="/images/events/white-wedding.jpg"
-                      alt="Luxury Wedding Setup"
-                      fill
-                      priority
-                      className="object-cover hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="relative h-48 sm:h-60 rounded-xs overflow-hidden shadow-md">
-                    <Image
-                      src="/images/events/chair-decor.jpg"
-                      alt="Calla Lilly floral chair styling"
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-4 pt-8">
-                  <div className="relative h-48 sm:h-60 rounded-xs overflow-hidden shadow-md">
-                    <Image
-                      src="/images/events/reception-stage.jpg"
-                      alt="Bespoke Celebration Stage"
-                      fill
-                      priority
-                      className="object-cover hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="relative h-64 sm:h-80 rounded-xs overflow-hidden shadow-md">
-                    <Image
-                      src="/images/events/cake.jpg"
-                      alt="Haute Patisserie Celebration Cake"
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                </div>
+            {/* Right Hero Graphic: Altar / Diamond Marquee Collage */}
+            <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[480px] aspect-[4/5] rounded-xs overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/uploaded/marquee-diamond-grid.jpg"
+                  alt="Harmony Hub Luxury Celebration"
+                  fill
+                  priority
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. QUOTE / VALUES BANNER */}
-      <section className="bg-[#183C32] text-white py-12 border-y border-[#26423A]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <p className="font-serif italic text-lg sm:text-xl text-[#EEF1E9] max-w-xl">
-            &ldquo;Where warm Nigerian hospitality meets refined contemporary living.&rdquo;
+      {/* 2. PHILOSOPHY MARQUEE (Frame 12 - 32:464) */}
+      <section className="bg-[#383D36] text-[#FCF9F3] py-14 border-y border-[#484D46]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
+          <p className="font-serif italic text-2xl sm:text-[26px] font-medium max-w-2xl text-[#FCF9F3] leading-snug">
+            &ldquo;Architecture in taste, drama in atmosphere, timelessness in memory.&rdquo;
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 text-xs uppercase tracking-widest text-[#E5B59C] font-semibold">
-            <span>Banqueting</span>
-            <span>•</span>
-            <span>Scenography</span>
-            <span>•</span>
-            <span>Haute Patisserie</span>
-            <span>•</span>
-            <span>Curated Retail</span>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs uppercase tracking-widest font-semibold text-[#B1CCC7]">
+            <span>BANQUETING</span>
+            <span className="text-white/40">•</span>
+            <span>SCENOGRAPHY</span>
+            <span className="text-white/40">•</span>
+            <span>HAUTE PATISSERIE</span>
           </div>
         </div>
       </section>
 
-      {/* 3. TWO DIVISIONS: FLAIR & FLAVORS + RETAIL & TRADING */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
+      {/* 3. TWO DIVISIONS: “Different Needs, Met with the Same Care” (32:482 & 32:489) */}
+      <section className="py-24 sm:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-16">
+          <span className="text-xs uppercase tracking-widest text-[#141414] font-medium block mb-3">
             DISCOVER OUR BUSINESSES
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#183C32]">
-            Different needs, met with{" "}
-            <span className="italic text-[#B96F52]">the same care.</span>
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#20211E] font-normal leading-tight max-w-3xl">
+            Different needs, met with the same care.
           </h2>
-          <p className="text-sm sm:text-base text-[#666D65] font-light max-w-xl mx-auto leading-relaxed">
-            Move seamlessly between celebration services and a curated retail catalogue—each with its own focus, connected by one enterprise.
+          <p className="text-base sm:text-lg text-[#20211E]/75 max-w-2xl mt-4 leading-relaxed">
+            Move seamlessly between celebration services and a curated retail catalogue—each with its own character, both guided by the same standard of thoughtful quality.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Card 1: Flair & Flavors */}
-          <div className="bg-[#EEF1E9] rounded-xs overflow-hidden border border-[#DCDDD4] flex flex-col justify-between group">
-            <div className="relative h-72 sm:h-80 w-full overflow-hidden">
-              <Image
-                src="/images/events/trad-wedding.jpg"
-                alt="Flair & Flavors Events & Hospitality"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-xs px-3 py-1 text-[11px] uppercase tracking-wider font-semibold text-[#183C32]">
-                01 / Events & Hospitality
+        {/* The Two Division Columns (Edge-to-Edge Architectural Split) */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Division 1: Flair & Flavors */}
+            <article className="flex flex-col bg-[#F2E2DC] overflow-hidden rounded-xs border border-[#E8D4CD]">
+              <div className="relative aspect-[16/11] w-full bg-[#E5D2CB] overflow-hidden">
+                <Image
+                  src="/images/figma/b7b0629d6b.jpg"
+                  alt="Flair & Flavors Banquet Dinner"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
               </div>
-            </div>
-            <div className="p-8 sm:p-10 space-y-4 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="font-serif text-2xl sm:text-3xl text-[#183C32]">
-                  Flair & Flavors
-                </h3>
-                <p className="text-sm text-[#4B5563] leading-relaxed mt-3">
-                  From grand royal banquets and refined corporate galas to private tasting salons and bespoke celebration cakes, we transform intimate gatherings into sensory memories.
-                </p>
+              <div className="p-8 sm:p-12 flex-1 flex flex-col justify-between space-y-6">
+                <div className="space-y-4">
+                  <span className="text-xs uppercase tracking-widest text-[#20211E]/70 font-medium block">
+                    01 / EVENTS & HOSPITALITY
+                  </span>
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-10 h-10 rounded-full bg-[#183C32] flex items-center justify-center shrink-0">
+                      <Image
+                        src="/images/ff-logo-white.png"
+                        alt="F&F Logo"
+                        width={24}
+                        height={24}
+                        className="object-contain"
+                      />
+                    </div>
+                    <h3 className="font-serif text-3xl sm:text-4xl text-[#20211E] font-medium">
+                      Flair <span className="text-[#B96F52] italic">&</span> Flavors
+                    </h3>
+                  </div>
+                  <p className="text-base text-[#20211E]/80 leading-relaxed font-light">
+                    From grand royal banquets and refined corporate galas to private tasting salons and bespoke celebration cakes, we transform intimate gatherings into sensory memories.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-[#E8D4CD]">
+                  <Link
+                    href="/flair-and-flavors"
+                    className="inline-flex items-center gap-2 text-sm uppercase tracking-wider font-semibold text-[#20211E] hover:text-[#B96F52] underline underline-offset-8 decoration-[#B96F52]/60 transition"
+                  >
+                    <span>Discover the experience</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
-              <div className="pt-4">
-                <Link
-                  href="/flair-and-flavors"
-                  className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-[#183C32] group-hover:text-[#B96F52] transition"
-                >
-                  <span>Discover the experience</span>
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
-          </div>
+            </article>
 
-          {/* Card 2: Retail & Trading */}
-          <div className="bg-[#EEF1E9] rounded-xs overflow-hidden border border-[#DCDDD4] flex flex-col justify-between group">
-            <div className="relative h-72 sm:h-80 w-full overflow-hidden">
-              <Image
-                src="/images/products/cookware-set.jpg"
-                alt="Retail & Trading Curated Products"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-xs px-3 py-1 text-[11px] uppercase tracking-wider font-semibold text-[#183C32]">
-                02 / Retail & Curated Living
+            {/* Division 2: Retail & Trading */}
+            <article className="flex flex-col bg-[#F3F3EF] overflow-hidden rounded-xs border border-[#E2E2DC]">
+              <div className="relative aspect-[16/11] w-full bg-[#CBD3CA] overflow-hidden">
+                <Image
+                  src="/images/figma/d8507e1ba3.jpg"
+                  alt="Harmony Hub Curated Kitchenware & Cookware"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
               </div>
-            </div>
-            <div className="p-8 sm:p-10 space-y-4 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="font-serif text-2xl sm:text-3xl text-[#183C32]">
-                  Retail & Trading
-                </h3>
-                <p className="text-sm text-[#4B5563] leading-relaxed mt-3">
-                  Thoughtfully selected products for your home, family, and personal wardrobe. Built with uncompromising durability, pure materials, and refined contemporary aesthetics.
-                </p>
+              <div className="p-8 sm:p-12 flex-1 flex flex-col justify-between space-y-6">
+                <div className="space-y-4">
+                  <span className="text-xs uppercase tracking-widest text-[#20211E]/70 font-medium block">
+                    02 / CURATED LIVING & RETAIL
+                  </span>
+                  <h3 className="font-serif text-3xl sm:text-4xl text-[#20211E] font-medium">
+                    Retail <span className="text-[#B96F52] italic">&</span> Trading
+                  </h3>
+                  <p className="text-base text-[#20211E]/80 leading-relaxed font-light">
+                    Thoughtfully selected products for your home, family, and personal wardrobe. Built with uncompromising durability, pure materials, and refined contemporary aesthetics.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-[#E2E2DC]">
+                  <Link
+                    href="/shop"
+                    className="inline-flex items-center gap-2 text-sm uppercase tracking-wider font-semibold text-[#20211E] hover:text-[#B96F52] underline underline-offset-8 decoration-[#B96F52]/60 transition"
+                  >
+                    <span>Discover the collection</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
-              <div className="pt-4">
-                <Link
-                  href="/shop"
-                  className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-[#183C32] group-hover:text-[#B96F52] transition"
-                >
-                  <span>Browse the catalogue</span>
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* 4. ARCHIVAL WORKS: CURATED COMMISSIONS & GALAS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-          <div>
-            <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold block mb-1">
+      {/* 4. CURATED COMMISSIONS & GALAS (Asymmetric Editorial Masonry - 32:531) */}
+      <section className="py-24 sm:py-32 bg-white border-t border-[#E5E5E5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="mb-12">
+            <span className="text-xs uppercase tracking-widest text-[#666D65] font-medium block mb-2">
               ARCHIVAL WORKS
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#183C32]">
-              Curated Commissions & Galas
+            <h2 className="font-serif text-4xl sm:text-5xl text-[#20211E] font-normal">
+              Curated Commissions <span className="italic text-[#B96F52]">&</span> Galas
             </h2>
           </div>
-          <Link
-            href="/flair-and-flavors"
-            className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-[#183C32] hover:text-[#B96F52] transition"
-          >
-            <span>View Full Portfolio</span>
-            <ArrowRight className="w-3.5 h-3.5 ml-2" />
-          </Link>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          <div className="md:col-span-6 relative h-80 sm:h-96 rounded-xs overflow-hidden group">
-            <Image
-              src="/images/events/small-chops.jpg"
-              alt="Bespoke Gourmet Catering"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
-              <div className="text-white">
-                <p className="text-xs uppercase tracking-widest text-[#E5B59C] font-medium">Banqueting & Small Chops</p>
-                <h4 className="font-serif text-xl sm:text-2xl mt-1">Rich Nigerian Flavours & Delicate Canapés</h4>
+          {/* Asymmetric Gallery Grid with Square Corners (NO generic rounded cards!) */}
+          <div className="space-y-6">
+            {/* Top Row: Wide Left (Chafing dishes) + Tall Right (Calla Lily chairs) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-7 relative h-[360px] sm:h-[480px] lg:h-[540px] bg-[#EBE8E2] overflow-hidden">
+                <Image
+                  src="/images/figma/9593098a0f.jpg"
+                  alt="Banqueting Chafing Dishes Buffet"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="lg:col-span-5 relative h-[360px] sm:h-[480px] lg:h-[540px] bg-[#EBE8E2] overflow-hidden">
+                <Image
+                  src="/images/figma/3e617fc5a6.jpg"
+                  alt="Calla Lilly Chair Tie Floral Styling"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </div>
-          </div>
 
-          <div className="md:col-span-6 relative h-80 sm:h-96 rounded-xs overflow-hidden group">
-            <Image
-              src="/images/events/fabric-backdrop.jpg"
-              alt="Ethereal Fabric Wedding Backdrop"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
-              <div className="text-white">
-                <p className="text-xs uppercase tracking-widest text-[#E5B59C] font-medium">Scenography & Backdrops</p>
-                <h4 className="font-serif text-xl sm:text-2xl mt-1">Sculptural Fabric Altars & Outdoor Stages</h4>
+            {/* Bottom Row: Square Left (Black room cake) + Wide Right (Traditional reception) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-5 relative h-[360px] sm:h-[440px] bg-[#EBE8E2] overflow-hidden">
+                <Image
+                  src="/images/figma/d2d65e47ba.jpg"
+                  alt="Modern Dining Room with Celebration Cake"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="lg:col-span-7 relative h-[360px] sm:h-[440px] bg-[#EBE8E2] overflow-hidden">
+                <Image
+                  src="/images/figma/57b43e392b.jpg"
+                  alt="Traditional Nigerian Wedding Banquet Marquee"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. FEATURED PRODUCTS: HANDPICKED FOR YOU */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-          <div>
-            <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold block mb-1">
-              FEATURED PRODUCTS
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#183C32]">
-              Handpicked for You
-            </h2>
-            <p className="text-sm text-[#666D65] font-light mt-1">
-              Discover quality essentials selected for your home, family, and elevated lifestyle.
-            </p>
-          </div>
-          <Link
-            href="/shop"
-            className="inline-flex items-center text-xs uppercase tracking-widest font-semibold text-[#183C32] hover:text-[#B96F52] transition"
-          >
-            <span>View All Products</span>
-            <ArrowRight className="w-3.5 h-3.5 ml-2" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
-
-      {/* 6. SERVICES OVERVIEW (FLAIR & FLAVORS) */}
-      <section className="bg-[#EEF1E9] py-20 border-y border-[#DCDDD4]">
+      {/* 5. FEATURED PRODUCTS: “Handpicked for You” (Section C - 32:551) */}
+      <section className="py-24 sm:py-32 bg-white border-t border-[#E5E5E5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-            <div className="lg:col-span-5 space-y-4">
-              <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="text-xs uppercase tracking-widest text-[#666D65] font-medium block mb-2">
+                CURATED COLLECTION
+              </span>
+              <h2 className="font-serif text-4xl sm:text-5xl text-[#20211E] font-normal">
+                Handpicked for You
+              </h2>
+            </div>
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2 text-sm uppercase tracking-wider font-semibold text-[#183C32] hover:text-[#B96F52] transition group"
+            >
+              <span>View full shop</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          {/* 4-Column Responsive Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. “EVERY OCCASION, BEAUTIFULLY CONSIDERED” (Section 32:570) */}
+      <section className="py-24 sm:py-32 bg-[#F7F6F4] border-t border-[#E5E5E5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Sticky Editorial Column */}
+            <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-32">
+              <span className="text-xs uppercase tracking-widest text-[#514F4D] font-medium block">
                 FLAIR & FLAVORS
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#183C32]">
-                Every Occasion,{" "}
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-[54px] text-[#141414] font-normal leading-[1.1]">
+                Every Occasion, <br />
                 <span className="italic text-[#B96F52]">Beautifully Considered</span>
               </h2>
-              <p className="text-sm text-[#4B5563] leading-relaxed">
+              <p className="font-manrope text-base text-[#8A8884] leading-relaxed font-normal">
                 From the first idea to the final detail, we shape warm, personal gatherings with creative direction and professional care.
               </p>
-              <div className="pt-2">
+              <div className="pt-4">
                 <Link
                   href="/flair-and-flavors"
-                  className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#B96F52] text-white px-6 py-3 rounded-xs text-xs uppercase tracking-widest font-semibold transition"
+                  className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#122E26] text-white px-8 py-3.5 rounded-xs text-[15px] font-medium tracking-wide transition shadow-sm w-full sm:w-auto"
                 >
                   View Our Portfolio
                 </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Service 1 */}
-              <div className="bg-white p-6 rounded-xs border border-[#DCDDD4] space-y-2">
-                <span className="text-xs font-mono text-[#B96F52] font-bold">01</span>
-                <h4 className="font-serif text-xl text-[#183C32]">Catering</h4>
-                <p className="text-xs text-[#666D65] leading-relaxed">
-                  Menus designed around the character of your gathering, from traditional celebratory dishes to contemporary banquets.
-                </p>
+            {/* Right Photo Tiles (with bottom dark gradient overlay & white text) */}
+            <div className="lg:col-span-8 space-y-6">
+              {/* Row 1: Tile 1 (wider) + Tile 2 (narrower) */}
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-6">
+                <div className="sm:col-span-7 relative h-72 sm:h-96 rounded-xs overflow-hidden group">
+                  <Image
+                    src="/images/figma/a87c966866.jpg"
+                    alt="Catering by Flair & Flavors"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                    <span className="text-xs text-white/70 block mb-1">01</span>
+                    <h3 className="font-serif text-2xl font-medium">Catering</h3>
+                    <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
+                      Menus designed around the character of your gathering.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="sm:col-span-5 relative h-72 sm:h-96 rounded-xs overflow-hidden group">
+                  <Image
+                    src="/images/figma/50b8b5e557.jpg"
+                    alt="Weddings & Celebrations"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                    <span className="text-xs text-white/70 block mb-1">02</span>
+                    <h3 className="font-serif text-2xl font-medium">Weddings & Celebrations</h3>
+                    <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
+                      Considered details for meaningful moments.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              {/* Service 2 */}
-              <div className="bg-white p-6 rounded-xs border border-[#DCDDD4] space-y-2">
-                <span className="text-xs font-mono text-[#B96F52] font-bold">02</span>
-                <h4 className="font-serif text-xl text-[#183C32]">Weddings & Celebrations</h4>
-                <p className="text-xs text-[#666D65] leading-relaxed">
-                  Considered details and tranquil coordination for your life&apos;s most meaningful milestones.
-                </p>
-              </div>
+              {/* Row 2: Tile 3 (narrower) + Tile 4 (wider) */}
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-6">
+                <div className="sm:col-span-5 relative h-72 sm:h-96 rounded-xs overflow-hidden group">
+                  <Image
+                    src="/images/figma/cfa582782f.jpg"
+                    alt="Event Planning & Styling"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                    <span className="text-xs text-white/70 block mb-1">03</span>
+                    <h3 className="font-serif text-2xl font-medium">Event Planning & Styling</h3>
+                    <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
+                      Creative direction and calm coordination.
+                    </p>
+                  </div>
+                </div>
 
-              {/* Service 3 */}
-              <div className="bg-white p-6 rounded-xs border border-[#DCDDD4] space-y-2">
-                <span className="text-xs font-mono text-[#B96F52] font-bold">03</span>
-                <h4 className="font-serif text-xl text-[#183C32]">Event Planning & Styling</h4>
-                <p className="text-xs text-[#666D65] leading-relaxed">
-                  Creative direction, vendor harmony, and calm execution from concept to celebration day.
-                </p>
-              </div>
-
-              {/* Service 4 */}
-              <div className="bg-white p-6 rounded-xs border border-[#DCDDD4] space-y-2">
-                <span className="text-xs font-mono text-[#B96F52] font-bold">04</span>
-                <h4 className="font-serif text-xl text-[#183C32]">Cakes & Desserts</h4>
-                <p className="text-xs text-[#666D65] leading-relaxed">
-                  Spectacular artisanal centerpieces and celebratory confections baked with genuine passion.
-                </p>
+                <div className="sm:col-span-7 relative h-72 sm:h-96 rounded-xs overflow-hidden group">
+                  <Image
+                    src="/images/figma/57918bafa7.jpg"
+                    alt="Cakes & Desserts Haute Patisserie"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                    <span className="text-xs text-white/70 block mb-1">04</span>
+                    <h3 className="font-serif text-2xl font-medium">Cakes & Desserts</h3>
+                    <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
+                      Beautiful centrepieces and celebratory treats.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. FOUNDER / ABOUT PREVIEW */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Photos */}
-          <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-            <div className="relative h-80 sm:h-96 rounded-xs overflow-hidden shadow-md">
-              <Image
-                src="/images/founder/founder-main.jpg"
-                alt="Olubunmi Folorunsho, Founder of Harmony Hub"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute bottom-4 left-4 right-4 bg-[#183C32]/90 backdrop-blur-xs text-white p-3 rounded-xs text-center border border-white/10">
-                <span className="block text-xl font-serif font-bold text-[#E5B59C]">12+</span>
-                <span className="text-[10px] uppercase tracking-wider text-gray-300">
-                  Years of Curated Living & Banquets
+      {/* 7. BRAND STORY: “More Than a Business. A Commitment to Quality.” (Section F - 32:620) */}
+      <section className="py-24 sm:py-32 bg-white border-t border-[#E5E5E5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Visual Story Collage */}
+            <div className="lg:col-span-6">
+              <div className="grid grid-cols-12 gap-4 items-center">
+                {/* Main Large Founder Portrait */}
+                <div className="col-span-8 relative aspect-[4/5] rounded-xs overflow-hidden shadow-lg">
+                  <Image
+                    src="/images/figma/4b8972c023.jpg"
+                    alt="Olubunmi Folorunsho, Founder of Harmony Hub"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-[#B96F52] text-white p-3 sm:p-4 rounded-xs shadow-md">
+                    <span className="font-serif text-2xl font-bold block leading-none">12+</span>
+                    <span className="text-[10px] uppercase tracking-wider font-medium leading-tight block mt-1">
+                      Years of Curated <br /> Living & Banquets
+                    </span>
+                  </div>
+                </div>
+
+                {/* Two Stacked Secondary Portraits */}
+                <div className="col-span-4 space-y-4">
+                  <div className="relative aspect-[4/5] rounded-xs overflow-hidden shadow-md">
+                    <Image
+                      src="/images/figma/313b95e940.jpg"
+                      alt="Olubunmi Folorunsho in Royal Blue"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="relative aspect-[4/5] rounded-xs overflow-hidden shadow-md">
+                    <Image
+                      src="/images/figma/279ad1ad40.jpg"
+                      alt="Olubunmi Folorunsho Standing"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Narrative Column */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#705B38]" />
+                <span className="text-xs uppercase tracking-widest text-[#705B38] font-semibold">
+                  HARMONY HUB
                 </span>
               </div>
-            </div>
-            <div className="space-y-4">
-              <div className="relative h-44 sm:h-48 rounded-xs overflow-hidden shadow-sm">
-                <Image
-                  src="/images/founder/founder-blue.jpg"
-                  alt="Founder in royal blue Aso-Oke"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-44 sm:h-48 rounded-xs overflow-hidden shadow-sm">
-                <Image
-                  src="/images/founder/founder-red.jpg"
-                  alt="Founder in red traditional attire"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
 
-          {/* Text */}
-          <div className="lg:col-span-6 space-y-6">
-            <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
-              HARMONY HUB
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#183C32] leading-tight">
-              More Than a Business.{" "}
-              <span className="italic text-[#B96F52] block">
-                A Commitment to Quality.
-              </span>
-            </h2>
-            <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed">
-              Harmony Hub was founded on the belief that life&apos;s most meaningful moments happen both around the grand celebration table and in the quiet, everyday routines of the home.
-            </p>
-            <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed">
-              By unifying bespoke event hospitality with thoughtfully curated lifestyle products, we offer an enduring standard of beauty, reliability, and warmth under one trusted enterprise umbrella.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#B96F52] text-white px-8 py-3.5 rounded-xs text-xs uppercase tracking-widest font-semibold transition"
-              >
-                <span>About the Founder</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
+              <h2 className="font-serif text-4xl sm:text-5xl text-[#1C1C18] font-normal leading-[1.15]">
+                More Than a Business. <br />
+                <span className="italic text-[#705B38]">A Commitment</span> to Quality.
+              </h2>
+
+              <p className="text-base text-[#4D463C] leading-relaxed font-normal">
+                Harmony Hub & Flair & Flavors was founded on the belief that life&apos;s most meaningful moments happen both around the grand celebration table and in the quiet, everyday routines of the home.
+              </p>
+
+              <p className="text-base text-[#4D463C] leading-relaxed font-normal">
+                By unifying bespoke event hospitality with thoughtfully curated lifestyle products, we offer an enduring standard of beauty, reliability, and warmth under one trusted enterprise umbrella. Whether styling an unforgettable celebration or stocking your home with reliable craftware, our dedication to refinement remains absolute.
+              </p>
+
+              <div className="pt-4">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 bg-[#12332D] hover:bg-[#183C32] text-white px-8 py-4 rounded-xs text-xs uppercase tracking-widest font-semibold transition shadow-sm group"
+                >
+                  <span>ABOUT THE FOUNDER</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 8. PRE-FOOTER CTA */}
+      {/* 8. PRE-FOOTER CTA BANNER (ContactBanner - 32:654) */}
       <PreFooterCTA />
     </div>
   );

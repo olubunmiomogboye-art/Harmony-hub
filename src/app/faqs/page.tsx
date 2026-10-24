@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   MessageSquare,
   Send,
@@ -238,18 +239,27 @@ export default function FaqsAndEnquiryPage() {
   };
 
   return (
-    <div className="space-y-24 sm:space-y-32 pb-12">
+    <div className="bg-white space-y-24 sm:space-y-32 pb-12">
       {/* 1. HERO BANNER */}
-      <section className="bg-[#F7F4EC] pt-12 sm:pt-16 pb-12 border-b border-[#DCDDD4]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 text-center max-w-3xl space-y-4">
-          <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
+      <section className="relative min-h-[360px] flex items-center overflow-hidden bg-[#F8F9FA] border-b border-[#E5E5E5]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/figma/7f58801bb0.jpg"
+            alt="Harmony Hub Silk Texture"
+            fill
+            priority
+            className="object-cover object-center opacity-85"
+          />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-16 text-center max-w-3xl space-y-4">
+          <span className="text-xs uppercase tracking-widest text-[#B96F52] font-semibold">
             CLIENT ASSISTANCE & CONSULTATION
           </span>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#183C32] leading-tight">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#20211E] leading-tight font-normal">
             Frequently Asked Questions &{" "}
             <span className="italic text-[#B96F52]">Event Enquiry</span>
           </h1>
-          <p className="text-base sm:text-lg text-[#4B5563] font-light max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#20211E]/80 font-normal max-w-xl mx-auto leading-relaxed">
             Essential guidelines regarding culinary lead times, bespoke banqueting, nationwide order delivery, and planning your next celebration.
           </p>
         </div>

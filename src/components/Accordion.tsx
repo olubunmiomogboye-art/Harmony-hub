@@ -12,19 +12,39 @@ export interface AccordionItem {
 interface AccordionProps {
   items: AccordionItem[];
   defaultOpenIndex?: number;
+  allowMultiple?: boolean;
 }
 
-export default function Accordion({ items, defaultOpenIndex = 0 }: AccordionProps) {
+export default function Accordion({
+  items,
+  defaultOpenIndex = 0,
+  allowMultiple = false,
+}: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(defaultOpenIndex);
+  const [openIndices, setOpenIndices] = useState<Set<number>>(
+    new Set(defaultOpenIndex !== null && defaultOpenIndex !== undefined ? [defaultOpenIndex] : [])
+  );
 
   const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+    if (allowMultiple) {
+      setOpenIndices((prev) => {
+        const next = new Set(prev);
+        if (next.has(index)) {
+          next.delete(index);
+        } else {
+          next.add(index);
+        }
+        return next;
+      });
+    } else {
+      setOpenIndex(openIndex === index ? null : index);
+    }
   };
 
   return (
     <div className="divide-y divide-[#DCDDD4] border-y border-[#DCDDD4]">
       {items.map((item, index) => {
-        const isOpen = openIndex === index;
+        const isOpen = allowMultiple ? openIndices.has(index) : openIndex === index;
         return (
           <div key={item.id} className="py-5">
             <button
