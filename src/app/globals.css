@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+    --color-primary: #183C32;
+    --color-primary-hover: #122e26;
+    --color-accent: #B96F52;
+    --color-accent-hover: #a05d43;
+    --color-cream: #F7F4EC;
+    --color-card-bg: #EEF1E9;
+    --color-border: #DCDDD4;
+    --color-text-main: #242923;
+    --color-text-muted: #666D65;
+    --color-sage: #A8B5A0;
+    --color-slate: #6F8F9E;
+  }
+
+  body {
+    background-color: #F7F4EC;
+    color: #242923;
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'DM Serif Display', Georgia, serif;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #EEF1E9;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1C7B7;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B96F52;
+}
+
+button, a {
+  transition: all 0.2s ease-in-out;
+}
