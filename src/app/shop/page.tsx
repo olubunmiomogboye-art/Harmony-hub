@@ -75,9 +75,9 @@ export default function ShopPage() {
               </div>
             </div>
 
-            {/* Right Hero Graphic: Hexagon Retail Cutout (User Uploaded media_1792849143601.png) */}
+            {/* Right Hero Graphic: Hexagon Retail Cutout */}
             <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[460px] aspect-[4/5] rounded-xs overflow-hidden shadow-2xl">
+              <div className="relative w-full max-w-[480px] aspect-[1222/1563]">
                 <Image
                   src="/images/uploaded/shop-hero-retail.png"
                   alt="Harmony Hub Retail Collection - Fashion, Baby, Kitchenware"

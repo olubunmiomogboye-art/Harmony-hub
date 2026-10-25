@@ -98,10 +98,11 @@ export default function CheckoutPage() {
     // 2. Prepare items
     const orderItems = items.map((item) => ({
       id: item.product.id,
-      name: `${item.product.name}${item.selectedVariant ? ` (${item.selectedVariant})` : ""}`,
+      name: item.product.name,
       price: item.product.price,
       quantity: item.quantity,
-      selectedVariant: item.selectedVariant,
+      color: item.selectedColor,
+      variant: item.selectedVariant,
     }));
 
     // 3. Generate dynamic WhatsApp message and URL
@@ -289,19 +290,19 @@ export default function CheckoutPage() {
           {/* Left Column: Form Sections */}
           <div className="lg:col-span-7 space-y-8">
             {/* Section A: Contact Details */}
-            <div className="bg-white p-6 sm:p-8 rounded-xs border border-[#DCDDD4] space-y-5">
-              <div className="border-b border-[#EEF1E9] pb-3">
-                <span className="text-[10px] uppercase tracking-wider text-[#B96F52] font-bold">
+            <div className="bg-white p-6 sm:p-8 rounded-xs border border-[#E5E5E5] space-y-5">
+              <div className="border-b border-[#E5E5E5] pb-3">
+                <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-medium block">
                   SECTION A
                 </span>
-                <h2 className="font-serif text-xl sm:text-2xl text-[#183C32]">
+                <h2 className="font-serif text-xl sm:text-2xl text-[#20211E]">
                   Contact Details
                 </h2>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-[#183C32] mb-1.5">
+                  <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
                     Full Name <span className="text-[#DC2626]">*</span>
                   </label>
                   <input
@@ -310,9 +311,9 @@ export default function CheckoutPage() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="e.g. Adebayo Adeleke"
-                    className={`w-full bg-[#F7F4EC] border ${
-                      errors.fullName ? "border-[#DC2626]" : "border-[#D1C7B7]"
-                    } px-3.5 py-2.5 text-sm text-[#183C32] rounded-xs focus:outline-none focus:border-[#183C32] transition`}
+                    className={`w-full bg-[#F7F6F4] border ${
+                      errors.fullName ? "border-[#DC2626]" : "border-[#E5E5E5]"
+                    } px-3.5 py-2.5 text-sm text-[#20211E] placeholder-[#8A8884] rounded-xs focus:outline-none focus:border-[#183C32] transition`}
                   />
                   {errors.fullName && (
                     <p className="text-xs text-[#DC2626] mt-1">{errors.fullName}</p>
@@ -321,7 +322,7 @@ export default function CheckoutPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#183C32] mb-1.5">
+                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
                       Phone Number <span className="text-[#DC2626]">*</span>
                     </label>
                     <input
@@ -330,9 +331,9 @@ export default function CheckoutPage() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+234 801 234 5678"
-                      className={`w-full bg-[#F7F4EC] border ${
-                        errors.phone ? "border-[#DC2626]" : "border-[#D1C7B7]"
-                      } px-3.5 py-2.5 text-sm text-[#183C32] rounded-xs focus:outline-none focus:border-[#183C32] transition`}
+                      className={`w-full bg-[#F7F6F4] border ${
+                        errors.phone ? "border-[#DC2626]" : "border-[#E5E5E5]"
+                      } px-3.5 py-2.5 text-sm text-[#20211E] placeholder-[#8A8884] rounded-xs focus:outline-none focus:border-[#183C32] transition`}
                     />
                     {errors.phone && (
                       <p className="text-xs text-[#DC2626] mt-1">{errors.phone}</p>
@@ -340,15 +341,15 @@ export default function CheckoutPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#183C32] mb-1.5">
-                      Email Address <span className="text-[#666D65] font-normal normal-case">(optional)</span>
+                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
+                      Email Address <span className="text-[#8A8884] font-normal normal-case">(optional)</span>
                     </label>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="adebayo@example.com"
-                      className="w-full bg-[#F7F4EC] border border-[#D1C7B7] px-3.5 py-2.5 text-sm text-[#183C32] rounded-xs focus:outline-none focus:border-[#183C32] transition"
+                      className="w-full bg-[#F7F6F4] border border-[#E5E5E5] px-3.5 py-2.5 text-sm text-[#20211E] placeholder-[#8A8884] rounded-xs focus:outline-none focus:border-[#183C32] transition"
                     />
                   </div>
                 </div>
@@ -356,12 +357,12 @@ export default function CheckoutPage() {
             </div>
 
             {/* Section B: Delivery Information */}
-            <div className="bg-white p-6 sm:p-8 rounded-xs border border-[#DCDDD4] space-y-5">
-              <div className="border-b border-[#EEF1E9] pb-3">
-                <span className="text-[10px] uppercase tracking-wider text-[#B96F52] font-bold">
+            <div className="bg-white p-6 sm:p-8 rounded-xs border border-[#E5E5E5] space-y-5">
+              <div className="border-b border-[#E5E5E5] pb-3">
+                <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-medium block">
                   SECTION B
                 </span>
-                <h2 className="font-serif text-xl sm:text-2xl text-[#183C32]">
+                <h2 className="font-serif text-xl sm:text-2xl text-[#20211E]">
                   Fulfilment & Delivery
                 </h2>
               </div>
@@ -373,16 +374,16 @@ export default function CheckoutPage() {
                   onClick={() => setFulfillmentMethod("delivery")}
                   className={`p-3.5 rounded-xs border text-left flex items-start gap-3 transition ${
                     fulfillmentMethod === "delivery"
-                      ? "border-[#183C32] bg-[#EEF1E9]"
-                      : "border-[#D1C7B7] bg-[#F7F4EC] opacity-75"
+                      ? "border-[#183C32] bg-[#F7F6F4]"
+                      : "border-[#E5E5E5] bg-white hover:border-[#183C32]"
                   }`}
                 >
                   <Truck className="w-5 h-5 text-[#B96F52] shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-xs font-bold uppercase tracking-wider text-[#183C32]">
+                    <span className="block text-xs font-bold uppercase tracking-wider text-[#20211E]">
                       Direct Delivery
                     </span>
-                    <span className="text-[11px] text-[#666D65]">
+                    <span className="text-[11px] text-[#8A8884]">
                       Dispatch in Ibadan & Nationwide
                     </span>
                   </div>
@@ -393,16 +394,16 @@ export default function CheckoutPage() {
                   onClick={() => setFulfillmentMethod("collection")}
                   className={`p-3.5 rounded-xs border text-left flex items-start gap-3 transition ${
                     fulfillmentMethod === "collection"
-                      ? "border-[#183C32] bg-[#EEF1E9]"
-                      : "border-[#D1C7B7] bg-[#F7F4EC] opacity-75"
+                      ? "border-[#183C32] bg-[#F7F6F4]"
+                      : "border-[#E5E5E5] bg-white hover:border-[#183C32]"
                   }`}
                 >
                   <Building className="w-5 h-5 text-[#B96F52] shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-xs font-bold uppercase tracking-wider text-[#183C32]">
+                    <span className="block text-xs font-bold uppercase tracking-wider text-[#20211E]">
                       Atelier Collection
                     </span>
-                    <span className="text-[11px] text-[#666D65]">
+                    <span className="text-[11px] text-[#8A8884]">
                       Pickup at Ibadan Atelier
                     </span>
                   </div>
@@ -412,7 +413,7 @@ export default function CheckoutPage() {
               {fulfillmentMethod === "delivery" ? (
                 <div className="space-y-4 pt-2">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#183C32] mb-1.5">
+                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
                       Delivery Street Address <span className="text-[#DC2626]">*</span>
                     </label>
                     <input
@@ -421,9 +422,9 @@ export default function CheckoutPage() {
                       value={deliveryAddress}
                       onChange={(e) => setDeliveryAddress(e.target.value)}
                       placeholder="e.g. 14 Ring Road / Bodija / Oluyole Estate"
-                      className={`w-full bg-[#F7F4EC] border ${
-                        errors.deliveryAddress ? "border-[#DC2626]" : "border-[#D1C7B7]"
-                      } px-3.5 py-2.5 text-sm text-[#183C32] rounded-xs focus:outline-none focus:border-[#183C32] transition`}
+                      className={`w-full bg-[#F7F6F4] border ${
+                        errors.deliveryAddress ? "border-[#DC2626]" : "border-[#E5E5E5]"
+                      } px-3.5 py-2.5 text-sm text-[#20211E] placeholder-[#8A8884] rounded-xs focus:outline-none focus:border-[#183C32] transition`}
                     />
                     {errors.deliveryAddress && (
                       <p className="text-xs text-[#DC2626] mt-1">{errors.deliveryAddress}</p>
@@ -431,7 +432,7 @@ export default function CheckoutPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#183C32] mb-1.5">
+                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
                       City / Area / State <span className="text-[#DC2626]">*</span>
                     </label>
                     <input
@@ -440,9 +441,9 @@ export default function CheckoutPage() {
                       value={cityArea}
                       onChange={(e) => setCityArea(e.target.value)}
                       placeholder="e.g. Ibadan, Oyo State (or Lagos State, Abuja, etc.)"
-                      className={`w-full bg-[#F7F4EC] border ${
-                        errors.cityArea ? "border-[#DC2626]" : "border-[#D1C7B7]"
-                      } px-3.5 py-2.5 text-sm text-[#183C32] rounded-xs focus:outline-none focus:border-[#183C32] transition`}
+                      className={`w-full bg-[#F7F6F4] border ${
+                        errors.cityArea ? "border-[#DC2626]" : "border-[#E5E5E5]"
+                      } px-3.5 py-2.5 text-sm text-[#20211E] placeholder-[#8A8884] rounded-xs focus:outline-none focus:border-[#183C32] transition`}
                     />
                     {errors.cityArea && (
                       <p className="text-xs text-[#DC2626] mt-1">{errors.cityArea}</p>
@@ -450,21 +451,21 @@ export default function CheckoutPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#183C32] mb-1.5">
-                      Additional Delivery Instructions <span className="text-[#666D65] font-normal normal-case">(optional)</span>
+                    <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
+                      Additional Delivery Instructions <span className="text-[#8A8884] font-normal normal-case">(optional)</span>
                     </label>
                     <textarea
                       rows={2}
                       value={deliveryInstructions}
                       onChange={(e) => setDeliveryInstructions(e.target.value)}
                       placeholder="e.g. Call upon arrival at the gate, preferred afternoon delivery"
-                      className="w-full bg-[#F7F4EC] border border-[#D1C7B7] px-3.5 py-2 text-sm text-[#183C32] rounded-xs focus:outline-none focus:border-[#183C32] transition"
+                      className="w-full bg-[#F7F6F4] border border-[#E5E5E5] px-3.5 py-2.5 text-sm text-[#20211E] placeholder-[#8A8884] rounded-xs focus:outline-none focus:border-[#183C32] transition"
                     />
                   </div>
                 </div>
               ) : (
-                <div className="bg-[#F7F4EC] p-4 rounded-xs border border-[#DCDDD4] text-xs text-[#4B5563] space-y-1">
-                  <p className="font-semibold text-[#183C32]">
+                <div className="bg-[#F7F6F4] p-4 rounded-xs border border-[#E5E5E5] text-xs text-[#4D463C] space-y-1">
+                  <p className="font-semibold text-[#20211E]">
                     Atelier Collection in Ibadan
                   </p>
                   <p>
@@ -475,26 +476,26 @@ export default function CheckoutPage() {
             </div>
 
             {/* Section D: Additional Notes */}
-            <div className="bg-white p-6 sm:p-8 rounded-xs border border-[#DCDDD4] space-y-5">
-              <div className="border-b border-[#EEF1E9] pb-3">
-                <span className="text-[10px] uppercase tracking-wider text-[#B96F52] font-bold">
+            <div className="bg-white p-6 sm:p-8 rounded-xs border border-[#E5E5E5] space-y-5">
+              <div className="border-b border-[#E5E5E5] pb-3">
+                <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-medium block">
                   SECTION D
                 </span>
-                <h2 className="font-serif text-xl sm:text-2xl text-[#183C32]">
+                <h2 className="font-serif text-xl sm:text-2xl text-[#20211E]">
                   Additional Notes
                 </h2>
               </div>
 
               <div>
-                <label className="block text-xs uppercase tracking-wider font-semibold text-[#183C32] mb-1.5">
-                  Special Requests or Questions <span className="text-[#666D65] font-normal normal-case">(optional)</span>
+                <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
+                  Special Requests or Questions <span className="text-[#8A8884] font-normal normal-case">(optional)</span>
                 </label>
                 <textarea
                   rows={3}
                   value={orderNotes}
                   onChange={(e) => setOrderNotes(e.target.value)}
                   placeholder="Mention any custom packaging requirements, urgency, or specific questions..."
-                  className="w-full bg-[#F7F4EC] border border-[#D1C7B7] px-3.5 py-2.5 text-sm text-[#183C32] rounded-xs focus:outline-none focus:border-[#183C32] transition"
+                  className="w-full bg-[#F7F6F4] border border-[#E5E5E5] px-3.5 py-2.5 text-sm text-[#20211E] placeholder-[#8A8884] rounded-xs focus:outline-none focus:border-[#183C32] transition"
                 />
               </div>
             </div>
@@ -524,11 +525,11 @@ export default function CheckoutPage() {
               <ul className="divide-y divide-[#EEF1E9] max-h-72 overflow-y-auto pr-1">
                 {items.map((item) => (
                   <li
-                    key={`${item.product.id}-${item.selectedVariant || "default"}`}
+                    key={`${item.product.id}-${item.selectedVariant || "default"}-${item.selectedColor || "default"}`}
                     className="py-3 flex items-center justify-between gap-3 text-xs"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="relative w-12 h-12 bg-[#F7F4EC] rounded-xs overflow-hidden shrink-0 border border-[#DCDDD4]">
+                      <div className="relative w-12 h-12 bg-[#F7F6F4] rounded-xs overflow-hidden shrink-0 border border-[#E5E5E5]">
                         <Image
                           src={item.product.image}
                           alt={item.product.name}
@@ -537,16 +538,17 @@ export default function CheckoutPage() {
                         />
                       </div>
                       <div className="min-w-0">
-                        <p className="font-medium text-[#183C32] truncate">
+                        <p className="font-medium text-[#20211E] truncate">
                           {item.product.name}
                         </p>
-                        <p className="text-[#666D65] text-[11px]">
+                        <p className="text-[#8A8884] text-[11px]">
                           Qty: {item.quantity} × {formatNaira(item.product.price)}
+                          {item.selectedColor && ` • Colour: ${item.selectedColor}`}
                           {item.selectedVariant && ` • ${item.selectedVariant}`}
                         </p>
                       </div>
                     </div>
-                    <span className="font-semibold text-[#183C32] shrink-0">
+                    <span className="font-semibold text-[#20211E] shrink-0">
                       {formatNaira(item.product.price * item.quantity)}
                     </span>
                   </li>

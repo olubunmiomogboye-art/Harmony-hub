@@ -58,13 +58,13 @@ export default function HomePage() {
 
             {/* Right Hero Graphic: Altar / Diamond Marquee Collage */}
             <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[480px] aspect-[4/5] rounded-xs overflow-hidden shadow-2xl">
+              <div className="relative w-full max-w-[500px] aspect-[1294/1634]">
                 <Image
-                  src="/images/uploaded/marquee-diamond-grid.jpg"
+                  src="/images/uploaded/marquee-diamond-grid.png"
                   alt="Harmony Hub Luxury Celebration"
                   fill
                   priority
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             </div>
@@ -91,14 +91,14 @@ export default function HomePage() {
 
       {/* 3. TWO DIVISIONS: “Different Needs, Met with the Same Care” (32:482 & 32:489) */}
       <section className="py-24 sm:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-16 text-center">
           <span className="text-xs uppercase tracking-widest text-[#141414] font-medium block mb-3">
             DISCOVER OUR BUSINESSES
           </span>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#20211E] font-normal leading-tight max-w-3xl">
+          <h2 className="font-serif italic text-4xl sm:text-5xl lg:text-[58px] text-[#20211E] font-medium leading-[1.12] max-w-4xl mx-auto">
             Different needs, met with the same care.
           </h2>
-          <p className="text-base sm:text-lg text-[#20211E]/75 max-w-2xl mt-4 leading-relaxed">
+          <p className="text-base sm:text-lg text-[#20211E]/75 max-w-2xl mx-auto mt-4 leading-relaxed">
             Move seamlessly between celebration services and a curated retail catalogue—each with its own character, both guided by the same standard of thoughtful quality.
           </p>
         </div>
@@ -121,18 +121,17 @@ export default function HomePage() {
                   <span className="text-xs uppercase tracking-widest text-[#20211E]/70 font-medium block">
                     01 / EVENTS & HOSPITALITY
                   </span>
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-10 h-10 rounded-full bg-[#183C32] flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-4">
+                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 shrink-0">
                       <Image
-                        src="/images/ff-logo-white.png"
-                        alt="F&F Logo"
-                        width={24}
-                        height={24}
+                        src="/images/ff-logo-transparent.png"
+                        alt="Flair & Flavors Logo"
+                        fill
                         className="object-contain"
                       />
                     </div>
-                    <h3 className="font-serif text-3xl sm:text-4xl text-[#20211E] font-medium">
-                      Flair <span className="text-[#B96F52] italic">&</span> Flavors
+                    <h3 className="font-serif italic text-4xl sm:text-5xl lg:text-[52px] text-[#20211E] font-semibold leading-tight">
+                      Flair <span className="text-[#B96F52]">&</span> Flavors
                     </h3>
                   </div>
                   <p className="text-base text-[#20211E]/80 leading-relaxed font-light">
@@ -166,8 +165,8 @@ export default function HomePage() {
                   <span className="text-xs uppercase tracking-widest text-[#20211E]/70 font-medium block">
                     02 / CURATED LIVING & RETAIL
                   </span>
-                  <h3 className="font-serif text-3xl sm:text-4xl text-[#20211E] font-medium">
-                    Retail <span className="text-[#B96F52] italic">&</span> Trading
+                  <h3 className="font-serif italic text-4xl sm:text-5xl lg:text-[52px] text-[#20211E] font-semibold leading-tight">
+                    Retail <span className="text-[#B96F52]">&</span> Trading
                   </h3>
                   <p className="text-base text-[#20211E]/80 leading-relaxed font-light">
                     Thoughtfully selected products for your home, family, and personal wardrobe. Built with uncompromising durability, pure materials, and refined contemporary aesthetics.
@@ -312,7 +311,7 @@ export default function HomePage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
                     <span className="text-xs text-white/70 block mb-1">01</span>
                     <h3 className="font-serif text-2xl font-medium">Catering</h3>
                     <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
@@ -328,7 +327,7 @@ export default function HomePage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
                     <span className="text-xs text-white/70 block mb-1">02</span>
                     <h3 className="font-serif text-2xl font-medium">Weddings & Celebrations</h3>
                     <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
@@ -347,7 +346,7 @@ export default function HomePage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
                     <span className="text-xs text-white/70 block mb-1">03</span>
                     <h3 className="font-serif text-2xl font-medium">Event Planning & Styling</h3>
                     <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
@@ -363,7 +362,7 @@ export default function HomePage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
                     <span className="text-xs text-white/70 block mb-1">04</span>
                     <h3 className="font-serif text-2xl font-medium">Cakes & Desserts</h3>
                     <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">

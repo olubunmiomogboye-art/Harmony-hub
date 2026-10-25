@@ -120,7 +120,7 @@ export default function ContactPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-20 lg:py-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6 max-w-2xl">
+            <div className="lg:col-span-6 space-y-6 max-w-xl">
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-[76px] font-normal leading-[1.08] tracking-tight text-[#20211E]">
                 We Welcome <br />
                 Your <span className="italic text-[#B96F52]">Inquiry.</span>
@@ -170,11 +170,11 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Right Hero Graphic: 5 Slit Vertical Panels (User Uploaded media_1792849143574.jpg) */}
-            <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[480px] aspect-[16/10] sm:aspect-[4/3] lg:aspect-[16/10] rounded-xs overflow-hidden shadow-2xl">
+            {/* Right Hero Graphic: 5 Slit Vertical Panels (Figma 46:744 Union-3) */}
+            <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[673px] aspect-[673/393]">
                 <Image
-                  src="/images/uploaded/contact-hero-altar.jpg"
+                  src="/images/uploaded/contact-hero-altar.png"
                   alt="Harmony Hub Ceremonial Setting with Transparent Chairs and Runway"
                   fill
                   priority
@@ -457,7 +457,7 @@ export default function ContactPage() {
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-8 text-white">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-8 text-white">
               <span className="text-[10px] uppercase tracking-widest text-white/70 block mb-1">
                 FLAIR & FLAVORS ATELIER
               </span>
@@ -477,7 +477,7 @@ export default function ContactPage() {
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-8 text-white">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-8 text-white">
               <span className="text-[10px] uppercase tracking-widest text-white/70 block mb-1">
                 RETAIL & GIFTING SUITE
               </span>
@@ -573,12 +573,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-6 relative aspect-[4/3] rounded-xs overflow-hidden shadow-md">
+          <div className="lg:col-span-6 relative h-[500px] sm:h-[600px] lg:h-[680px] w-full rounded-xs overflow-hidden shadow-sm">
             <Image
-              src="/images/figma/54405a849a.jpg"
-              alt="Sculptural Calla Lilly Altar Details"
+              src="/images/figma/731d3c.jpg"
+              alt="Harmony Hub Floral Runway Setting"
               fill
-              className="object-cover"
+              className="object-cover object-center"
             />
           </div>
         </div>

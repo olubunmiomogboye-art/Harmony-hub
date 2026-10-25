@@ -87,7 +87,7 @@ export default function CartDrawer() {
               <ul className="divide-y divide-[#DCDDD4]">
                 {items.map((item) => (
                   <li
-                    key={`${item.product.id}-${item.selectedVariant || "default"}`}
+                    key={`${item.product.id}-${item.selectedVariant || "default"}-${item.selectedColor || "default"}`}
                     className="py-4 flex gap-4"
                   >
                     {/* Thumbnail */}
@@ -109,7 +109,11 @@ export default function CartDrawer() {
                           </h4>
                           <button
                             onClick={() =>
-                              removeFromCart(item.product.id, item.selectedVariant)
+                              removeFromCart(
+                                item.product.id,
+                                item.selectedVariant,
+                                item.selectedColor
+                              )
                             }
                             aria-label="Remove item"
                             className="text-[#9CA3AF] hover:text-[#DC2626] transition p-0.5"
@@ -117,6 +121,13 @@ export default function CartDrawer() {
                             <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
+
+                        {item.selectedColor && (
+                          <p className="text-xs text-[#20211E] font-medium mt-0.5 flex items-center gap-1">
+                            <span>Colour:</span>
+                            <span className="font-semibold">{item.selectedColor}</span>
+                          </p>
+                        )}
 
                         {item.selectedVariant && (
                           <p className="text-xs text-[#666D65] mt-0.5">
@@ -137,7 +148,8 @@ export default function CartDrawer() {
                               updateQuantity(
                                 item.product.id,
                                 item.quantity - 1,
-                                item.selectedVariant
+                                item.selectedVariant,
+                                item.selectedColor
                               )
                             }
                             aria-label="Decrease quantity"
@@ -153,7 +165,8 @@ export default function CartDrawer() {
                               updateQuantity(
                                 item.product.id,
                                 item.quantity + 1,
-                                item.selectedVariant
+                                item.selectedVariant,
+                                item.selectedColor
                               )
                             }
                             aria-label="Increase quantity"

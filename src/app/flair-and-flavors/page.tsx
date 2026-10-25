@@ -70,15 +70,15 @@ export default function FlairAndFlavorsPage() {
               </div>
             </div>
 
-            {/* Right Hero Graphic: Seaside Altar Grid (User Uploaded media_1792849143576.jpg) */}
+            {/* Right Hero Graphic: Seaside Altar Grid (Transparent PNG Union-1.png) */}
             <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[460px] aspect-[4/5] rounded-xs overflow-hidden shadow-2xl">
+              <div className="relative w-full max-w-[480px] aspect-[1162/1494]">
                 <Image
-                  src="/images/uploaded/flair-hero-altar.jpg"
+                  src="/images/uploaded/flair-hero-altar.png"
                   alt="Flair & Flavors Bespoke Altar and Ceremony Styling"
                   fill
                   priority
-                  className="object-cover object-center"
+                  className="object-contain"
                 />
               </div>
             </div>

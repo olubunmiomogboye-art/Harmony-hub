@@ -76,7 +76,7 @@ export default function CartPage() {
               <ul className="divide-y divide-[#DCDDD4]">
                 {items.map((item) => (
                   <li
-                    key={`${item.product.id}-${item.selectedVariant || "default"}`}
+                    key={`${item.product.id}-${item.selectedVariant || "default"}-${item.selectedColor || "default"}`}
                     className="p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                   >
                     {/* Item info */}
@@ -101,6 +101,12 @@ export default function CartPage() {
                             {item.product.name}
                           </h3>
                         </Link>
+                        {item.selectedColor && (
+                          <p className="text-xs text-[#20211E] font-medium flex items-center gap-1">
+                            <span>Colour:</span>
+                            <span className="font-semibold">{item.selectedColor}</span>
+                          </p>
+                        )}
                         {item.selectedVariant && (
                           <p className="text-xs text-[#666D65]">
                             Variant: {item.selectedVariant}
@@ -123,7 +129,8 @@ export default function CartPage() {
                           updateQuantity(
                             item.product.id,
                             newQty,
-                            item.selectedVariant
+                            item.selectedVariant,
+                            item.selectedColor
                           )
                         }
                         max={item.product.stockCount}
@@ -141,7 +148,11 @@ export default function CartPage() {
 
                       <button
                         onClick={() =>
-                          removeFromCart(item.product.id, item.selectedVariant)
+                          removeFromCart(
+                            item.product.id,
+                            item.selectedVariant,
+                            item.selectedColor
+                          )
                         }
                         aria-label="Remove item"
                         className="text-[#9CA3AF] hover:text-[#DC2626] transition p-1"

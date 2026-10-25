@@ -74,19 +74,40 @@ export default function ProductCard({ product }: ProductCardProps) {
             <p className="text-xs text-[#8A8884] line-clamp-1">{product.shortDescription}</p>
           )}
 
-          <div className="font-sans text-base sm:text-lg font-bold text-[#20211E] pt-1">
-            {formatNaira(product.price)}
+          <div className="font-sans text-base sm:text-lg font-bold text-[#20211E] pt-1 flex items-center justify-between">
+            <span>{formatNaira(product.price)}</span>
+            {product.colors && product.colors.length > 0 && (
+              <div className="flex items-center gap-1">
+                {product.colors.map((c) => (
+                  <span
+                    key={c.name}
+                    title={c.name}
+                    className="w-2.5 h-2.5 rounded-full border border-black/15 shrink-0"
+                    style={{ backgroundColor: c.hex || "#DCDDD4" }}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         {/* Action Button: ADD TO CART */}
-        <button
-          onClick={() => addToCart(product, 1)}
-          aria-label={`Add ${product.name} to bag`}
-          className="w-full py-2.5 text-[11px] uppercase tracking-widest font-semibold text-[#20211E] hover:text-white border border-[#DCDDD4] hover:border-[#183C32] hover:bg-[#183C32] rounded-xs transition bg-white"
-        >
-          ADD TO CART
-        </button>
+        {product.colors && product.colors.length > 0 ? (
+          <Link
+            href={`/shop/${product.id}`}
+            className="w-full py-2.5 text-center text-[11px] uppercase tracking-widest font-semibold text-[#20211E] hover:text-white border border-[#DCDDD4] hover:border-[#183C32] hover:bg-[#183C32] rounded-xs transition bg-white block"
+          >
+            SELECT COLOUR
+          </Link>
+        ) : (
+          <button
+            onClick={() => addToCart(product, 1)}
+            aria-label={`Add ${product.name} to bag`}
+            className="w-full py-2.5 text-[11px] uppercase tracking-widest font-semibold text-[#20211E] hover:text-white border border-[#DCDDD4] hover:border-[#183C32] hover:bg-[#183C32] rounded-xs transition bg-white"
+          >
+            ADD TO CART
+          </button>
+        )}
       </div>
     </div>
   );

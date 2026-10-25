@@ -59,15 +59,15 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right Hero Graphic: Founder in Royal Blue Honeycomb Cutout (User Uploaded media_1792849143693.jpg) */}
+            {/* Right Hero Graphic: Founder in Royal Blue Honeycomb Cutout (Transparent PNG Union-2.png) */}
             <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[460px] aspect-[4/5] rounded-xs overflow-hidden shadow-2xl">
+              <div className="relative w-full max-w-[480px] aspect-[1468/1514]">
                 <Image
-                  src="/images/uploaded/about-hero-founder.jpg"
+                  src="/images/uploaded/about-hero-founder.png"
                   alt="Olubunmi Folorunsho, Founder of Harmony Hub"
                   fill
                   priority
-                  className="object-cover object-center"
+                  className="object-contain"
                 />
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function AboutPage() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-8 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-8 text-white">
                 <span className="text-xs text-white/70 block mb-1">01</span>
                 <h3 className="font-serif text-2xl sm:text-3xl font-medium">Event Management</h3>
                 <p className="text-sm text-white/80 mt-1 max-w-md font-light">
@@ -222,12 +222,12 @@ export default function AboutPage() {
               {/* Tile 2: 02 Furniture */}
               <div className="relative h-[288px] rounded-xs overflow-hidden group">
                 <Image
-                  src="/images/figma/d8507e1ba3.jpg"
+                  src="/images/figma/2255bfba.jpg"
                   alt="Furniture & Kitchen Living"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
                   <span className="text-xs text-white/70 block mb-1">02</span>
                   <h3 className="font-serif text-2xl font-medium">Furniture</h3>
                   <p className="text-xs sm:text-sm text-white/80 mt-1 font-light">
@@ -249,7 +249,7 @@ export default function AboutPage() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
                   <span className="text-xs text-white/70 block mb-1">03</span>
                   <h3 className="font-serif text-2xl font-medium">Catering</h3>
                   <p className="text-xs sm:text-sm text-white/80 mt-1 font-light">
@@ -275,7 +275,7 @@ export default function AboutPage() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
                 <span className="text-xs text-white/70 block mb-1">04</span>
                 <h3 className="font-serif text-2xl font-medium">Decoration</h3>
                 <p className="text-xs sm:text-sm text-white/80 mt-1 font-light">
@@ -292,12 +292,12 @@ export default function AboutPage() {
             {/* Tile 5: 05 Our Products */}
             <div className="lg:col-span-7 relative h-72 sm:h-80 rounded-xs overflow-hidden group">
               <Image
-                src="/images/products/camel-bag.jpg"
+                src="/images/figma/b6ad3f93.jpg"
                 alt="Curated Retail Products"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
                 <span className="text-xs text-white/70 block mb-1">05</span>
                 <h3 className="font-serif text-2xl font-medium">Our Products</h3>
                 <p className="text-xs sm:text-sm text-white/80 mt-1 font-light">
@@ -318,14 +318,14 @@ export default function AboutPage() {
       <section className="py-24 sm:py-32 bg-[#FAF8F5] border-t border-[#E5E5E5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left: Founder Portrait in Red Suit & Sunglasses */}
+            {/* Left: Founder Portrait in Red Suit & Sunglasses (Figma 9b887a02) */}
             <div className="lg:col-span-5 relative flex justify-center">
-              <div className="relative w-full max-w-md aspect-[4/5] rounded-xs overflow-hidden shadow-xl border-4 border-white">
+              <div className="relative w-full max-w-md aspect-[4/5] rounded-xs overflow-hidden shadow-md border-4 border-white">
                 <Image
-                  src="/images/founder/founder-main.jpg"
+                  src="/images/founder/founder-leadership.jpg"
                   alt="Olubunmi Folorunsho, Founder of Harmony Hub"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
             </div>

@@ -17,6 +17,12 @@ export interface ProductVariant {
   options: string[];
 }
 
+export interface ProductColor {
+  name: string;
+  hex?: string;
+  inStock?: boolean;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -32,6 +38,7 @@ export interface Product {
   featured?: boolean;
   specs?: { label: string; value: string }[];
   variants?: ProductVariant[];
+  colors?: ProductColor[];
   badge?: string;
 }
 
@@ -79,6 +86,11 @@ export const PRODUCTS: Product[] = [
     inStock: true,
     stockCount: 8,
     featured: false,
+    colors: [
+      { name: "Onyx Black", hex: "#1F2022" },
+      { name: "Cream White", hex: "#F5F2EB" },
+      { name: "Sage Green", hex: "#7E8E7D" },
+    ],
     specs: [
       { label: "Set Count", value: "10 Pieces" },
       { label: "Coating", value: "PFOA-Free Ceramic Non-Stick" },
@@ -218,6 +230,11 @@ export const PRODUCTS: Product[] = [
     stockCount: 7,
     featured: true,
     badge: "Trending",
+    colors: [
+      { name: "Textured Camel", hex: "#C19A6B" },
+      { name: "Midnight Noir", hex: "#11120F" },
+      { name: "Cream Linen", hex: "#F3F1EC" },
+    ],
     specs: [
       { label: "Dimensions", value: "22cm x 16cm x 8cm" },
       { label: "Material", value: "Premium Textured Vegan Leather" },
@@ -298,6 +315,11 @@ export const PRODUCTS: Product[] = [
     stockCount: 16,
     featured: true,
     badge: "Popular",
+    colors: [
+      { name: "Ballerina Pink", hex: "#F4C2C2" },
+      { name: "Powder Blue", hex: "#B0E0E6" },
+      { name: "Ivory White", hex: "#FFFFF0" },
+    ],
     variants: [
       { name: "Age Group", options: ["7-8 Years", "9-10 Years", "11-12 Years", "13-14 Years"] },
     ],

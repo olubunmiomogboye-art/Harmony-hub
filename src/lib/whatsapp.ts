@@ -6,6 +6,8 @@ export interface OrderItem {
   name: string;
   price: number;
   quantity: number;
+  color?: string;
+  variant?: string;
 }
 
 export interface OrderCustomerDetails {
@@ -45,12 +47,15 @@ export function generateOrderWhatsAppMessage(
   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const itemsText = items
-    .map(
-      (item, idx) =>
-        `${idx + 1}. ${item.name}\nQuantity: ${item.quantity}\nUnit price: ${formatNaira(
-          item.price
-        )}\nItem total: ${formatNaira(item.price * item.quantity)}`
-    )
+    .map((item, idx) => {
+      let details = `${idx + 1}. ${item.name}`;
+      if (item.color) details += `\nColour: ${item.color}`;
+      if (item.variant) details += `\nVariant: ${item.variant}`;
+      details += `\nQuantity: ${item.quantity}\nUnit price: ${formatNaira(
+        item.price
+      )}\nItem total: ${formatNaira(item.price * item.quantity)}`;
+      return details;
+    })
     .join("\n\n");
 
   const methodText =

@@ -7,13 +7,28 @@ export interface CartItem {
   product: Product;
   quantity: number;
   selectedVariant?: string;
+  selectedColor?: string;
 }
 
 interface CartContextType {
   items: CartItem[];
-  addToCart: (product: Product, quantity?: number, selectedVariant?: string) => void;
-  updateQuantity: (productId: string, quantity: number, selectedVariant?: string) => void;
-  removeFromCart: (productId: string, selectedVariant?: string) => void;
+  addToCart: (
+    product: Product,
+    quantity?: number,
+    selectedVariant?: string,
+    selectedColor?: string
+  ) => void;
+  updateQuantity: (
+    productId: string,
+    quantity: number,
+    selectedVariant?: string,
+    selectedColor?: string
+  ) => void;
+  removeFromCart: (
+    productId: string,
+    selectedVariant?: string,
+    selectedColor?: string
+  ) => void;
   clearCart: () => void;
   totalItems: number;
   subtotal: number;
@@ -62,13 +77,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const addToCart = (
     product: Product,
     quantity: number = 1,
-    selectedVariant?: string
+    selectedVariant?: string,
+    selectedColor?: string
   ) => {
     setItems((prevItems) => {
       const existingIndex = prevItems.findIndex(
         (item) =>
           item.product.id === product.id &&
-          item.selectedVariant === selectedVariant
+          item.selectedVariant === selectedVariant &&
+          item.selectedColor === selectedColor
       );
 
       let newItems: CartItem[];
@@ -89,22 +106,24 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             product,
             quantity: Math.min(quantity, product.stockCount || 99),
             selectedVariant,
+            selectedColor,
           },
         ];
       }
       return newItems;
     });
 
-    setLastAddedItem({ product, quantity, selectedVariant });
+    setLastAddedItem({ product, quantity, selectedVariant, selectedColor });
   };
 
   const updateQuantity = (
     productId: string,
     quantity: number,
-    selectedVariant?: string
+    selectedVariant?: string,
+    selectedColor?: string
   ) => {
     if (quantity <= 0) {
-      removeFromCart(productId, selectedVariant);
+      removeFromCart(productId, selectedVariant, selectedColor);
       return;
     }
 
@@ -112,7 +131,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       prevItems.map((item) => {
         if (
           item.product.id === productId &&
-          item.selectedVariant === selectedVariant
+          item.selectedVariant === selectedVariant &&
+          item.selectedColor === selectedColor
         ) {
           const max = item.product.stockCount || 99;
           return {
@@ -125,13 +145,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
-  const removeFromCart = (productId: string, selectedVariant?: string) => {
+  const removeFromCart = (
+    productId: string,
+    selectedVariant?: string,
+    selectedColor?: string
+  ) => {
     setItems((prevItems) =>
       prevItems.filter(
         (item) =>
           !(
             item.product.id === productId &&
-            item.selectedVariant === selectedVariant
+            item.selectedVariant === selectedVariant &&
+            item.selectedColor === selectedColor
           )
       )
     );

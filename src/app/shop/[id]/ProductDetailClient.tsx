@@ -24,10 +24,21 @@ export default function ProductDetailClient({
   const [selectedVariant, setSelectedVariant] = useState<string>(
     product.variants?.[0]?.options?.[0] || ""
   );
+  const [selectedColor, setSelectedColor] = useState<string>(
+    product.colors?.[0]?.name || ""
+  );
   const [isAdded, setIsAdded] = useState(false);
 
   const handleAddToCart = () => {
-    addToCart(product, quantity, selectedVariant || undefined);
+    if (product.colors && product.colors.length > 0 && !selectedColor) {
+      return;
+    }
+    addToCart(
+      product,
+      quantity,
+      selectedVariant || undefined,
+      selectedColor || undefined
+    );
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2500);
   };
@@ -111,6 +122,48 @@ export default function ProductDetailClient({
               {product.description}
             </p>
           </div>
+
+          {/* Colour Swatch Selector (if product has colors) */}
+          {product.colors && product.colors.length > 0 && (
+            <div className="space-y-2 pt-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs uppercase tracking-wider font-semibold text-[#183C32]">
+                  Available Colours
+                </label>
+                <span className="text-xs text-[#20211E] font-medium">
+                  {selectedColor ? selectedColor : "Please select a colour"}
+                </span>
+              </div>
+              <div className="flex flex-wrap items-center gap-2.5">
+                {product.colors.map((c) => {
+                  const isSelected = selectedColor === c.name;
+                  return (
+                    <button
+                      key={c.name}
+                      type="button"
+                      onClick={() => setSelectedColor(c.name)}
+                      title={c.name}
+                      className={`group flex items-center gap-2 px-3 py-2 rounded-xs border text-xs font-medium transition ${
+                        isSelected
+                          ? "border-[#183C32] bg-[#F7F6F4] text-[#183C32] shadow-xs"
+                          : "border-[#E5E5E5] bg-white text-[#4B5563] hover:border-[#183C32]"
+                      }`}
+                    >
+                      {c.hex && (
+                        <span
+                          className={`w-3.5 h-3.5 rounded-full border border-black/15 shrink-0 ${
+                            isSelected ? "ring-2 ring-offset-1 ring-[#183C32]" : ""
+                          }`}
+                          style={{ backgroundColor: c.hex }}
+                        />
+                      )}
+                      <span>{c.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Variant Selector (if any) */}
           {product.variants && product.variants.length > 0 && (
