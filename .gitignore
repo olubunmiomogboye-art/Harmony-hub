@@ -33,6 +33,7 @@ yarn-error.log*
 *.tsbuildinfo
 
 # Root raw / unoptimized media assets (preserve public/ directory)
+public/images/_originals/
 /*.jpg
 /*.JPG
 /*.jpeg

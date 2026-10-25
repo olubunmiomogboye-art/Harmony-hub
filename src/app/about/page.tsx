@@ -31,6 +31,7 @@ export default function AboutPage() {
             alt="Harmony Hub Silk Texture"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center opacity-85"
           />
         </div>
@@ -67,6 +68,7 @@ export default function AboutPage() {
                   alt="Olubunmi Folorunsho, Founder of Harmony Hub"
                   fill
                   priority
+                  sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-contain"
                 />
               </div>
@@ -86,6 +88,8 @@ export default function AboutPage() {
                   src="/images/figma/cfa582782f.jpg"
                   alt="Artisanal Floral Styling"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  loading="lazy"
                   className="object-cover"
                 />
               </div>
@@ -94,6 +98,8 @@ export default function AboutPage() {
                   src="/images/figma/57918bafa7.jpg"
                   alt="Celebration Cake Haute Patisserie"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 20vw"
+                  loading="lazy"
                   className="object-cover"
                 />
               </div>
@@ -201,6 +207,8 @@ export default function AboutPage() {
                 src="/images/figma/50b8b5e557.jpg"
                 alt="Event Management by Harmony Hub"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-8 text-white">
@@ -225,6 +233,8 @@ export default function AboutPage() {
                   src="/images/figma/2255bfba.jpg"
                   alt="Furniture & Kitchen Living"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
@@ -247,6 +257,8 @@ export default function AboutPage() {
                   src="/images/figma/a87c966866.jpg"
                   alt="Fine Banquet Catering"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
@@ -273,6 +285,8 @@ export default function AboutPage() {
                 src="/images/figma/cfa582782f.jpg"
                 alt="Event Decoration & Floral Styling"
                 fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                loading="lazy"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
@@ -295,6 +309,8 @@ export default function AboutPage() {
                 src="/images/figma/b6ad3f93.jpg"
                 alt="Curated Retail Products"
                 fill
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                loading="lazy"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
@@ -325,6 +341,8 @@ export default function AboutPage() {
                   src="/images/founder/founder-leadership.jpg"
                   alt="Olubunmi Folorunsho, Founder of Harmony Hub"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                  loading="lazy"
                   className="object-cover object-top"
                 />
               </div>

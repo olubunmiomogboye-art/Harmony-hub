@@ -43,6 +43,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           src={product.image}
           alt={product.name}
           fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
+          loading="lazy"
           className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
         />
         <span

@@ -43,6 +43,7 @@ export default function FlairAndFlavorsPage() {
             alt="Flair & Flavors Silk Texture"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center opacity-85"
           />
         </div>
@@ -78,6 +79,7 @@ export default function FlairAndFlavorsPage() {
                   alt="Flair & Flavors Bespoke Altar and Ceremony Styling"
                   fill
                   priority
+                  sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-contain"
                 />
               </div>
@@ -108,6 +110,8 @@ export default function FlairAndFlavorsPage() {
                   src="/images/figma/a87c966866.jpg"
                   alt="Flair & Flavors Banquet Catering"
                   fill
+                  sizes="(max-width: 640px) 100vw, 400px"
+                  loading="lazy"
                   className="object-cover"
                 />
               </div>
@@ -134,6 +138,8 @@ export default function FlairAndFlavorsPage() {
                   src="/images/figma/50b8b5e557.jpg"
                   alt="Wedding & Celebration Planning"
                   fill
+                  sizes="(max-width: 640px) 100vw, 400px"
+                  loading="lazy"
                   className="object-cover"
                 />
               </div>
@@ -160,6 +166,8 @@ export default function FlairAndFlavorsPage() {
                   src="/images/figma/cfa582782f.jpg"
                   alt="Bespoke Scenography & Floral Decoration"
                   fill
+                  sizes="(max-width: 640px) 100vw, 400px"
+                  loading="lazy"
                   className="object-cover"
                 />
               </div>
@@ -186,6 +194,8 @@ export default function FlairAndFlavorsPage() {
                   src="/images/figma/57918bafa7.jpg"
                   alt="Haute Patisserie Celebration Cakes"
                   fill
+                  sizes="(max-width: 640px) 100vw, 400px"
+                  loading="lazy"
                   className="object-cover"
                 />
               </div>

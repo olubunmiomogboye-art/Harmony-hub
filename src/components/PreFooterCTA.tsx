@@ -11,6 +11,8 @@ export default function PreFooterCTA() {
           src="/images/figma/6c89c79b25.jpg"
           alt="Harmony Hub Grand Celebration Setting"
           fill
+          sizes="100vw"
+          loading="lazy"
           className="object-cover opacity-65"
         />
         <div className="absolute inset-0 bg-black/20" />

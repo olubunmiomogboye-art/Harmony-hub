@@ -100,12 +100,18 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6">
             <Link href="/about" className="hover:text-white transition">
               About the Enterprise
             </Link>
-            <span>•</span>
-            <span className="text-[#8A8884]">Privacy Policy | Terms of use</span>
+            <span className="text-[#444]">•</span>
+            <Link href="/privacy-policy" className="hover:text-white transition">
+              Privacy Policy
+            </Link>
+            <span className="text-[#444]">•</span>
+            <Link href="/terms-of-use" className="hover:text-white transition">
+              Terms of Use
+            </Link>
           </div>
         </div>
 

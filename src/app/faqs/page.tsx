@@ -84,6 +84,24 @@ const FAQ_ITEMS: AccordionItem[] = [
     answer:
       "Harmony Hub is proudly based in Ibadan, Oyo State, Nigeria. We serve clients across Ibadan, Lagos State, and nationwide for select event commissions and retail deliveries.",
   },
+  {
+    id: "event-advance-notice",
+    question: "How far in advance should I book event planning or decoration?",
+    answer:
+      "We recommend reaching out approximately 3 to 6 months before your intended event date. Advance notice allows our creative and culinary teams adequate time for bespoke concept development, artisanal sourcing, calendar availability, and meticulous logistical planning. Please note that an initial enquiry does not constitute a confirmed booking; reservations are secured once availability and agreements are formally finalized.",
+  },
+  {
+    id: "cakes-advance-notice",
+    question: "How much notice is needed for custom celebration cakes?",
+    answer:
+      "For bespoke celebration cakes and delicate haute patisserie commissions, we request approximately 3 to 4 weeks' notice. Because our confections are hand-sculpted and customized to your celebration theme, dates fill up quickly and bookings must be confirmed directly with our team.",
+  },
+  {
+    id: "product-refund-policy",
+    question: "What is Harmony Hub's refund policy on purchased products?",
+    answer:
+      "In accordance with our quiet luxury standards, Harmony Hub does not offer refunds for retail items that have been delivered in good condition and accepted by the customer. Customers are requested to inspect their items upon delivery. In the rare event that an item arrives damaged, defective, or incorrect, please notify our concierge team promptly with photographic evidence so we can address the situation in accordance with applicable consumer protection guidelines.",
+  },
 ];
 
 const AVAILABLE_SERVICES = [
@@ -248,6 +266,7 @@ export default function FaqsAndEnquiryPage() {
             alt="Harmony Hub Silk Texture"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center opacity-85"
           />
         </div>

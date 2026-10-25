@@ -48,6 +48,7 @@ export default function ShopPage() {
             alt="Harmony Hub Curated Living"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center opacity-85"
           />
         </div>
@@ -83,6 +84,7 @@ export default function ShopPage() {
                   alt="Harmony Hub Retail Collection - Fashion, Baby, Kitchenware"
                   fill
                   priority
+                  sizes="(max-width: 1024px) 100vw, 480px"
                   className="object-contain"
                 />
               </div>

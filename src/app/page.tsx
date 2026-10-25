@@ -20,6 +20,7 @@ export default function HomePage() {
             alt="Harmony Hub Silk Texture"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-right lg:object-center opacity-90"
           />
         </div>
@@ -64,6 +65,7 @@ export default function HomePage() {
                   alt="Harmony Hub Luxury Celebration"
                   fill
                   priority
+                  sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-contain"
                 />
               </div>
@@ -113,6 +115,8 @@ export default function HomePage() {
                   src="/images/figma/b7b0629d6b.jpg"
                   alt="Flair & Flavors Banquet Dinner"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -127,6 +131,8 @@ export default function HomePage() {
                         src="/images/ff-logo-transparent.png"
                         alt="Flair & Flavors Logo"
                         fill
+                        sizes="64px"
+                        loading="lazy"
                         className="object-contain"
                       />
                     </div>
@@ -157,6 +163,8 @@ export default function HomePage() {
                   src="/images/figma/d8507e1ba3.jpg"
                   alt="Harmony Hub Curated Kitchenware & Cookware"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -208,6 +216,8 @@ export default function HomePage() {
                   src="/images/figma/9593098a0f.jpg"
                   alt="Banqueting Chafing Dishes Buffet"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  loading="lazy"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -216,6 +226,8 @@ export default function HomePage() {
                   src="/images/figma/3e617fc5a6.jpg"
                   alt="Calla Lilly Chair Tie Floral Styling"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  loading="lazy"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -228,6 +240,8 @@ export default function HomePage() {
                   src="/images/figma/d2d65e47ba.jpg"
                   alt="Modern Dining Room with Celebration Cake"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  loading="lazy"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -236,6 +250,8 @@ export default function HomePage() {
                   src="/images/figma/57b43e392b.jpg"
                   alt="Traditional Nigerian Wedding Banquet Marquee"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  loading="lazy"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -309,6 +325,8 @@ export default function HomePage() {
                     src="/images/figma/a87c966866.jpg"
                     alt="Catering by Flair & Flavors"
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 38vw"
+                    loading="lazy"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
@@ -325,6 +343,8 @@ export default function HomePage() {
                     src="/images/figma/50b8b5e557.jpg"
                     alt="Weddings & Celebrations"
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 28vw"
+                    loading="lazy"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
@@ -344,6 +364,8 @@ export default function HomePage() {
                     src="/images/figma/cfa582782f.jpg"
                     alt="Event Planning & Styling"
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 28vw"
+                    loading="lazy"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
@@ -360,6 +382,8 @@ export default function HomePage() {
                     src="/images/figma/57918bafa7.jpg"
                     alt="Cakes & Desserts Haute Patisserie"
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 38vw"
+                    loading="lazy"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
@@ -389,6 +413,8 @@ export default function HomePage() {
                     src="/images/figma/4b8972c023.jpg"
                     alt="Olubunmi Folorunsho, Founder of Harmony Hub"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    loading="lazy"
                     className="object-cover"
                   />
                   <div className="absolute bottom-4 left-4 bg-[#B96F52] text-white p-3 sm:p-4 rounded-xs shadow-md">
@@ -406,6 +432,8 @@ export default function HomePage() {
                       src="/images/figma/313b95e940.jpg"
                       alt="Olubunmi Folorunsho in Royal Blue"
                       fill
+                      sizes="(max-width: 1024px) 50vw, 16vw"
+                      loading="lazy"
                       className="object-cover"
                     />
                   </div>
@@ -414,6 +442,8 @@ export default function HomePage() {
                       src="/images/figma/279ad1ad40.jpg"
                       alt="Olubunmi Folorunsho Standing"
                       fill
+                      sizes="(max-width: 1024px) 50vw, 16vw"
+                      loading="lazy"
                       className="object-cover"
                     />
                   </div>

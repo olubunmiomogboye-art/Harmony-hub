@@ -113,6 +113,7 @@ export default function ContactPage() {
             alt="Harmony Hub Silk Texture"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center opacity-85"
           />
         </div>
@@ -178,6 +179,7 @@ export default function ContactPage() {
                   alt="Harmony Hub Ceremonial Setting with Transparent Chairs and Runway"
                   fill
                   priority
+                  sizes="(max-width: 1024px) 100vw, 673px"
                   className="object-contain"
                 />
               </div>
@@ -455,6 +457,8 @@ export default function ContactPage() {
               src="/images/figma/50b8b5e557.jpg"
               alt="Haute Banqueting"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              loading="lazy"
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-8 text-white">
@@ -475,6 +479,8 @@ export default function ContactPage() {
               src="/images/figma/d8507e1ba3.jpg"
               alt="Artisanal Living & Executive Hampers"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              loading="lazy"
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-8 text-white">
@@ -578,6 +584,8 @@ export default function ContactPage() {
               src="/images/figma/731d3c.jpg"
               alt="Harmony Hub Floral Runway Setting"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              loading="lazy"
               className="object-cover object-center"
             />
           </div>

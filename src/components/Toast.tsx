@@ -42,6 +42,7 @@ export default function Toast() {
                 src={lastAddedItem.product.image}
                 alt={lastAddedItem.product.name}
                 fill
+                sizes="36px"
                 className="object-cover"
               />
             </div>
