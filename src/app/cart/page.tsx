@@ -44,14 +44,14 @@ export default function CartPage() {
             Your shopping bag is empty
           </h2>
           <p className="text-sm text-[#666D65] leading-relaxed max-w-md mx-auto">
-            You haven&apos;t added any items to your bag yet. Explore our curated selection of kitchenware, baby care, fashion, and lifestyle essentials.
+            You haven&apos;t added any items to your bag yet. Browse our shop for dependable kitchenware, baby essentials, and fashion items.
           </p>
           <div className="pt-2">
             <Link
               href="/shop"
               className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#B96F52] text-white px-8 py-3.5 rounded-xs text-xs uppercase tracking-widest font-semibold transition"
             >
-              Browse Catalogue
+              Start Shopping
             </Link>
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function CartPage() {
                 </div>
 
                 <p className="text-[11px] text-[#9CA3AF] leading-relaxed pt-1">
-                  Delivery is available across Ibadan, Lagos, and nationwide. Exact dispatch rate depends on your delivery address and will be confirmed directly with our concierge team.
+                  Delivery is available across Ibadan, Lagos, and nationwide. The exact delivery fee depends on your address and will be confirmed directly with our team on WhatsApp.
                 </p>
 
                 <div className="flex justify-between text-lg font-bold text-[#183C32] pt-4 border-t border-[#DCDDD4]">

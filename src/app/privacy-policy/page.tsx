@@ -91,7 +91,7 @@ export default function PrivacyPolicyPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-[#183C32] font-semibold hover:underline"
                 >
-                  Message Concierge Desk <ChevronRight className="w-3 h-3" />
+                  Message Us on WhatsApp <ChevronRight className="w-3 h-3" />
                 </a>
               </div>
             </div>
@@ -107,10 +107,10 @@ export default function PrivacyPolicyPage() {
               <div className="text-[15px] sm:text-base text-[#4D463C] leading-relaxed space-y-3 font-light">
                 <p>
                   Harmony Hub (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) operates the website{" "}
-                  <strong>harmony-hub-six-theta.vercel.app</strong> and provides bespoke event management, catering, floral and decor styling, celebration confections through our <strong>Flair &amp; Flavors</strong> atelier, and curated cookware, fashion, and living essentials through our <strong>Retail &amp; Trading</strong> suite.
+                  <strong>harmony-hub-six-theta.vercel.app</strong> and provides event management, catering, decor styling, celebration cakes through our <strong>Flair &amp; Flavors</strong> division, and quality cookware, fashion, and home essentials through our <strong>Retail &amp; Trading</strong> division.
                 </p>
                 <p>
-                  We are committed to processing your personal data lawfully, fairly, and transparently, in alignment with the provisions of the <strong>Nigeria Data Protection Act 2023 (NDPA 2023)</strong> and applicable consumer protection standards. This Privacy Policy informs you about how we handle personal data when you visit our website, submit event enquiries, build a shopping bag, or communicate with our concierge team.
+                  We are committed to processing your personal data lawfully, fairly, and transparently, in alignment with the provisions of the <strong>Nigeria Data Protection Act 2023 (NDPA 2023)</strong> and applicable consumer protection standards. This Privacy Policy informs you about how we handle personal data when you visit our website, submit event enquiries, build a shopping bag, or communicate with our team.
                 </p>
               </div>
             </section>
@@ -122,7 +122,7 @@ export default function PrivacyPolicyPage() {
               </h2>
               <div className="text-[15px] sm:text-base text-[#4D463C] leading-relaxed space-y-3 font-light">
                 <p>
-                  We believe in quiet luxury and data minimization: we only collect personal information that is strictly necessary to deliver exceptional customer service, arrange courier deliveries, or coordinate bespoke event commissions.
+                  We believe in transparency and data privacy: we only collect personal information that is strictly necessary to deliver good customer service, arrange courier deliveries, or coordinate event bookings.
                 </p>
                 <p>We do not collect unnecessary personal details, nor do we purchase or profile customer data from commercial data brokers.</p>
               </div>
@@ -159,7 +159,7 @@ export default function PrivacyPolicyPage() {
                 <ul className="list-disc pl-6 space-y-2 text-[#4D463C]">
                   <li>To process, assemble, and dispatch retail product orders to your designated address.</li>
                   <li>To verify stock availability, confirm product colour variations, and communicate exact dispatch logistics.</li>
-                  <li>To review event dossiers, assess calendar availability for Flair &amp; Flavors commissions, and formulate tailored proposals.</li>
+                  <li>To review event enquiries, assess calendar availability for Flair &amp; Flavors, and prepare tailored proposals.</li>
                   <li>To send internal email notifications to our operations team to prevent unaddressed customer requests.</li>
                   <li>To respond promptly to customer questions, feedback, or post-delivery product assistance.</li>
                 </ul>
@@ -235,7 +235,7 @@ export default function PrivacyPolicyPage() {
                     <strong>Nodemailer / Email Dispatch:</strong> Serverless endpoints dispatch order and consultation notification alerts directly to our official business inbox (<code>{siteConfig.contact.email}</code>).
                   </li>
                   <li>
-                    <strong>WhatsApp (Meta Platforms):</strong> Enables direct click-to-chat messaging between you and our concierge team.
+                    <strong>WhatsApp (Meta Platforms):</strong> Enables direct click-to-chat messaging between you and our team.
                   </li>
                 </ul>
                 <p>We do not sell, rent, or trade your personal information to third parties for commercial marketing.</p>
@@ -313,7 +313,7 @@ export default function PrivacyPolicyPage() {
                 13. Contact Information for Privacy Enquiries
               </h2>
               <div className="text-[15px] sm:text-base text-[#4D463C] leading-relaxed space-y-4 font-light">
-                <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact our concierge desk directly:</p>
+                <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us directly:</p>
 
                 <div className="bg-[#FAF9F6] p-6 rounded-xs border border-[#E5E5E5] space-y-3">
                   <div className="flex items-start gap-3">
@@ -362,7 +362,7 @@ export default function PrivacyPolicyPage() {
                     href="/contact"
                     className="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-semibold text-[#666D65] hover:text-[#183C32]"
                   >
-                    Contact Concierge Desk
+                    Chat with Us on WhatsApp
                   </Link>
                 </div>
               </div>

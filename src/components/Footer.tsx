@@ -27,7 +27,7 @@ export default function Footer() {
               </p>
             </div>
             <p className="text-xs text-[#8A8884] max-w-md pt-4 leading-relaxed">
-              Harmony Hub unifies bespoke event planning, royal banqueting with Flair & Flavors, fine furniture, catering, decor styling, and everyday essentials.
+              Harmony Hub brings together event management, delicious catering and decor through Flair & Flavors, alongside quality kitchenware and essentials for your home.
             </p>
           </div>
 

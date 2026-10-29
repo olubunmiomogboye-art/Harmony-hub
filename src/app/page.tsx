@@ -38,7 +38,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-base sm:text-lg text-[#20211E]/80 leading-relaxed max-w-xl font-normal">
-                From unforgettable celebrations and exceptional catering to thoughtfully selected products for everyday living, discover everything we bring together under one trusted brand.
+                Whether you are planning a celebration that brings family and friends together, or looking for dependable, quality items for your home, we are here to serve you with care.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
@@ -46,13 +46,13 @@ export default function HomePage() {
                   href="/flair-and-flavors"
                   className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#122E26] text-white px-8 py-4 rounded-xs text-[15px] font-medium tracking-wide transition shadow-sm"
                 >
-                  Explore flair and Flavors
+                  Explore Flair & Flavors
                 </Link>
                 <Link
                   href="/shop"
                   className="inline-flex items-center justify-center bg-transparent border border-[#CD927C] text-[#20211E] hover:bg-[#183C32] hover:text-white hover:border-[#183C32] px-8 py-4 rounded-xs text-[15px] font-medium tracking-wide transition"
                 >
-                  Shop Products
+                  Shop Our Products
                 </Link>
               </div>
             </div>
@@ -78,15 +78,15 @@ export default function HomePage() {
       <section className="bg-[#383D36] text-[#FCF9F3] py-14 border-y border-[#484D46]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
           <p className="font-serif italic text-2xl sm:text-[26px] font-medium max-w-2xl text-[#FCF9F3] leading-snug">
-            &ldquo;Architecture in taste, drama in atmosphere, timelessness in memory.&rdquo;
+            &ldquo;Good food, beautiful spaces, and celebrations you will always remember.&rdquo;
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs uppercase tracking-widest font-semibold text-[#B1CCC7]">
-            <span>BANQUETING</span>
+            <span>EVENT CATERING</span>
             <span className="text-white/40">•</span>
-            <span>SCENOGRAPHY</span>
+            <span>DECOR & STYLING</span>
             <span className="text-white/40">•</span>
-            <span>HAUTE PATISSERIE</span>
+            <span>CELEBRATION CAKES</span>
           </div>
         </div>
       </section>
@@ -101,7 +101,7 @@ export default function HomePage() {
             Different needs, met with the same care.
           </h2>
           <p className="text-base sm:text-lg text-[#20211E]/75 max-w-2xl mx-auto mt-4 leading-relaxed">
-            Move seamlessly between celebration services and a curated retail catalogue—each with its own character, both guided by the same standard of thoughtful quality.
+            Explore our two divisions: event catering and styling for life&apos;s big celebrations, and dependable home essentials and fashion for everyday living.
           </p>
         </div>
 
@@ -141,7 +141,7 @@ export default function HomePage() {
                     </h3>
                   </div>
                   <p className="text-base text-[#20211E]/80 leading-relaxed font-light">
-                    From grand royal banquets and refined corporate galas to private tasting salons and bespoke celebration cakes, we transform intimate gatherings into sensory memories.
+                    From mouth-watering catering and beautiful event decor to custom celebration cakes, we bring warmth, elegance, and excellence to your special days.
                   </p>
                 </div>
                 <div className="pt-4 border-t border-[#E8D4CD]">
@@ -149,7 +149,7 @@ export default function HomePage() {
                     href="/flair-and-flavors"
                     className="inline-flex items-center gap-2 text-sm uppercase tracking-wider font-semibold text-[#20211E] hover:text-[#B96F52] underline underline-offset-8 decoration-[#B96F52]/60 transition"
                   >
-                    <span>Discover the experience</span>
+                    <span>Explore Our Event Services</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -171,13 +171,13 @@ export default function HomePage() {
               <div className="p-8 sm:p-12 flex-1 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <span className="text-xs uppercase tracking-widest text-[#20211E]/70 font-medium block">
-                    02 / CURATED LIVING & RETAIL
+                    02 / HOME, KITCHEN & FASHION
                   </span>
                   <h3 className="font-serif italic text-4xl sm:text-5xl lg:text-[52px] text-[#20211E] font-semibold leading-tight">
                     Retail <span className="text-[#B96F52]">&</span> Trading
                   </h3>
                   <p className="text-base text-[#20211E]/80 leading-relaxed font-light">
-                    Thoughtfully selected products for your home, family, and personal wardrobe. Built with uncompromising durability, pure materials, and refined contemporary aesthetics.
+                    Carefully chosen cookware, practical home essentials, baby items, and stylish fashion pieces that bring convenience, durability, and comfort to your home.
                   </p>
                 </div>
                 <div className="pt-4 border-t border-[#E2E2DC]">
@@ -185,7 +185,7 @@ export default function HomePage() {
                     href="/shop"
                     className="inline-flex items-center gap-2 text-sm uppercase tracking-wider font-semibold text-[#20211E] hover:text-[#B96F52] underline underline-offset-8 decoration-[#B96F52]/60 transition"
                   >
-                    <span>Discover the collection</span>
+                    <span>Browse Our Shop</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -200,10 +200,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="mb-12">
             <span className="text-xs uppercase tracking-widest text-[#666D65] font-medium block mb-2">
-              ARCHIVAL WORKS
+              OUR RECENT WORK
             </span>
             <h2 className="font-serif text-4xl sm:text-5xl text-[#20211E] font-normal">
-              Curated Commissions <span className="italic text-[#B96F52]">&</span> Galas
+              Moments We Have Styled <span className="italic text-[#B96F52]">&</span> Hosted
             </h2>
           </div>
 
@@ -266,17 +266,17 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <div>
               <span className="text-xs uppercase tracking-widest text-[#666D65] font-medium block mb-2">
-                CURATED COLLECTION
+                FROM OUR SHOP
               </span>
               <h2 className="font-serif text-4xl sm:text-5xl text-[#20211E] font-normal">
-                Handpicked for You
+                Featured for You
               </h2>
             </div>
             <Link
               href="/shop"
               className="inline-flex items-center gap-2 text-sm uppercase tracking-wider font-semibold text-[#183C32] hover:text-[#B96F52] transition group"
             >
-              <span>View full shop</span>
+              <span>View all products</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -304,14 +304,14 @@ export default function HomePage() {
                 <span className="italic text-[#B96F52]">Beautifully Considered</span>
               </h2>
               <p className="font-manrope text-base text-[#8A8884] leading-relaxed font-normal">
-                From the first idea to the final detail, we shape warm, personal gatherings with creative direction and professional care.
+                From your initial idea to the final pack-up, we handle every detail with genuine care so you can relax and celebrate with your guests.
               </p>
               <div className="pt-4">
                 <Link
                   href="/flair-and-flavors"
                   className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#122E26] text-white px-8 py-3.5 rounded-xs text-[15px] font-medium tracking-wide transition shadow-sm w-full sm:w-auto"
                 >
-                  View Our Portfolio
+                  Explore Our Event Services
                 </Link>
               </div>
             </div>
@@ -333,7 +333,7 @@ export default function HomePage() {
                     <span className="text-xs text-white/70 block mb-1">01</span>
                     <h3 className="font-serif text-2xl font-medium">Catering</h3>
                     <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
-                      Menus designed around the character of your gathering.
+                      Delicious, plentiful dishes made to delight your guests.
                     </p>
                   </div>
                 </div>
@@ -351,7 +351,7 @@ export default function HomePage() {
                     <span className="text-xs text-white/70 block mb-1">02</span>
                     <h3 className="font-serif text-2xl font-medium">Weddings & Celebrations</h3>
                     <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
-                      Considered details for meaningful moments.
+                      Thoughtful planning and warm hospitality for your special days.
                     </p>
                   </div>
                 </div>
@@ -372,7 +372,7 @@ export default function HomePage() {
                     <span className="text-xs text-white/70 block mb-1">03</span>
                     <h3 className="font-serif text-2xl font-medium">Event Planning & Styling</h3>
                     <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
-                      Creative direction and calm coordination.
+                      Beautiful decor, floral styling, and smooth event coordination.
                     </p>
                   </div>
                 </div>
@@ -380,7 +380,7 @@ export default function HomePage() {
                 <div className="sm:col-span-7 relative h-72 sm:h-96 rounded-xs overflow-hidden group">
                   <Image
                     src="/images/figma/57918bafa7.jpg"
-                    alt="Cakes & Desserts Haute Patisserie"
+                    alt="Cakes & Desserts"
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 38vw"
                     loading="lazy"
@@ -390,7 +390,7 @@ export default function HomePage() {
                     <span className="text-xs text-white/70 block mb-1">04</span>
                     <h3 className="font-serif text-2xl font-medium">Cakes & Desserts</h3>
                     <p className="text-xs sm:text-sm text-white/85 mt-1 font-light">
-                      Beautiful centrepieces and celebratory treats.
+                      Custom celebration cakes and desserts baked with love.
                     </p>
                   </div>
                 </div>
@@ -420,7 +420,7 @@ export default function HomePage() {
                   <div className="absolute bottom-4 left-4 bg-[#B96F52] text-white p-3 sm:p-4 rounded-xs shadow-md">
                     <span className="font-serif text-2xl font-bold block leading-none">12+</span>
                     <span className="text-[10px] uppercase tracking-wider font-medium leading-tight block mt-1">
-                      Years of Curated <br /> Living & Banquets
+                      Years of Bringing <br /> People Together
                     </span>
                   </div>
                 </div>
@@ -466,11 +466,11 @@ export default function HomePage() {
               </h2>
 
               <p className="text-base text-[#4D463C] leading-relaxed font-normal">
-                Harmony Hub & Flair & Flavors was founded on the belief that life&apos;s most meaningful moments happen both around the grand celebration table and in the quiet, everyday routines of the home.
+                Harmony Hub was built on a simple belief: the moments that matter most happen around good food, shared laughter, and a comfortable, welcoming home.
               </p>
 
               <p className="text-base text-[#4D463C] leading-relaxed font-normal">
-                By unifying bespoke event hospitality with thoughtfully curated lifestyle products, we offer an enduring standard of beauty, reliability, and warmth under one trusted enterprise umbrella. Whether styling an unforgettable celebration or stocking your home with reliable craftware, our dedication to refinement remains absolute.
+                Whether we are catering a wedding banquet, styling an intimate anniversary, or delivering quality cookware and family essentials to your doorstep, we approach every task with the same personal dedication. When you work with us, you are treated like family.
               </p>
 
               <div className="pt-4">

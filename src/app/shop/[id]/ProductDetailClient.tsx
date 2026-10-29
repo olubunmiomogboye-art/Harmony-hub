@@ -132,7 +132,7 @@ export default function ProductDetailClient({
                   Available Colours
                 </label>
                 <span className="text-xs text-[#20211E] font-medium">
-                  {selectedColor ? selectedColor : "Please select a colour"}
+                  {selectedColor ? selectedColor : "Choose a colour"}
                 </span>
               </div>
               <div className="flex flex-wrap items-center gap-2.5">
@@ -199,7 +199,7 @@ export default function ProductDetailClient({
           <div className="flex items-center gap-2 text-xs">
             <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
             <span className="text-emerald-800 font-medium">
-              In Stock ({product.stockCount} units available for dispatch)
+              In Stock ({product.stockCount} available)
             </span>
           </div>
 
@@ -284,10 +284,10 @@ export default function ProductDetailClient({
           <div className="bg-[#EEF1E9] p-4 rounded-xs border border-[#DCDDD4] space-y-2 text-xs text-[#4B5563]">
             <div className="flex items-center gap-2 text-[#183C32] font-semibold">
               <Truck className="w-4 h-4 text-[#B96F52]" />
-              <span>Fulfilment in Ibadan & Nationwide</span>
+              <span>Delivery in Ibadan & Nationwide</span>
             </div>
             <p className="leading-relaxed">
-              Orders are confirmed directly with our team on WhatsApp to arrange your preferred delivery time or collection.
+              After ordering, we confirm your delivery address and timeline with you directly on WhatsApp.
             </p>
           </div>
         </div>

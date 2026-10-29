@@ -28,44 +28,44 @@ const FAQ_ITEMS: AccordionItem[] = [
     id: "services-offered",
     question: "What services does Harmony Hub offer?",
     answer:
-      "Harmony Hub operates two complementary divisions: Flair & Flavors (specializing in full-scale event management, royal banqueting catering, decor styling, furniture hire, and celebratory cakes) and Retail & Trading (offering chef-grade kitchenware, mother & baby care essentials, structured fashion, and children's outfits).",
+      "Harmony Hub has two main divisions. Flair & Flavors handles event management, catering, event decoration and styling, furniture hire, and custom celebration cakes. Retail & Trading offers practical kitchenware, home essentials, baby items, women's fashion, and children's outfits.",
   },
   {
     id: "enquire-event-management",
     question: "How can I enquire about event management?",
     answer:
-      "You can submit the event enquiry form on this page or reach out directly to our concierge switchboard on WhatsApp. Our creative team will schedule an initial consultation to discuss your vision, venue requirements, guest count, and timeline.",
+      "You can fill out the enquiry form on this page or message us directly on WhatsApp. We will discuss your event date, venue, guest count, menu preferences, and styling ideas to give you a clear proposal.",
   },
   {
     id: "catering-and-decor",
     question: "Can I enquire about catering and decoration separately?",
     answer:
-      "Yes. While we often coordinate full turnkey celebrations, you are welcome to engage Flair & Flavors exclusively for catering (buffet, plated dining, or small chops banquets) or solely for venue decoration and floral scenography.",
+      "Yes, absolutely. You can book us for catering only, decoration and styling only, or for our complete event management package where we coordinate everything from start to finish.",
   },
   {
     id: "how-to-purchase-products",
     question: "How do I purchase products from the shop?",
     answer:
-      "Browse our curated shop catalogue, choose your desired products and quantities, and proceed to checkout. The checkout system prepares a formatted order summary directly for our team on WhatsApp, where availability and delivery arrangements are confirmed.",
+      "Simply browse our shop, select the products, sizes, or colours you want, and click 'Proceed to Checkout'. Your order summary will be sent directly to our team on WhatsApp, where we confirm product availability and arrange your delivery.",
   },
   {
     id: "whatsapp-checkout-explained",
     question: "How does WhatsApp checkout work?",
     answer:
-      "Rather than requiring online card payments on the website, our checkout generates a structured order dossier with your selected items, prices, and address. Tapping 'Continue to WhatsApp' opens WhatsApp with this prefilled message, enabling direct conversation and personal care with our team.",
+      "Instead of taking online card payments through the website, our checkout prepares your complete order details and sends them directly to our WhatsApp. This allows us to give you personal attention, confirm product details, and arrange the most convenient delivery for you.",
   },
   {
     id: "delivery-arrangements",
     question: "How are delivery arrangements and fees confirmed?",
     answer:
-      "Because dispatch fees vary depending on your specific neighborhood in Ibadan, Lagos, or other Nigerian states, we do not invent arbitrary delivery charges. Our team confirms exact courier dispatch fees and delivery windows with you directly during order confirmation.",
+      "Delivery fees depend on your exact location in Ibadan or the state we are sending your package to. Once we receive your order on WhatsApp, we calculate the fair delivery fee with our dispatch riders and let you know immediately before you pay.",
   },
   {
     id: "how-to-contact",
     question: "How can I contact Harmony Hub?",
     answer: (
       <span>
-        You can reach our concierge desk by telephone or WhatsApp at{" "}
+        You can reach us by phone or WhatsApp at{" "}
         <strong className="text-[#183C32]">{siteConfig.contact.phoneDisplay}</strong>, or via
         email at{" "}
         <a
@@ -74,7 +74,7 @@ const FAQ_ITEMS: AccordionItem[] = [
         >
           {siteConfig.contact.email}
         </a>
-        . Our salon hours are Monday through Saturday, 08:00 – 18:00 WAT.
+        . Our office hours are Monday through Saturday, 08:00 – 18:00 WAT.
       </span>
     ),
   },
@@ -82,25 +82,25 @@ const FAQ_ITEMS: AccordionItem[] = [
     id: "where-based",
     question: "Where is Harmony Hub based?",
     answer:
-      "Harmony Hub is proudly based in Ibadan, Oyo State, Nigeria. We serve clients across Ibadan, Lagos State, and nationwide for select event commissions and retail deliveries.",
+      "We are based in Ibadan, Oyo State, Nigeria. We cater and style events across Ibadan, Lagos, and neighbouring states, and we deliver products from our shop nationwide.",
   },
   {
     id: "event-advance-notice",
     question: "How far in advance should I book event planning or decoration?",
     answer:
-      "We recommend reaching out approximately 3 to 6 months before your intended event date. Advance notice allows our creative and culinary teams adequate time for bespoke concept development, artisanal sourcing, calendar availability, and meticulous logistical planning. Please note that an initial enquiry does not constitute a confirmed booking; reservations are secured once availability and agreements are formally finalized.",
+      "For weddings and large events, we recommend contacting us 3 to 6 months ahead so we can reserve your date and prepare properly. For smaller gatherings or birthdays, 3 to 4 weeks' notice is usually sufficient. Please note that dates are only secured once agreements and deposits are finalized.",
   },
   {
     id: "cakes-advance-notice",
     question: "How much notice is needed for custom celebration cakes?",
     answer:
-      "For bespoke celebration cakes and delicate haute patisserie commissions, we request approximately 3 to 4 weeks' notice. Because our confections are hand-sculpted and customized to your celebration theme, dates fill up quickly and bookings must be confirmed directly with our team.",
+      "We usually require 3 to 4 weeks' notice for custom celebration cakes. Because each cake is freshly baked and decorated to your exact theme, booking early ensures your date is available.",
   },
   {
     id: "product-refund-policy",
     question: "What is Harmony Hub's refund policy on purchased products?",
     answer:
-      "In accordance with our quiet luxury standards, Harmony Hub does not offer refunds for retail items that have been delivered in good condition and accepted by the customer. Customers are requested to inspect their items upon delivery. In the rare event that an item arrives damaged, defective, or incorrect, please notify our concierge team promptly with photographic evidence so we can address the situation in accordance with applicable consumer protection guidelines.",
+      "We do not offer refunds on items that have been delivered in good condition and accepted by the customer. We kindly ask you to inspect your items upon delivery. If an item arrives damaged or defective, please notify us within 24 hours with photos so we can quickly resolve it or arrange an exchange.",
   },
 ];
 
@@ -272,14 +272,14 @@ export default function FaqsAndEnquiryPage() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-16 text-center max-w-3xl space-y-4">
           <span className="text-xs uppercase tracking-widest text-[#B96F52] font-semibold">
-            CLIENT ASSISTANCE & CONSULTATION
+            HELP & ENQUIRIES
           </span>
           <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#20211E] leading-tight font-normal">
             Frequently Asked Questions &{" "}
             <span className="italic text-[#B96F52]">Event Enquiry</span>
           </h1>
           <p className="text-base sm:text-lg text-[#20211E]/80 font-normal max-w-xl mx-auto leading-relaxed">
-            Essential guidelines regarding culinary lead times, bespoke banqueting, nationwide order delivery, and planning your next celebration.
+            Helpful answers about our services, booking lead times, order deliveries, and how we can work together on your upcoming celebration.
           </p>
         </div>
       </section>
@@ -288,10 +288,10 @@ export default function FaqsAndEnquiryPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-8 space-y-8">
         <div className="text-center space-y-2">
           <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
-            INQUIRY PROTOCOL
+            QUESTIONS & ANSWERS
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-[#183C32]">
-            Frequently Addressed Inquiries
+            Frequently Asked Questions
           </h2>
         </div>
 
@@ -303,7 +303,7 @@ export default function FaqsAndEnquiryPage() {
         <div className="bg-white rounded-xs border border-[#DCDDD4] p-8 sm:p-14 shadow-sm space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
-              BESPOKE HOSPITALITY & CELEBRATIONS
+              FLAIR & FLAVORS
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#183C32]">
               Let&apos;s Plan Your Event
@@ -328,7 +328,7 @@ export default function FaqsAndEnquiryPage() {
                 </p>
               )}
               <p className="text-sm text-[#4B5563] leading-relaxed">
-                Thank you, {fullName}. Our event directors in Ibadan have received your brief and will review your specifications to discuss next steps.
+                Thank you, {fullName}. We have received your event details in Ibadan and will be in touch with you shortly to discuss next steps.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
@@ -410,7 +410,7 @@ export default function FaqsAndEnquiryPage() {
               {/* Event Details */}
               <div className="space-y-4">
                 <h3 className="text-xs uppercase tracking-widest font-bold text-[#183C32] border-b border-[#EEF1E9] pb-2">
-                  2. Event Scope & Logistics
+                  2. Event Details
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   <div>
@@ -576,7 +576,7 @@ export default function FaqsAndEnquiryPage() {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Transmitting Enquiry...</span>
+                      <span>Sending Enquiry...</span>
                     </>
                   ) : (
                     <>
@@ -597,7 +597,7 @@ export default function FaqsAndEnquiryPage() {
               </div>
 
               <p className="text-[11px] text-[#666D65] text-center">
-                Submitting this form dispatches an enquiry notification to Harmony Hub&apos;s executive team. If choosing WhatsApp, your details are formatted ready to send.
+                Submitting this form sends your details directly to the Harmony Hub team. If you choose WhatsApp, your message will open ready to send.
               </p>
             </form>
           )}

@@ -7,9 +7,9 @@ import CartDrawer from "@/components/CartDrawer";
 import Toast from "@/components/Toast";
 
 export const metadata: Metadata = {
-  title: "Harmony Hub — Event Management, Furniture, Catering, Decor & Curated Living",
+  title: "Harmony Hub — Event Management, Catering, Decor & Quality Home Essentials",
   description:
-    "Based in Ibadan, Nigeria. Harmony Hub offers royal banqueting, bespoke event planning with Flair & Flavors, fine furniture, and curated home essentials.",
+    "Based in Ibadan, Nigeria. Harmony Hub offers delicious catering, event planning and decor with Flair & Flavors, alongside quality kitchenware and essentials for your home.",
   keywords: [
     "Harmony Hub",
     "Flair & Flavors",

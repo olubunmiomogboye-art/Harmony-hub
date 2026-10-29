@@ -160,7 +160,7 @@ export default function CheckoutPage() {
       <div className="border-b border-[#DCDDD4] pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <span className="text-xs uppercase tracking-widest text-[#B96F52] font-bold">
-            DIRECT CONCIERGE ORDER
+            COMPLETE YOUR ORDER
           </span>
           <h1 className="font-serif text-3xl sm:text-4xl text-[#183C32] mt-1">
             Order Checkout
@@ -270,7 +270,7 @@ export default function CheckoutPage() {
               </p>
             ) : (
               <p>
-                ✓ Order dossier #{orderReference || "HH-ORD"} logged to server records for {siteConfig.contact.email}. (To receive live email alerts, SMTP can be configured in <code className="bg-gray-100 px-1 py-0.5 rounded">.env.local</code>).
+                ✓ Order #{orderReference || "HH-ORD"} logged to server records for {siteConfig.contact.email}. (To receive live email alerts, SMTP can be configured in <code className="bg-gray-100 px-1 py-0.5 rounded">.env.local</code>).
               </p>
             )}
           </div>
@@ -363,7 +363,7 @@ export default function CheckoutPage() {
                   SECTION B
                 </span>
                 <h2 className="font-serif text-xl sm:text-2xl text-[#20211E]">
-                  Fulfilment & Delivery
+                  Delivery Method
                 </h2>
               </div>
 
@@ -381,7 +381,7 @@ export default function CheckoutPage() {
                   <Truck className="w-5 h-5 text-[#B96F52] shrink-0 mt-0.5" />
                   <div>
                     <span className="block text-xs font-bold uppercase tracking-wider text-[#20211E]">
-                      Direct Delivery
+                      Doorstep Delivery
                     </span>
                     <span className="text-[11px] text-[#8A8884]">
                       Dispatch in Ibadan & Nationwide
@@ -401,10 +401,10 @@ export default function CheckoutPage() {
                   <Building className="w-5 h-5 text-[#B96F52] shrink-0 mt-0.5" />
                   <div>
                     <span className="block text-xs font-bold uppercase tracking-wider text-[#20211E]">
-                      Atelier Collection
+                      Pick Up in Ibadan
                     </span>
                     <span className="text-[11px] text-[#8A8884]">
-                      Pickup at Ibadan Atelier
+                      Pick up at our Ibadan office
                     </span>
                   </div>
                 </button>
@@ -466,10 +466,10 @@ export default function CheckoutPage() {
               ) : (
                 <div className="bg-[#F7F6F4] p-4 rounded-xs border border-[#E5E5E5] text-xs text-[#4D463C] space-y-1">
                   <p className="font-semibold text-[#20211E]">
-                    Atelier Collection in Ibadan
+                    Pick Up in Ibadan
                   </p>
                   <p>
-                    Harmony Hub is based in <strong className="text-[#183C32]">Ibadan, Oyo State, Nigeria</strong>. Once your order is prepared, our team will provide full collection directions and timings on WhatsApp.
+                    Harmony Hub is based in <strong className="text-[#183C32]">Ibadan, Oyo State, Nigeria</strong>. Once your order is packed and ready, our team will send you the full address and collection times on WhatsApp.
                   </p>
                 </div>
               )}
@@ -565,7 +565,7 @@ export default function CheckoutPage() {
                 <div className="flex justify-between text-[#4B5563]">
                   <span>Fulfilment Method</span>
                   <span className="font-medium text-[#183C32]">
-                    {fulfillmentMethod === "delivery" ? "Direct Delivery" : "Atelier Collection"}
+                    {fulfillmentMethod === "delivery" ? "Doorstep Delivery" : "Pick Up in Ibadan"}
                   </span>
                 </div>
                 <div className="flex justify-between text-[#4B5563]">
@@ -606,7 +606,7 @@ export default function CheckoutPage() {
 
                 <div className="pt-2 border-t border-[#EEF1E9] text-center">
                   <p className="text-[10px] uppercase tracking-wider text-[#9CA3AF]">
-                    Harmony Hub Concierge • {siteConfig.contact.phoneDisplay} • Ibadan
+                    Harmony Hub • {siteConfig.contact.phoneDisplay} • Ibadan, Nigeria
                   </p>
                 </div>
               </div>

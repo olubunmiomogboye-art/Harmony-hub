@@ -21,27 +21,27 @@ import Accordion, { AccordionItem } from "@/components/Accordion";
 const CONTACT_FAQS: AccordionItem[] = [
   {
     id: "lead-times",
-    question: "What lead times are required for bespoke catering and major events?",
+    question: "How far in advance should I book for events?",
     answer:
-      "For grand weddings and corporate galas, we recommend reaching out 3 to 6 months in advance. For private dinners, executive tasting salons, or bespoke celebration cakes, 3 to 4 weeks' notice is generally sufficient.",
+      "For weddings and large celebrations, we advise reaching out 3 to 6 months ahead so we can secure your date. For birthdays, private dinners, or custom celebration cakes, 3 to 4 weeks' notice is usually sufficient.",
   },
   {
     id: "dispatch-radius",
-    question: "What is the nationwide dispatch radius for Retail & Trading orders?",
+    question: "Where do you deliver products from your shop?",
     answer:
-      "We dispatch daily across all zones of Ibadan via direct motor couriers. Interstate deliveries to Lagos, Abuja, Port Harcourt, and other states arrive within 48 to 72 hours via expedited logistics partners.",
+      "We deliver across all areas of Ibadan using local dispatch riders. For other states including Lagos, Abuja, and Port Harcourt, packages arrive within 2 to 3 working days via trusted interstate delivery partners.",
   },
   {
     id: "corporate-gifting",
-    question: "Do you accommodate corporate bulk gifting and branded procurement?",
+    question: "Do you supply bulk orders, gifts, or event souvenirs?",
     answer:
-      "Yes. We assemble custom corporate hampers, VIP holiday gifts, and chef-grade cookware procurement dossiers. Custom ribbons, branded cards, and non-disclosure agreements are available upon request.",
+      "Yes. We assemble gift hampers, wedding souvenirs, employee gifts, and bulk kitchenware packages. Branded packaging and custom ribbons are available upon request.",
   },
   {
     id: "tasting-consultations",
-    question: "How are tasting consultations structured for prospective brides & celebrants?",
+    question: "Can we have a consultation or cake tasting before booking?",
     answer:
-      "Tasting appointments take place in Ibadan and are arranged following initial budget alignment. Couples taste customized course pairings prepared by our head culinary team.",
+      "Yes. We hold consultation sessions and cake tastings in Ibadan by appointment after discussing your event plans, so you can sample our flavours and finalize details with total confidence.",
   },
 ];
 
@@ -124,48 +124,48 @@ export default function ContactPage() {
             <div className="lg:col-span-6 space-y-6 max-w-xl">
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-[76px] font-normal leading-[1.08] tracking-tight text-[#20211E]">
                 We Welcome <br />
-                Your <span className="italic text-[#B96F52]">Inquiry.</span>
+                Your <span className="italic text-[#B96F52]">Enquiry.</span>
               </h1>
 
               <p className="text-base sm:text-lg text-[#20211E]/80 leading-relaxed max-w-xl font-normal">
-                Whether you are planning a milestone banquet with Flair & Flavors, seeking bespoke corporate gifting from Retail & Trading, or inquiring about enterprise partnerships, our dedicated concierge team is at your disposal.
+                Whether you are planning an upcoming wedding, birthday, or corporate event with Flair & Flavors, or have questions about our products and deliveries, we would love to hear from you.
               </p>
 
               {/* 3 Trust Accords matching Figma 46:744 */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
                 <div className="bg-white p-4 rounded-xs border border-[#E5E5E5] shadow-xs">
                   <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-medium block">
-                    RESPONSE ACCORD
+                    PROMPT REPLIES
                   </span>
                   <p className="font-serif text-lg font-medium text-[#20211E] mt-0.5">
-                    Within 4 Hours
+                    Within a Few Hours
                   </p>
                   <p className="text-[11px] text-[#8A8884] mt-1 leading-snug">
-                    Dedicated representative assigned per inquiry dossier.
+                    We respond quickly to all messages during working hours.
                   </p>
                 </div>
 
                 <div className="bg-white p-4 rounded-xs border border-[#E5E5E5] shadow-xs">
                   <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-medium block">
-                    CONFIDENTIALITY
+                    WARM & HELPFUL
                   </span>
                   <p className="font-serif text-lg font-medium text-[#20211E] mt-0.5">
-                    Private & Secured
+                    Personal Attention
                   </p>
                   <p className="text-[11px] text-[#8A8884] mt-1 leading-snug">
-                    Private dining, VIP registry & procurement NDAs honored.
+                    Speak directly with someone who understands your needs.
                   </p>
                 </div>
 
                 <div className="bg-white p-4 rounded-xs border border-[#E5E5E5] shadow-xs">
                   <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-medium block">
-                    FLAGSHIP HUB
+                    BASED IN IBADAN
                   </span>
                   <p className="font-serif text-lg font-medium text-[#20211E] mt-0.5">
-                    Ibadan, Oyo State
+                    Serving Nationwide
                   </p>
                   <p className="text-[11px] text-[#8A8884] mt-1 leading-snug">
-                    Curated Lifestyle Atelier.
+                    Consultations by appointment, delivery across Nigeria.
                   </p>
                 </div>
               </div>
@@ -194,10 +194,10 @@ export default function ContactPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E5E5E5] pb-6">
             <div>
               <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-medium block mb-1">
-                SELECT ENGAGEMENT CHANNEL
+                WHAT CAN WE HELP YOU WITH?
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#20211E] font-normal">
-                Direct Inquiry Track
+                Send Us a Message
               </h2>
             </div>
 
@@ -229,7 +229,7 @@ export default function ContactPage() {
                     : "bg-[#F7F6F4] text-[#20211E] hover:bg-[#EAE8E3]"
                 }`}
               >
-                RETAIL & ORDERS
+                SHOP & ORDERS
               </button>
             </div>
           </div>
@@ -239,31 +239,31 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-full bg-[#183C32] text-white flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h3 className="font-serif text-2xl text-[#20211E]">Inquiry Received</h3>
+              <h3 className="font-serif text-2xl text-[#20211E]">Enquiry Received</h3>
               <p className="text-xs text-[#8A8884]">
                 Reference ID: <strong className="text-[#20211E]">{refId}</strong>
               </p>
               <p className="text-sm text-[#4D463C] max-w-md mx-auto">
-                Thank you, {fullName}. Your dossier has been routed to our private concierge switchboard. A director will reach out within 4 hours.
+                Thank you, {fullName}. We have received your message. A member of our team will get in touch with you shortly.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
                   href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(
-                    `Hello Harmony Hub Concierge, I submitted an inquiry [Ref: ${refId}] for ${fullName}.`
+                    `Hello Harmony Hub, I sent an enquiry [Ref: ${refId}] for ${fullName}.`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#183C32] text-white px-6 py-3 rounded-xs text-xs uppercase tracking-widest font-semibold"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>Notify via WhatsApp</span>
+                  <span>Chat on WhatsApp</span>
                 </a>
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
                   className="text-xs text-[#8A8884] underline uppercase tracking-wider"
                 >
-                  Send Another Inquiry
+                  Send Another Message
                 </button>
               </div>
             </div>
@@ -274,12 +274,12 @@ export default function ContactPage() {
                 <div className="text-[#B96F52] mt-0.5">✦</div>
                 <div>
                   <strong className="text-[#20211E] block mb-0.5">
-                    {activeTab === "events" ? "Flair & Flavors Consultation" : "Retail & Trading Orders"}
+                    {activeTab === "events" ? "Flair & Flavors Event Enquiry" : "Shop & Product Enquiries"}
                   </strong>
                   <p>
                     {activeTab === "events"
-                      ? "For wedding banquets, diplomatic receptions, culinary ateliers, private chefs, and experiential styling."
-                      : "For home cookware curation, bulk hampers, mother and baby care, or corporate supply."}
+                      ? "For wedding receptions, birthdays, anniversaries, corporate banquets, catering, and decor styling."
+                      : "For cookware questions, baby care items, gift hampers, fashion, or bulk orders."}
                   </p>
                 </div>
               </div>
@@ -353,24 +353,24 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
-                    DEPARTMENT / DIVISION <span className="text-[#DC2626]">*</span>
+                    SERVICE NEEDED <span className="text-[#DC2626]">*</span>
                   </label>
                   <select
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
                     className="w-full bg-[#F7F6F4] border border-[#E5E5E5] px-3.5 py-2.5 text-sm text-[#20211E] rounded-xs focus:outline-none focus:border-[#183C32]"
                   >
-                    <option value="Flair & Flavors">Flair & Flavors (Full Banqueting)</option>
-                    <option value="Catering Alone">Catering Alone</option>
-                    <option value="Decoration & Styling">Decoration & Styling</option>
-                    <option value="Celebration Cakes">Haute Celebration Cakes</option>
-                    <option value="Retail & Trading">Retail & Trading Procurement</option>
+                    <option value="Flair & Flavors">Flair & Flavors (Catering & Decor)</option>
+                    <option value="Catering Alone">Catering Only</option>
+                    <option value="Decoration & Styling">Event Decoration & Styling</option>
+                    <option value="Celebration Cakes">Custom Celebration Cakes</option>
+                    <option value="Retail & Trading">Shop & Product Enquiries</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
-                    TARGET DATE / TIMELINE <span className="text-[#8A8884] font-normal normal-case">(OPTIONAL)</span>
+                    EVENT DATE / TIMELINE <span className="text-[#8A8884] font-normal normal-case">(OPTIONAL)</span>
                   </label>
                   <input
                     type="date"
@@ -381,17 +381,17 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Dossier message */}
+              {/* Message */}
               <div>
                 <label className="block text-[11px] uppercase tracking-wider font-semibold text-[#20211E] mb-1.5">
-                  DOSSIER & BRIEF SPECIFICATIONS <span className="text-[#DC2626]">*</span>
+                  YOUR MESSAGE / EVENT DETAILS <span className="text-[#DC2626]">*</span>
                 </label>
                 <textarea
                   required
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Kindly outline your guest count, dietary scope, venue preferences, product specifications, or enterprise schedule..."
+                  placeholder="Tell us about your event, expected guest count, venue, product questions, or any specific requests..."
                   className="w-full bg-[#F7F6F4] border border-[#E5E5E5] px-3.5 py-2.5 text-sm text-[#20211E] rounded-xs focus:outline-none focus:border-[#183C32]"
                 />
               </div>
@@ -402,19 +402,19 @@ export default function ContactPage() {
                   <Paperclip className="w-5 h-5 text-[#8A8884]" />
                   <div>
                     <span className="text-[11px] uppercase tracking-wider font-semibold text-[#20211E] block">
-                      INCLUDE EVENT MOODBOARD OR RFP DOCUMENT
+                      HAVE AN EVENT MOODBOARD OR DOCUMENT?
                     </span>
                     <span className="text-[10px] text-[#8A8884]">
-                      PDF, DOCX, ZIP or Keynote up to 25MB
+                      PDF, image, or document up to 25MB
                     </span>
                   </div>
                 </div>
                 <button
                   type="button"
-                  onClick={() => alert("Document upload will attach to your dossier.")}
+                  onClick={() => alert("File attachment will be added to your message.")}
                   className="bg-white border border-[#DCDDD4] px-3 py-1.5 text-[10px] uppercase tracking-wider font-semibold text-[#20211E] rounded-xs hover:border-[#183C32]"
                 >
-                  BROWSE FILES
+                  ATTACH FILE
                 </button>
               </div>
 
@@ -429,7 +429,7 @@ export default function ContactPage() {
                   className="mt-0.5 rounded-xs text-[#183C32] focus:ring-[#183C32]"
                 />
                 <label htmlFor="consent" className="text-xs text-[#4D463C] cursor-pointer">
-                  I consent to the confidential processing of this inquiry by Harmony Hub Concierge.
+                  I agree to be contacted by the Harmony Hub team regarding this enquiry.
                 </label>
               </div>
 
@@ -441,7 +441,7 @@ export default function ContactPage() {
                   className="bg-[#183C32] hover:bg-[#122E26] text-white px-8 py-3.5 rounded-xs text-xs uppercase tracking-widest font-semibold transition disabled:opacity-50 flex items-center gap-2 shadow-sm"
                 >
                   {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
-                  <span>SEND INQUIRY TO CONCIERGE</span>
+                  <span>SEND ENQUIRY</span>
                 </button>
               </div>
             </form>
@@ -455,7 +455,7 @@ export default function ContactPage() {
           <div className="relative aspect-[16/10] rounded-xs overflow-hidden group shadow-md">
             <Image
               src="/images/figma/50b8b5e557.jpg"
-              alt="Haute Banqueting"
+              alt="Catering & Event Styling"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               loading="lazy"
@@ -463,13 +463,13 @@ export default function ContactPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-8 text-white">
               <span className="text-[10px] uppercase tracking-widest text-white/70 block mb-1">
-                FLAIR & FLAVORS ATELIER
+                FLAIR & FLAVORS
               </span>
               <h3 className="font-serif text-2xl font-medium">
-                Haute Banqueting & Experiential Scenography
+                Catering & Event Styling
               </h3>
               <p className="text-xs text-white/80 mt-1 max-w-md font-light">
-                Curating sensory culinary spectacles from 20-seat private diplomatic dinners to 1,500-guest grand anniversary galas with signature pastry artistry.
+                From intimate family celebrations to grand wedding banquets and milestone birthdays, we provide delicious food and beautiful decor tailored to you.
               </p>
             </div>
           </div>
@@ -477,7 +477,7 @@ export default function ContactPage() {
           <div className="relative aspect-[16/10] rounded-xs overflow-hidden group shadow-md">
             <Image
               src="/images/figma/d8507e1ba3.jpg"
-              alt="Artisanal Living & Executive Hampers"
+              alt="Quality Everyday Products"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               loading="lazy"
@@ -485,13 +485,13 @@ export default function ContactPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent flex flex-col justify-end p-8 text-white">
               <span className="text-[10px] uppercase tracking-widest text-white/70 block mb-1">
-                RETAIL & GIFTING SUITE
+                RETAIL & SHOP
               </span>
               <h3 className="font-serif text-2xl font-medium">
-                Artisanal Living & Executive Hampers
+                Quality Everyday Products
               </h3>
               <p className="text-xs text-white/80 mt-1 max-w-md font-light">
-                Discreet corporate procurement, tailored employee welcome suites, personalized baby hampers, and handcrafted culinary utensils.
+                Durable cookware, dependable home essentials, gentle baby items, and stylish fashion pieces delivered directly to your doorstep.
               </p>
             </div>
           </div>
@@ -503,20 +503,20 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-6 space-y-6">
             <span className="text-xs uppercase tracking-widest text-[#705B38] font-semibold block">
-              PRIVATE APPOINTMENTS
+              GET IN TOUCH
             </span>
             <h2 className="font-serif text-4xl sm:text-5xl text-[#20211E] font-normal leading-tight">
               We&apos;d Love to Hear From <br />
               <span className="italic text-[#B96F52]">You</span>
             </h2>
             <p className="text-base text-[#4D463C] leading-relaxed font-light">
-              At Harmony Hub, we believe every great experience begins with a conversation. Reach out to us to make an enquiry, discuss your needs, ask about our products, or find out more about our services. Our team will be happy to assist you.
+              At Harmony Hub, we believe every good service begins with a listening ear. Reach out to ask a question, discuss an upcoming celebration, or place an order. We are always happy to help.
             </p>
 
             <div className="space-y-4 pt-2">
               <div className="pb-4 border-b border-[#E5E5E5]">
                 <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-semibold block">
-                  REGISTERED HEADQUARTERS
+                  OUR LOCATION
                 </span>
                 <p className="font-medium text-[#20211E] mt-0.5">
                   Ibadan, Oyo State, Nigeria
@@ -525,7 +525,7 @@ export default function ContactPage() {
 
               <div className="pb-4 border-b border-[#E5E5E5]">
                 <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-semibold block">
-                  DIRECT TELEPHONE
+                  PHONE & WHATSAPP
                 </span>
                 <a
                   href={`tel:${siteConfig.contact.whatsappNumber}`}
@@ -534,13 +534,13 @@ export default function ContactPage() {
                   {siteConfig.contact.phoneDisplay}
                 </a>
                 <p className="text-xs text-[#8A8884] mt-0.5">
-                  Direct switchboard routing to Event & Retail officers
+                  Call or chat with us on WhatsApp
                 </p>
               </div>
 
               <div className="pb-4 border-b border-[#E5E5E5]">
                 <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-semibold block">
-                  PRIVATE ELECTRONIC MAIL
+                  EMAIL ADDRESS
                 </span>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
@@ -549,19 +549,19 @@ export default function ContactPage() {
                   {siteConfig.contact.email}
                 </a>
                 <p className="text-xs text-[#8A8884] mt-0.5">
-                  Encrypted correspondence for confidential proposals
+                  Send us an email anytime
                 </p>
               </div>
 
               <div className="pb-4">
                 <span className="text-[10px] uppercase tracking-wider text-[#8A8884] font-semibold block">
-                  SALON HOURS & TASTINGS
+                  OFFICE HOURS
                 </span>
                 <p className="font-medium text-[#20211E] mt-0.5">
                   {siteConfig.contact.hours}
                 </p>
                 <p className="text-xs text-[#8A8884] mt-0.5">
-                  We&apos;re based in Ibadan and look forward to welcoming you. For visit arrangements, please contact us directly.
+                  Consultations and visits are welcome by appointment.
                 </p>
               </div>
             </div>
@@ -574,7 +574,7 @@ export default function ContactPage() {
                 className="inline-flex items-center gap-2 bg-[#183C32] hover:bg-[#122E26] text-white px-8 py-3.5 rounded-xs text-xs uppercase tracking-widest font-semibold transition shadow-sm"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>SPEAK DIRECTLY TO A DIRECTOR</span>
+                <span>CHAT WITH US ON WHATSAPP</span>
               </a>
             </div>
           </div>
@@ -592,18 +592,18 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 5. FREQUENTLY ADDRESSED INQUIRIES */}
+      {/* 5. FREQUENTLY ASKED QUESTIONS */}
       <section className="py-20 sm:py-28 bg-[#F7F6F4] border-t border-[#E5E5E5]">
         <div className="max-w-4xl mx-auto px-4 sm:px-8">
           <div className="text-center mb-12">
             <span className="text-xs uppercase tracking-widest text-[#705B38] font-semibold block mb-2">
-              INQUIRY PROTOCOL
+              COMMON QUESTIONS
             </span>
             <h2 className="font-serif italic text-4xl sm:text-5xl text-[#20211E] font-normal">
-              Frequently Addressed Inquiries
+              Frequently Asked Questions
             </h2>
             <p className="text-xs sm:text-sm text-[#8A8884] mt-2">
-              Essential guidelines regarding culinary lead times, nationwide distribution, and corporate partnerships.
+              Quick answers about event bookings, delivery, and consultations.
             </p>
           </div>
 

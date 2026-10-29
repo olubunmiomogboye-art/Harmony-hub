@@ -73,14 +73,14 @@ export default function CartDrawer() {
                   Your bag is currently empty
                 </h3>
                 <p className="text-sm text-[#666D65] max-w-xs">
-                  Explore our curated catalogue of kitchenware, mother & baby care, and lifestyle essentials.
+                  Browse our shop for dependable kitchenware, baby items, and fashion essentials.
                 </p>
                 <Link
                   href="/shop"
                   onClick={closeDrawer}
                   className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#B96F52] text-white px-6 py-2.5 rounded-sm text-sm font-medium tracking-wide transition mt-2"
                 >
-                  Browse Collection
+                  Start Shopping
                 </Link>
               </div>
             ) : (

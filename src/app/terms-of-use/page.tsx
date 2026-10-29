@@ -96,7 +96,7 @@ export default function TermsOfUsePage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-[#183C32] font-semibold hover:underline"
                 >
-                  Contact Concierge Switchboard <ChevronRight className="w-3 h-3" />
+                  Chat with Us on WhatsApp <ChevronRight className="w-3 h-3" />
                 </a>
               </div>
             </div>
@@ -111,7 +111,7 @@ export default function TermsOfUsePage() {
               </h2>
               <div className="text-[15px] sm:text-base text-[#4D463C] leading-relaxed space-y-3 font-light">
                 <p>
-                  Welcome to <strong>Harmony Hub</strong>. By visiting our website, submitting an order dossier, inquiring about banquet catering or decor styling, or booking services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use and our accompanying Privacy Policy.
+                  Welcome to <strong>Harmony Hub</strong>. By visiting our website, submitting an order, inquiring about catering or event styling, or booking services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use and our accompanying Privacy Policy.
                 </p>
                 <p>
                   If you do not agree with any portion of these terms, please refrain from using the website or engaging our services.
@@ -128,10 +128,10 @@ export default function TermsOfUsePage() {
                 <p>Harmony Hub is based in Ibadan, Oyo State, Nigeria, and operates two primary divisions:</p>
                 <ul className="list-disc pl-6 space-y-2 text-[#4D463C]">
                   <li>
-                    <strong>Flair &amp; Flavors:</strong> Curating full-scale event management, royal banquet catering, venue scenography and floral styling, luxury furniture hire, and bespoke celebratory confections.
+                    <strong>Flair &amp; Flavors:</strong> Providing event management, event catering, venue decoration and floral styling, furniture hire, and custom celebration cakes.
                   </li>
                   <li>
-                    <strong>Retail &amp; Trading:</strong> Offering chef-grade non-stick cookware and utensils, mother and baby care formulations, curated leather goods, structured dresses, and children&rsquo;s apparel.
+                    <strong>Retail &amp; Trading:</strong> Offering dependable non-stick cookware and utensils, mother and baby care products, quality handbags, occasion dresses, and children&rsquo;s outfits.
                   </li>
                 </ul>
               </div>
@@ -161,7 +161,7 @@ export default function TermsOfUsePage() {
               </h2>
               <div className="text-[15px] sm:text-base text-[#4D463C] leading-relaxed space-y-3 font-light">
                 <p>
-                  When you complete our online checkout, the website prepares an order summary and facilitates a direct connection with our concierge switchboard on WhatsApp.
+                  When you complete our online checkout, the website prepares an order summary and facilitates a direct connection with our team on WhatsApp.
                 </p>
                 <p>
                   <strong>Important:</strong> Submitting an order on the website does not constitute a completed sale or binding contract. An order is formally confirmed only when our team verifies product stock, confirms any colour preferences, verifies delivery dispatch fees, and receives payment confirmation through our approved business accounts.
@@ -243,7 +243,7 @@ export default function TermsOfUsePage() {
                   <strong>Exceptions &amp; Damaged / Incorrect Items:</strong> Our no-refund policy is exercised fairly and does not limit your statutory rights under applicable Nigerian consumer protection legislation, including the Federal Competition and Consumer Protection Act 2018.
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-[#4D463C]">
-                  <li>If an item is damaged during transit, defective upon arrival, or different from what was ordered, you must notify our concierge desk <strong>promptly within 24 hours of delivery</strong>.</li>
+                  <li>If an item is damaged during transit, defective upon arrival, or different from what was ordered, you must notify our team <strong>promptly within 24 hours of delivery</strong>.</li>
                   <li>Please retain all original packaging and provide clear photographs or video evidence showing the defect or discrepancy.</li>
                   <li>Harmony Hub will promptly review the complaint and address it in accordance with applicable law and the circumstances—including providing a replacement or appropriate remediation where a genuine defect or error is verified.</li>
                 </ul>
@@ -262,7 +262,7 @@ export default function TermsOfUsePage() {
                     <h3 className="font-serif text-lg font-medium text-[#20211E]">Advance Notice Expectation: 3 to 6 Months</h3>
                   </div>
                   <p className="text-sm text-[#4D463C] leading-relaxed font-light">
-                    For full event management, bespoke floral scenography, and comprehensive banquet decoration, customers are advised to contact Harmony Hub approximately <strong>3 to 6 months before the event date</strong>.
+                    For full event management, floral styling, and event decoration, customers are advised to contact Harmony Hub approximately <strong>3 to 6 months before the event date</strong>.
                   </p>
                 </div>
 
@@ -304,10 +304,10 @@ export default function TermsOfUsePage() {
               </h2>
               <div className="text-[15px] sm:text-base text-[#4D463C] leading-relaxed space-y-3 font-light">
                 <p>
-                  Clients wishing to schedule in-person consultations, design viewings, or banquet menu tastings at our atelier in Ibadan must request an appointment in advance.
+                  Clients wishing to schedule in-person consultations, design viewings, or banquet menu tastings at our office in Ibadan must request an appointment in advance.
                 </p>
                 <p>
-                  Appointments are subject to director availability and are valid only upon written confirmation from our concierge desk. We warmly welcome clients and ensure every session is given undivided creative attention.
+                  Appointments are subject to availability and are valid only upon written confirmation from our team. We warmly welcome clients and ensure every session is given undivided attention.
                 </p>
               </div>
             </section>
@@ -410,7 +410,7 @@ export default function TermsOfUsePage() {
               </h2>
               <div className="text-[15px] sm:text-base text-[#4D463C] leading-relaxed space-y-4 font-light">
                 <p>
-                  If you have any questions regarding these Terms of Use, need assistance with an order, or wish to report a product discrepancy, please contact our concierge team promptly:
+                  If you have any questions regarding these Terms of Use, need assistance with an order, or wish to report a product discrepancy, please contact our team promptly:
                 </p>
 
                 <div className="bg-[#FAF9F6] p-6 rounded-xs border border-[#E5E5E5] space-y-3">
@@ -425,7 +425,7 @@ export default function TermsOfUsePage() {
                   <div className="flex items-start gap-3 pt-2 border-t border-[#E5E5E5]">
                     <Phone className="w-4 h-4 text-[#B96F52] shrink-0 mt-1" />
                     <div>
-                      <p className="text-xs uppercase tracking-wider text-[#8A8884] font-semibold">Concierge Switchboard &amp; WhatsApp</p>
+                      <p className="text-xs uppercase tracking-wider text-[#8A8884] font-semibold">Phone &amp; WhatsApp</p>
                       <a
                         href={`https://wa.me/${siteConfig.contact.whatsappNumber}`}
                         className="text-sm font-medium text-[#183C32] hover:underline"
@@ -460,7 +460,7 @@ export default function TermsOfUsePage() {
                     href="/contact"
                     className="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-semibold text-[#666D65] hover:text-[#183C32]"
                   >
-                    Contact Concierge Desk
+                    Chat with Us on WhatsApp
                   </Link>
                 </div>
               </div>

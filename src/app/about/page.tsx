@@ -8,15 +8,15 @@ import Accordion, { AccordionItem } from "@/components/Accordion";
 const executiveAccordions: AccordionItem[] = [
   {
     id: "ibadan-salon",
-    question: "Ibadan Headquarters & Private Consultation Salon",
+    question: "Based in Ibadan, Serving Clients Nationwide",
     answer:
-      "Harmony Hub maintains its primary creative operations in Ibadan, Oyo State, Nigeria. We offer private styling appointments and event tastings by advance reservation for prospective celebrants, corporate hosts, and residential interior clients.",
+      "Our creative base is in Ibadan, Oyo State, Nigeria. We welcome clients for private event consultations, decor planning sessions, and cake tastings by appointment, making sure every detail is agreed upon with clarity.",
   },
   {
     id: "artisan-network",
-    question: "Vetted Artisan & Supply Network",
+    question: "A Dedicated Team & Trusted Suppliers",
     answer:
-      "Over 12 years of hands-on curation, we have established direct relationships with master florists, pastry chefs, fabricators, and certified kitchenware manufacturers. Every service delivered meets rigorous standards of hygiene, punctuality, and aesthetic refinement.",
+      "Over the past 12+ years, we have built a dependable network of experienced cooks, event decorators, bakers, and verified manufacturers. Every event we cater and every product we sell meets strict standards of cleanliness, punctuality, and honest quality.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function AboutPage() {
                   href="/flair-and-flavors"
                   className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#122E26] text-white px-8 py-4 rounded-xs text-[15px] font-medium tracking-wide transition shadow-sm"
                 >
-                  Explore what we do
+                  Explore Our Services
                 </Link>
               </div>
             </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
               <div className="col-span-4 relative aspect-[3/4] self-end rounded-xs overflow-hidden shadow-md">
                 <Image
                   src="/images/figma/57918bafa7.jpg"
-                  alt="Celebration Cake Haute Patisserie"
+                  alt="Celebration Cake"
                   fill
                   sizes="(max-width: 1024px) 100vw, 20vw"
                   loading="lazy"
@@ -330,7 +330,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. "GUIDING EVERY CHAPTER WITH PURPOSE & GRACE" (Executive Vision) */}
+      {/* 5. "GUIDING EVERY CHAPTER WITH PURPOSE & GRACE" (Founder Vision) */}
       <section className="py-24 sm:py-32 bg-[#FAF8F5] border-t border-[#E5E5E5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -348,34 +348,34 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right: Executive Vision & Accordions */}
+            {/* Right: Founder Vision & Accordions */}
             <div className="lg:col-span-7 space-y-8">
               <div>
                 <span className="text-xs uppercase tracking-widest text-[#705B38] font-semibold block mb-2">
-                  EXECUTIVE VISION
+                  OUR FOUNDER&apos;S VISION
                 </span>
                 <h2 className="font-serif text-4xl sm:text-5xl text-[#20211E] font-normal leading-tight">
                   Guiding Every Chapter with <br />
-                  <span className="italic text-[#B96F52]">Purpose & Grace.</span>
+                  <span className="italic text-[#B96F52]">Purpose & Care.</span>
                 </h2>
               </div>
 
               {/* Quote Container */}
               <div className="bg-white p-6 sm:p-8 rounded-xs border border-[#E5E5E5] space-y-4">
                 <p className="font-serif italic text-lg sm:text-xl text-[#20211E] leading-relaxed">
-                  &ldquo;True luxury is coherence. When your grandest celebrations and your intimate home rituals speak the very same language of refinement, life finds its harmony.&rdquo;
+                  &ldquo;When people gather to celebrate, or when a family sits down for a meal at home, they deserve the very best. Bringing beauty, good food, and comfort into people&apos;s lives is not just our work—it is our passion.&rdquo;
                 </p>
                 <div className="pt-2 border-t border-[#E5E5E5] flex items-center justify-between text-xs text-[#666D65]">
                   <div>
-                    <span className="font-semibold text-[#20211E] block">EXECUTIVE DIRECTORATE</span>
-                    <span>Harmony Hub Enterprise Group • Ibadan, Nigeria</span>
+                    <span className="font-semibold text-[#20211E] block">OLUBUNMI FOLORUNSHO</span>
+                    <span>Founder & Creative Director • Harmony Hub, Ibadan</span>
                   </div>
                   <span className="font-serif text-3xl text-[#B96F52] leading-none select-none">&rdquo;</span>
                 </div>
               </div>
 
               <p className="text-sm sm:text-base text-[#4D463C] leading-relaxed">
-                Headquartered in Ibadan, Oyo State, our executive board unites veteran international hospitality architects, master confections directors, and global supply managers. Together, we administer both private celebrations and commercial product distribution under rigorous quality audits.
+                Founded and led by Olubunmi Folorunsho in Ibadan, Oyo State, Harmony Hub has grown from a heartfelt love for hospitality into a trusted business serving families, businesses, and event hosts across Nigeria. Whether we are catering a 500-guest wedding banquet or delivering dependable cookware to a busy mother, our commitment remains the same: personal attention, honest quality, and service delivered with genuine warmth.
               </p>
 
               {/* Accordions */}

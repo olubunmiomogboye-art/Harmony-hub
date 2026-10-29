@@ -58,12 +58,12 @@ export default function ShopPage() {
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6 max-w-2xl">
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-[76px] font-normal leading-[1.08] tracking-tight text-[#20211E]">
-                Curated Essentials for <br />
-                <span className="italic text-[#B96F52]">Elevated Living</span>
+                Quality Essentials for <br />
+                <span className="italic text-[#B96F52]">Your Home & Family</span>
               </h1>
 
               <p className="text-base sm:text-lg text-[#20211E]/80 leading-relaxed max-w-xl font-normal">
-                Discover enduring chef-grade kitchenware, delicate mother & baby formulations, structured leathercraft, and artisanal footwear thoughtfully assembled under our quiet luxury standard.
+                Explore our collection of durable cookware, practical kitchen utensils, gentle baby items, and stylish fashion pieces—carefully selected to serve you reliably every single day.
               </p>
 
               <div className="pt-2">
@@ -194,10 +194,10 @@ export default function ShopPage() {
                 <Shield className="w-5 h-5" />
               </div>
               <h3 className="font-serif text-xl font-medium text-[#20211E]">
-                Ethically Sourced Materials
+                Dependable Quality
               </h3>
               <p className="text-xs sm:text-sm text-[#666D65] leading-relaxed">
-                Every kitchenware alloy, dermatological extract, and certified leather skin adheres to audited non-toxic production standards.
+                We carefully inspect and select every item we stock, ensuring durable materials, safe use for your family, and honest value for your money.
               </p>
             </div>
 
@@ -206,10 +206,10 @@ export default function ShopPage() {
                 <Truck className="w-5 h-5" />
               </div>
               <h3 className="font-serif text-xl font-medium text-[#20211E]">
-                Direct Lagos & Nationwide
+                Delivery in Ibadan & Nationwide
               </h3>
               <p className="text-xs sm:text-sm text-[#666D65] leading-relaxed">
-                Expedited white-glove courier dispatch across Ibadan, Lagos State, and nationwide with real-time order tracking.
+                Reliable doorstep delivery across Ibadan, Lagos, and every state in Nigeria. We keep you informed until your order arrives safely.
               </p>
             </div>
 
@@ -218,10 +218,10 @@ export default function ShopPage() {
                 <RefreshCw className="w-5 h-5" />
               </div>
               <h3 className="font-serif text-xl font-medium text-[#20211E]">
-                Seamless Concierge Exchanges
+                Attentive Customer Care
               </h3>
               <p className="text-xs sm:text-sm text-[#666D65] leading-relaxed">
-                7-day direct sizing replacements for footwear and personal assistance on cookware maintenance from our studio team.
+                Have questions about sizes, colours, or how to use a product? We are just a WhatsApp message away to help you make the right choice.
               </p>
             </div>
           </div>

@@ -22,7 +22,7 @@ const BEFORE_WE_BEGIN_FAQS: AccordionItem[] = [
     id: "event-types",
     question: "Do you cater for different event types?",
     answer:
-      "Yes. Flair & Flavors coordinates traditional Nigerian weddings, white weddings, milestone anniversaries, executive galas, corporate tasting salons, bridal showers, and private residence dinners across Ibadan and Lagos State.",
+      "Yes. Flair & Flavors coordinates traditional Nigerian weddings, white weddings, milestone birthdays, anniversaries, corporate banquets, bridal showers, and private home dinners across Ibadan and neighbouring states.",
   },
   {
     id: "prepare-proposal",
@@ -58,7 +58,7 @@ export default function FlairAndFlavorsPage() {
               </h1>
 
               <p className="text-base sm:text-lg text-[#20211E]/80 leading-relaxed max-w-xl font-normal">
-                We create gatherings with soul: beautifully presented food, thoughtful details and a calm, coordinated experience from beginning to end. Every celebration starts with listening. Our services can work independently or come together as one cohesive experience.
+                We plan and cater gatherings that your guests will talk about long after the music stops. From delicious traditional and continental dishes to gorgeous floral styling and custom celebration cakes, we handle every detail with genuine warmth and care.
               </p>
 
               <div className="pt-2">
@@ -66,7 +66,7 @@ export default function FlairAndFlavorsPage() {
                   href="/faqs#enquiry"
                   className="inline-flex items-center justify-center bg-[#183C32] hover:bg-[#122E26] text-white px-8 py-4 rounded-xs text-[15px] font-medium tracking-wide transition shadow-sm"
                 >
-                  Begin your enquiry
+                  Enquire About Your Event
                 </Link>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function FlairAndFlavorsPage() {
                 <span className="text-xs text-[#705B38] font-mono block">01</span>
                 <h3 className="font-serif text-2xl font-medium text-[#20211E]">Catering</h3>
                 <p className="text-xs sm:text-sm text-[#4D463C] leading-relaxed">
-                  Menus and presentation shaped around your event.
+                  Delicious, beautifully presented food with generous portions for you and your guests.
                 </p>
                 <Link
                   href="/faqs#enquiry"
@@ -147,7 +147,7 @@ export default function FlairAndFlavorsPage() {
                 <span className="text-xs text-[#705B38] font-mono block">02</span>
                 <h3 className="font-serif text-2xl font-medium text-[#20211E]">Event Planning</h3>
                 <p className="text-xs sm:text-sm text-[#4D463C] leading-relaxed">
-                  Clear coordination from first conversation to final guest.
+                  Step-by-step coordination so you can enjoy your celebration without stress.
                 </p>
                 <Link
                   href="/faqs#enquiry"
@@ -164,7 +164,7 @@ export default function FlairAndFlavorsPage() {
               <div className="relative w-full sm:w-3/4 aspect-[4/3] rounded-xs overflow-hidden shadow-md">
                 <Image
                   src="/images/figma/cfa582782f.jpg"
-                  alt="Bespoke Scenography & Floral Decoration"
+                  alt="Event Decoration & Floral Styling"
                   fill
                   sizes="(max-width: 640px) 100vw, 400px"
                   loading="lazy"
@@ -175,7 +175,7 @@ export default function FlairAndFlavorsPage() {
                 <span className="text-xs text-[#705B38] font-mono block">03</span>
                 <h3 className="font-serif text-2xl font-medium text-[#20211E]">Decoration & Styling</h3>
                 <p className="text-xs sm:text-sm text-[#4D463C] leading-relaxed">
-                  Layered details, florals and atmosphere with a distinctive point of view.
+                  Stunning stage decor, table styling, and floral arrangements that bring your vision to life.
                 </p>
                 <Link
                   href="/faqs#enquiry"
@@ -192,7 +192,7 @@ export default function FlairAndFlavorsPage() {
               <div className="relative w-full sm:w-3/4 aspect-[4/3] rounded-xs overflow-hidden shadow-md">
                 <Image
                   src="/images/figma/57918bafa7.jpg"
-                  alt="Haute Patisserie Celebration Cakes"
+                  alt="Custom Celebration Cakes"
                   fill
                   sizes="(max-width: 640px) 100vw, 400px"
                   loading="lazy"
@@ -203,7 +203,7 @@ export default function FlairAndFlavorsPage() {
                 <span className="text-xs text-[#705B38] font-mono block">04</span>
                 <h3 className="font-serif text-2xl font-medium text-[#20211E]">Cakes & Desserts</h3>
                 <p className="text-xs sm:text-sm text-[#4D463C] leading-relaxed">
-                  Celebratory sweets designed to delight and gather people around.
+                  Delicious, artistic celebration cakes and desserts that make your event memorable.
                 </p>
                 <Link
                   href="/faqs#enquiry"
@@ -231,7 +231,7 @@ export default function FlairAndFlavorsPage() {
                 OUR PROCESS
               </h2>
               <p className="text-sm sm:text-base text-white/70 max-w-sm leading-relaxed font-light">
-                A considered framework, tailored to the actual needs of your event.
+                A simple, reliable step-by-step approach to make your celebration seamless.
               </p>
             </div>
 
@@ -240,25 +240,25 @@ export default function FlairAndFlavorsPage() {
               <div className="grid grid-cols-12 gap-4 pb-6 border-b border-white/10 items-baseline">
                 <span className="col-span-2 text-xs font-mono text-white/60">01</span>
                 <h3 className="col-span-4 font-serif text-xl sm:text-2xl text-white">Consultation</h3>
-                <p className="col-span-6 text-sm text-white/75 font-light">Tell us about the occasion, priorities and practical details.</p>
+                <p className="col-span-6 text-sm text-white/75 font-light">We listen to your ideas, expected guest count, venue, and budget.</p>
               </div>
 
               <div className="grid grid-cols-12 gap-4 pb-6 border-b border-white/10 items-baseline">
                 <span className="col-span-2 text-xs font-mono text-white/60">02</span>
                 <h3 className="col-span-4 font-serif text-xl sm:text-2xl text-white">Planning</h3>
-                <p className="col-span-6 text-sm text-white/75 font-light">We shape an agreed proposal, scope and timeline.</p>
+                <p className="col-span-6 text-sm text-white/75 font-light">We create a clear proposal covering menus, decor options, and schedules.</p>
               </div>
 
               <div className="grid grid-cols-12 gap-4 pb-6 border-b border-white/10 items-baseline">
                 <span className="col-span-2 text-xs font-mono text-white/60">03</span>
                 <h3 className="col-span-4 font-serif text-xl sm:text-2xl text-white">Preparation</h3>
-                <p className="col-span-6 text-sm text-white/75 font-light">Menus, styling and logistics are carefully readied.</p>
+                <p className="col-span-6 text-sm text-white/75 font-light">Ingredients are sourced fresh, decorations are prepared, and timings are confirmed.</p>
               </div>
 
               <div className="grid grid-cols-12 gap-4 pb-6 items-baseline">
                 <span className="col-span-2 text-xs font-mono text-white/60">04</span>
                 <h3 className="col-span-4 font-serif text-xl sm:text-2xl text-white">Event day</h3>
-                <p className="col-span-6 text-sm text-white/75 font-light">Our team delivers the confirmed plan with attentive care.</p>
+                <p className="col-span-6 text-sm text-white/75 font-light">Our team arrives early, coordinates everything seamlessly, and serves your guests with warmth.</p>
               </div>
             </div>
           </div>
