@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, ShoppingBag, ShieldCheck, Truck, HelpCircle } from "lucide-react";
-import { Product } from "@/data/products";
+import { ArrowLeft, Check, ShoppingBag, ShieldCheck, Truck, MessageCircle, AlertTriangle } from "lucide-react";
+import { Product } from "@/types/product";
 import { formatNaira } from "@/lib/formatters";
 import { useCart } from "@/context/CartContext";
 import QuantitySelector from "@/components/QuantitySelector";
@@ -21,6 +21,9 @@ export default function ProductDetailClient({
 }: ProductDetailClientProps) {
   const { addToCart, openDrawer } = useCart();
   const [quantity, setQuantity] = useState<number>(1);
+  const [selectedSize, setSelectedSize] = useState<string>(
+    product.sizes?.[0] || ""
+  );
   const [selectedVariant, setSelectedVariant] = useState<string>(
     product.variants?.[0]?.options?.[0] || ""
   );
@@ -29,19 +32,30 @@ export default function ProductDetailClient({
   );
   const [isAdded, setIsAdded] = useState(false);
 
+  const isOutOfStock = !product.inStock;
+
   const handleAddToCart = () => {
+    if (isOutOfStock) return;
     if (product.colors && product.colors.length > 0 && !selectedColor) {
       return;
     }
+    const variantOrSize = selectedSize || selectedVariant || undefined;
     addToCart(
       product,
       quantity,
-      selectedVariant || undefined,
+      variantOrSize,
       selectedColor || undefined
     );
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2500);
   };
+
+  const whatsappMessage = encodeURIComponent(
+    `Hello Harmony Hub, I would like to enquire about "${product.name}" (${formatNaira(product.price)})${
+      selectedSize ? ` in size ${selectedSize}` : ""
+    }${selectedColor ? ` in colour ${selectedColor}` : ""}. Is it available?`
+  );
+  const whatsappUrl = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2348165982112"}?text=${whatsappMessage}`;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 space-y-16">
@@ -84,8 +98,13 @@ export default function ProductDetailClient({
               className="object-cover object-center"
             />
             {product.badge && (
-              <span className="absolute top-4 left-4 bg-[#183C32] text-white text-xs uppercase font-bold tracking-widest px-3 py-1.5 rounded-xs">
+              <span className="absolute top-4 left-4 bg-[#183C32] text-white text-xs uppercase font-bold tracking-widest px-3 py-1.5 rounded-xs shadow-sm">
                 {product.badge}
+              </span>
+            )}
+            {isOutOfStock && (
+              <span className="absolute top-4 right-4 bg-red-700 text-white text-xs uppercase font-bold tracking-widest px-3 py-1.5 rounded-xs shadow-md">
+                Out of Stock
               </span>
             )}
           </div>
@@ -119,10 +138,42 @@ export default function ProductDetailClient({
             <p className="text-sm sm:text-base text-[#4B5563] leading-relaxed">
               {product.shortDescription}
             </p>
-            <p className="text-xs text-[#666D65] leading-relaxed">
-              {product.description}
-            </p>
+            {product.description && product.description !== product.shortDescription && (
+              <p className="text-xs text-[#666D65] leading-relaxed">
+                {product.description}
+              </p>
+            )}
           </div>
+
+          {/* Sizes Selector (if product has sizes) */}
+          {product.sizes && product.sizes.length > 0 && (
+            <div className="space-y-2 pt-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs uppercase tracking-wider font-semibold text-[#183C32]">
+                  Available Sizes
+                </label>
+                <span className="text-xs text-[#20211E] font-medium">
+                  {selectedSize ? `Selected: ${selectedSize}` : "Select a size"}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {product.sizes.map((sz) => (
+                  <button
+                    key={sz}
+                    type="button"
+                    onClick={() => setSelectedSize(sz)}
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-xs border transition ${
+                      selectedSize === sz
+                        ? "bg-[#183C32] text-white border-[#183C32] shadow-xs"
+                        : "bg-white text-[#4B5563] border-[#D1C7B7] hover:border-[#183C32]"
+                    }`}
+                  >
+                    {sz}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Colour Swatch Selector (if product has colors) */}
           {product.colors && product.colors.length > 0 && (
@@ -166,101 +217,109 @@ export default function ProductDetailClient({
             </div>
           )}
 
-          {/* Variant Selector (if any) */}
-          {product.variants && product.variants.length > 0 && (
-            <div className="space-y-3 pt-2">
-              {product.variants.map((v) => (
-                <div key={v.name} className="space-y-1.5">
-                  <label className="text-xs uppercase tracking-wider font-semibold text-[#183C32]">
-                    Select {v.name}
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {v.options.map((opt) => (
-                      <button
-                        key={opt}
-                        type="button"
-                        onClick={() => setSelectedVariant(opt)}
-                        className={`px-3 py-1.5 text-xs font-medium rounded-xs border transition ${
-                          selectedVariant === opt
-                            ? "bg-[#183C32] text-white border-[#183C32]"
-                            : "bg-white text-[#4B5563] border-[#D1C7B7] hover:border-[#183C32]"
-                        }`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
           {/* Availability / Stock Status */}
           <div className="flex items-center gap-2 text-xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-            <span className="text-emerald-800 font-medium">
-              In Stock ({product.stockCount} available)
-            </span>
+            {isOutOfStock ? (
+              <>
+                <span className="w-2 h-2 rounded-full bg-red-600" />
+                <span className="text-red-700 font-semibold">
+                  Currently Out of Stock
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                <span className="text-emerald-800 font-medium">
+                  In Stock ({product.stockCount} available)
+                </span>
+              </>
+            )}
           </div>
 
           {/* Purchasing Controls */}
           <div className="pt-4 border-t border-[#DCDDD4] space-y-4">
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <div className="space-y-1">
-                <span className="text-[11px] uppercase tracking-wider text-[#666D65] font-semibold block">
-                  Quantity
-                </span>
-                <QuantitySelector
-                  quantity={quantity}
-                  onChange={setQuantity}
-                  max={product.stockCount}
-                  min={1}
-                />
-              </div>
-
-              <div className="flex-1 space-y-1">
-                <span className="text-[11px] uppercase tracking-wider text-transparent select-none font-semibold block">
-                  Action
-                </span>
+            {isOutOfStock ? (
+              <div className="space-y-3">
                 <button
-                  onClick={handleAddToCart}
-                  className={`w-full h-11 flex items-center justify-center gap-2 rounded-xs text-xs uppercase tracking-widest font-semibold transition shadow-sm ${
-                    isAdded
-                      ? "bg-emerald-700 text-white"
-                      : "bg-[#183C32] hover:bg-[#B96F52] text-white"
-                  }`}
+                  disabled
+                  className="w-full h-11 flex items-center justify-center gap-2 rounded-xs text-xs uppercase tracking-widest font-semibold bg-gray-200 text-gray-500 cursor-not-allowed border border-gray-300"
                 >
-                  {isAdded ? (
-                    <>
-                      <Check className="w-4 h-4" />
-                      <span>Added to Bag</span>
-                    </>
-                  ) : (
-                    <>
-                      <ShoppingBag className="w-4 h-4" />
-                      <span>Add to Bag</span>
-                    </>
-                  )}
+                  <AlertTriangle className="w-4 h-4" />
+                  <span>Item Currently Out of Stock</span>
                 </button>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-11 flex items-center justify-center gap-2 rounded-xs text-xs uppercase tracking-widest font-semibold bg-[#25D366] hover:bg-[#1EBE5D] text-white transition shadow-xs"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Notify Me on WhatsApp When Restocked</span>
+                </a>
               </div>
-            </div>
+            ) : (
+              <>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                  <div className="space-y-1">
+                    <span className="text-[11px] uppercase tracking-wider text-[#666D65] font-semibold block">
+                      Quantity
+                    </span>
+                    <QuantitySelector
+                      quantity={quantity}
+                      onChange={setQuantity}
+                      max={product.stockCount}
+                      min={1}
+                    />
+                  </div>
 
-            {/* Post-add options */}
-            <div className="flex items-center justify-between text-xs pt-1">
-              <button
-                type="button"
-                onClick={openDrawer}
-                className="text-[#183C32] hover:text-[#B96F52] font-semibold underline underline-offset-4 decoration-[#B96F52]"
-              >
-                View Bag & Checkout
-              </button>
-              <Link
-                href="/shop"
-                className="text-[#666D65] hover:text-[#183C32] transition"
-              >
-                Continue Shopping
-              </Link>
-            </div>
+                  <div className="flex-1 space-y-1">
+                    <span className="text-[11px] uppercase tracking-wider text-transparent select-none font-semibold block">
+                      Action
+                    </span>
+                    <button
+                      onClick={handleAddToCart}
+                      className={`w-full h-11 flex items-center justify-center gap-2 rounded-xs text-xs uppercase tracking-widest font-semibold transition shadow-sm ${
+                        isAdded
+                          ? "bg-emerald-700 text-white"
+                          : "bg-[#183C32] hover:bg-[#B96F52] text-white"
+                      }`}
+                    >
+                      {isAdded ? (
+                        <>
+                          <Check className="w-4 h-4" />
+                          <span>Added to Bag</span>
+                        </>
+                      ) : (
+                        <>
+                          <ShoppingBag className="w-4 h-4" />
+                          <span>Add to Bag</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Post-add options */}
+                <div className="flex items-center justify-between text-xs pt-1">
+                  <button
+                    type="button"
+                    onClick={openDrawer}
+                    className="text-[#183C32] hover:text-[#B96F52] font-semibold underline underline-offset-4 decoration-[#B96F52]"
+                  >
+                    View Bag & Checkout
+                  </button>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#25D366] hover:underline font-medium inline-flex items-center gap-1"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>Order via WhatsApp</span>
+                  </a>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Specifications list (if any) */}
@@ -287,7 +346,7 @@ export default function ProductDetailClient({
               <span>Delivery in Ibadan & Nationwide</span>
             </div>
             <p className="leading-relaxed">
-              After ordering, we confirm your delivery address and timeline with you directly on WhatsApp.
+              After placing an order, our concierge team confirms your delivery address, package options, and delivery timing with you directly on WhatsApp.
             </p>
           </div>
         </div>

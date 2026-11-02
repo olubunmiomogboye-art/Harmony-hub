@@ -1,0 +1,1305 @@
+[
+  {
+    "id": "quality-smp-food-storage-container",
+    "name": "Quality SMP Food Storage Container",
+    "slug": "quality-smp-food-storage-container",
+    "subtitle": "800 ML",
+    "price": 18000,
+    "category": "Kitchen Utensils",
+    "categorySlug": "kitchen-utensils",
+    "image": "/images/products/container.jpg",
+    "shortDescription": "Durable food storage container with a tight clip-lock lid to keep food fresh.",
+    "description": "A sturdy, airtight container that helps keep your pantry and fridge neat and organized. The secure clips prevent leaks and keep your food, grains, or snacks fresh for longer.",
+    "inStock": true,
+    "stockCount": 20,
+    "isPublished": true,
+    "featured": true,
+    "badge": "Bestseller",
+    "sizes": [
+      "800 ML"
+    ],
+    "colors": [],
+    "specs": [
+      {
+        "label": "Capacity",
+        "value": "800 ML"
+      },
+      {
+        "label": "Material",
+        "value": "BPA-Free Food Grade Polymer"
+      },
+      {
+        "label": "Closure",
+        "value": "4-Way Airtight Clip Lock"
+      },
+      {
+        "label": "Safe For",
+        "value": "Microwave, Dishwasher, Freezer"
+      }
+    ],
+    "createdAt": "2026-10-21T10:00:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "sports-water-bottle-carry-handle",
+    "name": "Sports Water Bottle with Carry Handle",
+    "slug": "sports-water-bottle-carry-handle",
+    "subtitle": "Keeps hot and cold liquid",
+    "price": 20000,
+    "category": "Kitchen Utensils",
+    "categorySlug": "kitchen-utensils",
+    "image": "/images/products/utensils-set.jpg",
+    "shortDescription": "Insulated stainless steel sports bottle with convenient carry handle.",
+    "description": "High-grade vacuum insulated sports water bottle engineered with an ergonomic carry handle. Retains beverage temperature for up to 24 hours cold or 12 hours hot.",
+    "inStock": true,
+    "stockCount": 15,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "750 ML",
+      "1000 ML"
+    ],
+    "colors": [
+      {
+        "name": "Emerald Green",
+        "hex": "#183C32"
+      },
+      {
+        "name": "Matte Black",
+        "hex": "#1E1E1E"
+      },
+      {
+        "name": "Rose Gold",
+        "hex": "#B76E79"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Insulation",
+        "value": "Double-Wall Vacuum"
+      },
+      {
+        "label": "Temperature Hold",
+        "value": "24h Cold / 12h Hot"
+      },
+      {
+        "label": "Feature",
+        "value": "Leakproof Lid with Handle"
+      }
+    ],
+    "flaggedNote": "Original Figma price text contained an additional 'not' (₦20,000).",
+    "createdAt": "2026-10-21T10:05:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "stainless-steel-cutlery-set-24pcs",
+    "name": "Stainless Steel Cutlery Set",
+    "slug": "stainless-steel-cutlery-set-24pcs",
+    "subtitle": "24 pcs",
+    "price": 30000,
+    "category": "Kitchen Utensils",
+    "categorySlug": "kitchen-utensils",
+    "image": "/images/products/utensils-set.jpg",
+    "shortDescription": "Mirror-finish 24-piece stainless steel family dining cutlery set.",
+    "description": "Premium 24-piece mirror-polished food-grade stainless steel cutlery set comprising dinner knives, dinner forks, tablespoons, and dessert teaspoons.",
+    "inStock": true,
+    "stockCount": 12,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "24 Pieces"
+    ],
+    "colors": [
+      {
+        "name": "Silver Chrome",
+        "hex": "#D4D4D8"
+      },
+      {
+        "name": "Champagne Gold",
+        "hex": "#E5C158"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Set Count",
+        "value": "24 Pieces"
+      },
+      {
+        "label": "Material",
+        "value": "18/10 Stainless Steel"
+      },
+      {
+        "label": "Finish",
+        "value": "High-Gloss Mirror Polish"
+      }
+    ],
+    "flaggedNote": "Original Figma price text contained an additional 'not' (₦30,000).",
+    "createdAt": "2026-10-21T10:10:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "glass-food-storage-dish-one-set",
+    "name": "Glass Food Storage Dish One Set",
+    "slug": "glass-food-storage-dish-one-set",
+    "subtitle": "3 pieces",
+    "price": 25000,
+    "category": "Kitchen Utensils",
+    "categorySlug": "kitchen-utensils",
+    "image": "/images/products/container.jpg",
+    "shortDescription": "Heat-resistant borosilicate glass dish set with snap-tight lids.",
+    "description": "Three durable borosilicate glass containers with leakproof snap-lock lids that transition seamlessly from freezer to oven and microwave straight to table.",
+    "inStock": true,
+    "stockCount": 14,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "Small (400ml)",
+      "Medium (800ml)",
+      "Large (1.5L)"
+    ],
+    "colors": [],
+    "specs": [
+      {
+        "label": "Pieces",
+        "value": "3 Containers + 3 Airtight Lids"
+      },
+      {
+        "label": "Glass Type",
+        "value": "Oven-Safe Borosilicate"
+      },
+      {
+        "label": "Thermal Shock",
+        "value": "Safe Up to 400°C"
+      }
+    ],
+    "createdAt": "2026-10-21T10:15:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "container-grater-with-storage-bowl",
+    "name": "Container Grater with Storage Bowl",
+    "slug": "container-grater-with-storage-bowl",
+    "subtitle": "With Storage Bowl",
+    "price": 15000,
+    "category": "Kitchen Utensils",
+    "categorySlug": "kitchen-utensils",
+    "image": "/images/products/container.jpg",
+    "shortDescription": "Stainless steel blade grater with integrated storage basin.",
+    "description": "Multi-purpose stainless steel box grater with fitted catch-basin storage container to catch shredded cheese, carrots, and vegetables without mess.",
+    "inStock": true,
+    "stockCount": 16,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "Standard Bowl (1.2L)"
+    ],
+    "colors": [],
+    "specs": [
+      {
+        "label": "Blade Types",
+        "value": "Coarse, Fine, Slicer, Ribbon"
+      },
+      {
+        "label": "Base",
+        "value": "Non-Slip Silicone Rim"
+      }
+    ],
+    "flaggedNote": "Figma description originally read 'Comfortable and cute' (mismatched placeholder text from baby set). Updated with culinary description.",
+    "createdAt": "2026-10-21T10:20:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "cussons-baby-soap-mild-gentle",
+    "name": "Cussons Baby Soap, Mild & Gentle",
+    "slug": "cussons-baby-soap-mild-gentle",
+    "subtitle": "75g",
+    "price": 500,
+    "category": "Baby Things",
+    "categorySlug": "baby-things",
+    "image": "/images/products/cussons-soap.jpg",
+    "shortDescription": "Gentle moisturizing baby soap enriched with chamomile extract.",
+    "description": "A trusted, mild soap specially made for your baby's delicate skin. Cleanses gently with chamomile and milk extracts to keep baby soft, fresh, and comfortable.",
+    "inStock": true,
+    "stockCount": 65,
+    "isPublished": true,
+    "featured": true,
+    "badge": "Essential",
+    "sizes": [
+      "75g"
+    ],
+    "colors": [],
+    "specs": [
+      {
+        "label": "Net Weight",
+        "value": "75g"
+      },
+      {
+        "label": "Skin Type",
+        "value": "Sensitive & Newborn Skin"
+      },
+      {
+        "label": "Key Ingredients",
+        "value": "Chamomile & Milk Extract"
+      }
+    ],
+    "createdAt": "2026-10-21T10:25:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "mens-corporate-classy-shoes",
+    "name": "Men’s Corporate Classy Shoes",
+    "slug": "mens-corporate-classy-shoes",
+    "subtitle": "Size 41–44 — Black",
+    "price": 25000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Sophisticated corporate formal dress shoes for modern professionals.",
+    "description": "Polished gentleman's corporate dress shoes crafted with premium leather finish, padded inner soles, and durable slip-resistant outsoles.",
+    "inStock": true,
+    "stockCount": 10,
+    "isPublished": true,
+    "featured": true,
+    "sizes": [
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Upper Material",
+        "value": "Polished Synthetic Leather"
+      },
+      {
+        "label": "Sole",
+        "value": "Non-Slip Anti-Shock Rubber"
+      }
+    ],
+    "createdAt": "2026-10-21T10:30:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "timberland-style-casual-boots",
+    "name": "Timberland-Style Casual Boots for Adults and Kids",
+    "slug": "timberland-style-casual-boots",
+    "subtitle": "Sizes 31, 36, 37, 41, 42, 46",
+    "price": 15000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Classic nubuck-style casual boots with cushioned support.",
+    "description": "Rugged yet stylish lace-up ankle boots with padded collar and deep-tread lugged rubber soles for all-weather traction and casual streetwear flair.",
+    "inStock": true,
+    "stockCount": 18,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "31",
+      "36",
+      "37",
+      "41",
+      "42",
+      "46"
+    ],
+    "colors": [
+      {
+        "name": "Wheat Camel",
+        "hex": "#C19A6B"
+      },
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T10:35:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "toryburch-casual-sandals-men",
+    "name": "ToryBurch Casual Sandals for Men",
+    "slug": "toryburch-casual-sandals-men",
+    "subtitle": "Black, Brown, Ash — Sizes 40–44",
+    "price": 10000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Lightweight leather slide sandals for casual weekend relaxation.",
+    "description": "Comfort-crafted leather slide sandals featuring supportive arched footbeds and embossed designer strap details. Ideal for relaxed weekends.",
+    "inStock": true,
+    "stockCount": 15,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      },
+      {
+        "name": "Brown",
+        "hex": "#6E4720"
+      },
+      {
+        "name": "Ash",
+        "hex": "#A0A0A0"
+      }
+    ],
+    "createdAt": "2026-10-21T10:40:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "nike-air-force-1-sneakers-unisex",
+    "name": "Nike Air Force 1 Sneakers (Unisex)",
+    "slug": "nike-air-force-1-sneakers-unisex",
+    "subtitle": "Sizes 42–47",
+    "price": 22000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Timeless low-profile leather sneakers with cushioned sole.",
+    "description": "Iconic streetwear low-top sneakers with supple leather uppers, perforated toe boxes, and encapsulating air-sole cushioning.",
+    "inStock": true,
+    "stockCount": 12,
+    "isPublished": true,
+    "featured": true,
+    "badge": "Popular",
+    "sizes": [
+      "42",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47"
+    ],
+    "colors": [
+      {
+        "name": "Triple White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "name": "Triple Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T10:45:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "football-design-casual-sneakers",
+    "name": "Football-Design Casual Sneakers",
+    "slug": "football-design-casual-sneakers",
+    "subtitle": "Sizes 38–42",
+    "price": 18000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Athletic lifestyle sneakers with low-profile sole.",
+    "description": "Sporty casual sneakers inspired by athletic soccer silhouettes with textured side paneling and responsive flexible soles.",
+    "inStock": true,
+    "stockCount": 9,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42"
+    ],
+    "colors": [
+      {
+        "name": "White & Black",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "createdAt": "2026-10-21T10:50:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "mens-casual-slip-on-shoes-funci",
+    "name": "Men’s Casual Slip-On Shoes (Funci)",
+    "slug": "mens-casual-slip-on-shoes-funci",
+    "subtitle": "Leather, Black",
+    "price": 30000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Handcrafted black leather slip-ons with driving sole.",
+    "description": "Handcrafted Funci leather slip-on loafers boasting supple genuine leather texture, flexible driving soles, and luxurious gold saddle detail.",
+    "inStock": true,
+    "stockCount": 8,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T10:55:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "female-adult-boyfriend-corporate-shoe",
+    "name": "Female Adult Boyfriend Corporate Shoe",
+    "slug": "female-adult-boyfriend-corporate-shoe",
+    "subtitle": "Size to be confirmed",
+    "price": 15000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Tailored boyfriend brogue corporate shoe for modern women.",
+    "description": "Chic masculine-inspired tailored corporate brogues with understated stitch trims and low stacked heels.",
+    "inStock": true,
+    "stockCount": 7,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "To be confirmed"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "flaggedNote": "Size to be confirmed by owner.",
+    "createdAt": "2026-10-21T11:00:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "mens-fashion-casual-sneakers-white-sole",
+    "name": "Men’s Fashion Casual Sneakers with White Sole",
+    "slug": "mens-fashion-casual-sneakers-white-sole",
+    "subtitle": "Sizes 41–46",
+    "price": 15000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Casual everyday lace-up sneaker on clean white rubber sole.",
+    "description": "Modern minimalist lace-up sneakers contrasting a sleek upper against clean vulcanized white platform cup-soles.",
+    "inStock": true,
+    "stockCount": 14,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46"
+    ],
+    "colors": [
+      {
+        "name": "Black / White Sole",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T11:05:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "mens-casual-slip-on-shoes",
+    "name": "Men’s Casual Slip-On Shoes",
+    "slug": "mens-casual-slip-on-shoes",
+    "subtitle": "Sizes 40–46",
+    "price": 25000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Comfortable men's daily slip-ons with cushioned footbed.",
+    "description": "Effortless slip-on leisure shoes with elastic side gussets for easy on-and-off and padded ankle collars.",
+    "inStock": true,
+    "stockCount": 11,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      },
+      {
+        "name": "Brown",
+        "hex": "#6E4720"
+      }
+    ],
+    "createdAt": "2026-10-21T11:10:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "clarks-casual-shoes-adult-men",
+    "name": "Clarks Casual Shoes for Adult Men",
+    "slug": "clarks-casual-shoes-adult-men",
+    "subtitle": "Sizes 41–46",
+    "price": 33000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Comfort-engineered casual derby shoes with ultra-light sole.",
+    "description": "Signature Clarks-style lightweight casual derby shoes engineered with cushioned EVA midsoles and breathable suede-leather uppers.",
+    "inStock": true,
+    "stockCount": 10,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "41",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46"
+    ],
+    "colors": [
+      {
+        "name": "Tan Brown",
+        "hex": "#96552B"
+      },
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T11:15:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "nike-black-sneakers",
+    "name": "Nike Black Sneakers",
+    "slug": "nike-black-sneakers",
+    "subtitle": "Available in white — Sizes 41 and 42",
+    "price": 15000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Sleek black sports-casual sneakers with flexible sole.",
+    "description": "Low-profile lightweight running and lifestyle sneakers offering flexible foam cushioning and breathable mesh panels.",
+    "inStock": true,
+    "stockCount": 6,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "41",
+      "42"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      },
+      {
+        "name": "White",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "createdAt": "2026-10-21T11:20:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "gino-ventini-leather-moq-mens-shoe",
+    "name": "Gino Ventini Leather MOQ Men’s Shoe",
+    "slug": "gino-ventini-leather-moq-mens-shoe",
+    "subtitle": "Sizes 40–44 — Black",
+    "price": 25000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Gino Ventini MOQ corporate gentleman's formal shoe.",
+    "description": "Italian-styled Gino Ventini MOQ executive shoes featuring rich burnished leather, leather insole lining, and tailored silhouette.",
+    "inStock": true,
+    "stockCount": 7,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T11:25:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "gino-ventini-leather-mens-shoe",
+    "name": "Gino Ventini Leather Men’s Shoe",
+    "slug": "gino-ventini-leather-mens-shoe",
+    "subtitle": "Sizes 40–44 — Black",
+    "price": 25000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Gino Ventini classic leather oxford shoes.",
+    "description": "Classic Gino Ventini formal oxfords with clean welt stitching and high-shine polished leather uppers.",
+    "inStock": true,
+    "stockCount": 8,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T11:30:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "womens-and-kids-black-casual-loafers",
+    "name": "Women’s and Kids’ Black Casual Loafers",
+    "slug": "womens-and-kids-black-casual-loafers",
+    "subtitle": "Sizes 37 and 42 available",
+    "price": 7000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Everyday black casual loafers with comfortable fit.",
+    "description": "Versatile slip-on loafers suitable for both women and teens, tailored with supple faux leather and cushioned footbed.",
+    "inStock": true,
+    "stockCount": 5,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "37",
+      "42"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T11:35:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "royal-classy-shoe-for-adult-men",
+    "name": "Royal Classy Shoe for Adult Men",
+    "slug": "royal-classy-shoe-for-adult-men",
+    "subtitle": "Sizes 40–45",
+    "price": 35000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Luxury embossed leather formal shoe for special occasions.",
+    "description": "Opulent royal corporate dress shoe tailored with embossed textured calfskin leather, gold buckle accents, and hand-finished sole edge.",
+    "inStock": true,
+    "stockCount": 6,
+    "isPublished": true,
+    "featured": true,
+    "badge": "Exclusive",
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "colors": [
+      {
+        "name": "Rich Mahogany",
+        "hex": "#4C1C17"
+      },
+      {
+        "name": "Midnight Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T11:40:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "ladies-stylish-classy-crossed-open-toe-sandal",
+    "name": "Ladies’ Stylish Classy Crossed Open-Toe Sandal",
+    "slug": "ladies-stylish-classy-crossed-open-toe-sandal",
+    "subtitle": "Sizes 40–45 — Black, brown, blue, ash",
+    "price": 12000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Criss-cross strap ladies' open-toe casual dress sandal.",
+    "description": "Elegant criss-cross strap open-toe sandals designed with soft footbed cushioning and subtle block heel support.",
+    "inStock": true,
+    "stockCount": 16,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "40",
+      "41",
+      "42",
+      "43",
+      "44",
+      "45"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      },
+      {
+        "name": "Brown",
+        "hex": "#6E4720"
+      },
+      {
+        "name": "Blue",
+        "hex": "#1D4ED8"
+      },
+      {
+        "name": "Ash",
+        "hex": "#A0A0A0"
+      }
+    ],
+    "createdAt": "2026-10-21T11:45:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "womens-corporate-loafers",
+    "name": "Women’s Corporate Loafers",
+    "slug": "womens-corporate-loafers",
+    "subtitle": "Leather, Black",
+    "price": 12000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Polished black leather corporate loafers for women.",
+    "description": "Smart leather corporate loafers with rounded toe and metallic keeper bar across the vamp for daily office elegance.",
+    "inStock": true,
+    "stockCount": 10,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T11:50:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "womens-chunky-sole-loafers-bow-detail",
+    "name": "Women’s Chunky Sole Loafers with Bow Detail",
+    "slug": "womens-chunky-sole-loafers-bow-detail",
+    "subtitle": "Chunky Sole",
+    "price": 25000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Trend-forward platform loafers with feminine bow embellishment.",
+    "description": "Statement chunky platform sole loafers embellished with a tailored front bow accent and lugged sole.",
+    "inStock": true,
+    "stockCount": 7,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "37",
+      "38",
+      "39",
+      "40",
+      "41"
+    ],
+    "colors": [
+      {
+        "name": "Glossy Black",
+        "hex": "#111111"
+      }
+    ],
+    "flaggedNote": "Figma description originally read '3 pieces'. Replaced with footwear description.",
+    "createdAt": "2026-10-21T11:55:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "womens-black-office-shoes-rope-bow",
+    "name": "Women’s Black Office Shoes with Rope Bow",
+    "slug": "womens-black-office-shoes-rope-bow",
+    "subtitle": "Sizes 37, 38, 42, 43",
+    "price": 15000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Feminine office dress shoes with woven rope bow detail.",
+    "description": "Classic black corporate court shoes accented with a delicate nautical rope bow motif on the vamp.",
+    "inStock": true,
+    "stockCount": 8,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "37",
+      "38",
+      "42",
+      "43"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T12:00:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "female-casual-black-shoe-for-adults",
+    "name": "Female Casual Black Shoe for Adults",
+    "slug": "female-casual-black-shoe-for-adults",
+    "subtitle": "Sizes 36–42",
+    "price": 13000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Comfortable women's daily casual walking shoes in black.",
+    "description": "Low-heel daily casual black walking shoes featuring soft padded footbeds and non-slip tread.",
+    "inStock": true,
+    "stockCount": 12,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41",
+      "42"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "createdAt": "2026-10-21T12:05:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "clarks-casual-slip-on-mens-shoe",
+    "name": "Clark’s Casual Slip-On Men’s Shoe",
+    "slug": "clarks-casual-slip-on-mens-shoe",
+    "subtitle": "Size to be confirmed",
+    "price": 28000,
+    "category": "Adults' Fashion",
+    "categorySlug": "adults-fashion",
+    "image": "/images/products/brown-dress.jpg",
+    "shortDescription": "Men's leather casual slip-on driving loafers.",
+    "description": "Relaxed leather slip-on driving mocs engineered with flexible rubber outsoles and breathable footbed.",
+    "inStock": true,
+    "stockCount": 9,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "To be confirmed"
+    ],
+    "colors": [
+      {
+        "name": "Navy Blue",
+        "hex": "#1E3A8A"
+      },
+      {
+        "name": "Cognac Brown",
+        "hex": "#78350F"
+      }
+    ],
+    "flaggedNote": "Size to be confirmed by owner.",
+    "createdAt": "2026-10-21T12:10:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "pink-tulle-skirt-for-children",
+    "name": "Pink Tulle Skirt for Children (Age 7–14)",
+    "slug": "pink-tulle-skirt-for-children",
+    "subtitle": "Available in 6 colours",
+    "price": 16000,
+    "category": "Children's Outfits",
+    "categorySlug": "childrens-outfits",
+    "image": "/images/products/tulle-skirt.jpg",
+    "shortDescription": "Layered party tulle skirt with soft elastic waistband.",
+    "description": "A fun, fluffy skirt designed for birthday parties, weddings, and celebrations. Made with soft tulle over a gentle cotton lining so your girl can play and dance in total comfort.",
+    "inStock": true,
+    "stockCount": 16,
+    "isPublished": true,
+    "featured": true,
+    "badge": "Popular",
+    "sizes": [
+      "7-8 Years",
+      "9-10 Years",
+      "11-12 Years",
+      "13-14 Years"
+    ],
+    "colors": [
+      {
+        "name": "Ballerina Pink",
+        "hex": "#F4C2C2"
+      },
+      {
+        "name": "Powder Blue",
+        "hex": "#B0E0E6"
+      },
+      {
+        "name": "Ivory White",
+        "hex": "#FFFFF0"
+      },
+      {
+        "name": "Lavender",
+        "hex": "#E6E6FA"
+      },
+      {
+        "name": "Peach",
+        "hex": "#FFDAB9"
+      },
+      {
+        "name": "Mint Green",
+        "hex": "#98FF98"
+      }
+    ],
+    "createdAt": "2026-10-21T12:15:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "kids-casual-sneakers-with-bow-detail",
+    "name": "Kids’ Casual Sneakers with Bow Detail",
+    "slug": "kids-casual-sneakers-with-bow-detail",
+    "subtitle": "Blue, Pink, Purple — Sizes 25, 30, 31, 36",
+    "price": 16000,
+    "category": "Children's Outfits",
+    "categorySlug": "childrens-outfits",
+    "image": "/images/products/tulle-skirt.jpg",
+    "shortDescription": "Cute bow-embellished lightweight sneakers for kids.",
+    "description": "Adorable children's everyday lifestyle sneakers featuring decorative bow accents, easy velcro strap fasteners, and cushioned supportive soles.",
+    "inStock": true,
+    "stockCount": 12,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "25",
+      "30",
+      "31",
+      "36"
+    ],
+    "colors": [
+      {
+        "name": "Blue",
+        "hex": "#3B82F6"
+      },
+      {
+        "name": "Pink",
+        "hex": "#EC4899"
+      },
+      {
+        "name": "Purple",
+        "hex": "#A855F7"
+      }
+    ],
+    "createdAt": "2026-10-21T12:20:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "kids-chunky-sole-sports-sneakers",
+    "name": "Kids’ Chunky Sole Sports Sneakers",
+    "slug": "kids-chunky-sole-sports-sneakers",
+    "subtitle": "Sizes 38–42",
+    "price": 25000,
+    "category": "Children's Outfits",
+    "categorySlug": "childrens-outfits",
+    "image": "/images/products/tulle-skirt.jpg",
+    "shortDescription": "Chunky sole sports trainers for older children and teens.",
+    "description": "Youth streetwear chunky running sneakers equipped with shock-absorbing platform midsoles and high-grip rubber treads.",
+    "inStock": true,
+    "stockCount": 8,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "38",
+      "39",
+      "40",
+      "41",
+      "42"
+    ],
+    "colors": [
+      {
+        "name": "White & Metallic Grey",
+        "hex": "#E5E7EB"
+      }
+    ],
+    "createdAt": "2026-10-21T12:25:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "casual-sneakers-decorative-lace-detail",
+    "name": "Casual Sneakers with Decorative Lace Detail",
+    "slug": "casual-sneakers-decorative-lace-detail",
+    "subtitle": "Sizes 25–36",
+    "price": 16000,
+    "category": "Children's Outfits",
+    "categorySlug": "childrens-outfits",
+    "image": "/images/products/tulle-skirt.jpg",
+    "shortDescription": "Canvas casual sneakers with charming ribbon lace detail.",
+    "description": "Playful children's canvas sneakers adorned with decorative ribbon lace eyelets and reinforced rubber toe caps.",
+    "inStock": true,
+    "stockCount": 15,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36"
+    ],
+    "colors": [
+      {
+        "name": "Soft Pink",
+        "hex": "#FBCFE8"
+      },
+      {
+        "name": "Crisp White",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "createdAt": "2026-10-21T12:30:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "new-girls-dressing-shoe-children",
+    "name": "New Girl’s Dressing Shoe for Children",
+    "slug": "new-girls-dressing-shoe-children",
+    "subtitle": "Sizes 21–25 — Black, pink, cream",
+    "price": 9000,
+    "category": "Children's Outfits",
+    "categorySlug": "childrens-outfits",
+    "image": "/images/products/tulle-skirt.jpg",
+    "shortDescription": "Patent party dress shoes for young girls.",
+    "description": "Charming formal occasion dress flats with glossy patent finish, cushioned inner sole, and secure ankle strap.",
+    "inStock": true,
+    "stockCount": 14,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "21",
+      "22",
+      "23",
+      "24",
+      "25"
+    ],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      },
+      {
+        "name": "Pink",
+        "hex": "#F472B6"
+      },
+      {
+        "name": "Cream",
+        "hex": "#FEF3C7"
+      }
+    ],
+    "createdAt": "2026-10-21T12:35:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "girls-mary-jane-shoes-bow-strap",
+    "name": "Girls’ Mary Jane Shoes with Bow and Strap",
+    "slug": "girls-mary-jane-shoes-bow-strap",
+    "subtitle": "Sizes 25, 30, 31, 36",
+    "price": 10000,
+    "category": "Children's Outfits",
+    "categorySlug": "childrens-outfits",
+    "image": "/images/products/tulle-skirt.jpg",
+    "shortDescription": "Classic Mary Jane shoes with bow and strap for girls.",
+    "description": "Timeless Mary Jane children's party shoes with delicate front bow, padded insoles, and easy velcro closure.",
+    "inStock": true,
+    "stockCount": 10,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "25",
+      "30",
+      "31",
+      "36"
+    ],
+    "colors": [
+      {
+        "name": "Patent Red",
+        "hex": "#DC2626"
+      },
+      {
+        "name": "Classic Black",
+        "hex": "#111111"
+      },
+      {
+        "name": "Pearl White",
+        "hex": "#F8FAFC"
+      }
+    ],
+    "createdAt": "2026-10-21T12:40:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "kids-unisex-soft-slide-sandals",
+    "name": "Kids’ Unisex Soft Slide Sandals",
+    "slug": "kids-unisex-soft-slide-sandals",
+    "subtitle": "Sizes 20, 25, 26, 30, 31, 36",
+    "price": 8000,
+    "category": "Children's Outfits",
+    "categorySlug": "childrens-outfits",
+    "image": "/images/products/tulle-skirt.jpg",
+    "shortDescription": "Lightweight cushioned EVA slide sandals for kids.",
+    "description": "Ultra-comfortable one-piece EVA foam slide sandals with non-slip footbed and water-resistant finish.",
+    "inStock": true,
+    "stockCount": 22,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "20",
+      "25",
+      "26",
+      "30",
+      "31",
+      "36"
+    ],
+    "colors": [
+      {
+        "name": "Sunny Yellow",
+        "hex": "#FACC15"
+      },
+      {
+        "name": "Sky Blue",
+        "hex": "#38BDF8"
+      },
+      {
+        "name": "Charcoal Grey",
+        "hex": "#374151"
+      }
+    ],
+    "createdAt": "2026-10-21T12:45:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "kids-brown-leather-school-shoes",
+    "name": "Kids’ Brown Leather School Shoes",
+    "slug": "kids-brown-leather-school-shoes",
+    "subtitle": "Sizes 25–42",
+    "price": 15000,
+    "category": "Children's Outfits",
+    "categorySlug": "childrens-outfits",
+    "image": "/images/products/tulle-skirt.jpg",
+    "shortDescription": "Durable brown leather formal school shoes for children.",
+    "description": "Heavy-duty genuine leather children's school shoes built with scuff-resistant toe guards, padded collars, and flexible soles.",
+    "inStock": true,
+    "stockCount": 18,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "25-30",
+      "31",
+      "36",
+      "37-42"
+    ],
+    "colors": [
+      {
+        "name": "School Brown",
+        "hex": "#5C3A21"
+      }
+    ],
+    "createdAt": "2026-10-21T12:50:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  },
+  {
+    "id": "naked-wolfe-kids-casual-shoes-chunky-sole",
+    "name": "Naked Wolfe Kids’ Casual Shoes with Chunky Sole",
+    "slug": "naked-wolfe-kids-casual-shoes-chunky-sole",
+    "subtitle": "Chunky Sole",
+    "price": 25000,
+    "category": "Children's Outfits",
+    "categorySlug": "childrens-outfits",
+    "image": "/images/products/tulle-skirt.jpg",
+    "shortDescription": "Trendy designer-style chunky sneakers for kids.",
+    "description": "Bold fashion-forward sneakers with chunky multi-layered sculpted soles and padded tongue for standout youthful styling.",
+    "inStock": true,
+    "stockCount": 7,
+    "isPublished": true,
+    "featured": false,
+    "sizes": [
+      "30",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36"
+    ],
+    "colors": [
+      {
+        "name": "Triple White",
+        "hex": "#FFFFFF"
+      },
+      {
+        "name": "White & Black",
+        "hex": "#111111"
+      }
+    ],
+    "flaggedNote": "Figma description originally read '3 pieces'. Replaced with footwear description.",
+    "createdAt": "2026-10-21T12:55:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z"
+  }
+]

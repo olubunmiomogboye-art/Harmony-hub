@@ -1,47 +1,83 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
-import { Search, Shield, Truck, RefreshCw } from "lucide-react";
-import { PRODUCTS, Product } from "@/data/products";
+import { Search, Shield, Truck, RefreshCw, SlidersHorizontal } from "lucide-react";
+import { PRODUCTS, Product, CATEGORIES } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import PreFooterCTA from "@/components/PreFooterCTA";
 
-const CATEGORIES: { label: string; value: string }[] = [
-  { label: "All", value: "All" },
-  { label: "Kitchen Utensils", value: "Kitchenware" },
-  { label: "Baby things", value: "Mother & Baby" },
-  { label: "Womens' Fashion", value: "Fashion & Lifestyle" },
-  { label: "Childrens' outfits", value: "Children" },
-];
-
 export default function ShopPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [products, setProducts] = useState<Product[]>(PRODUCTS);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("featured");
+  const [loading, setLoading] = useState(false);
+
+  // Synchronize with backend database API
+  useEffect(() => {
+    let isMounted = true;
+    async function loadLiveProducts() {
+      try {
+        setLoading(true);
+        const res = await fetch("/api/products");
+        if (res.ok) {
+          const data = await res.json();
+          if (isMounted && data.success && Array.isArray(data.data)) {
+            setProducts(data.data);
+          }
+        }
+      } catch (e) {
+        console.warn("Could not fetch live products, using cached seed:", e);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    }
+    loadLiveProducts();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((product: Product) => {
-      const matchesCategory =
-        selectedCategory === "All" ||
-        product.category === selectedCategory ||
-        (selectedCategory === "Children" &&
-          (product.category.includes("Child") || product.name.includes("Skirt") || product.name.includes("Kid")));
+    return products.filter((product: Product) => {
+      // Must be published for public shop
+      if (product.isPublished === false) return false;
 
+      // Category match
+      const matchesCategory =
+        selectedCategory === "all" || product.categorySlug === selectedCategory;
+
+      // Search match
+      const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
-        searchQuery === "" ||
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchQuery.toLowerCase());
+        q === "" ||
+        product.name.toLowerCase().includes(q) ||
+        (product.subtitle && product.subtitle.toLowerCase().includes(q)) ||
+        (product.shortDescription && product.shortDescription.toLowerCase().includes(q)) ||
+        product.category.toLowerCase().includes(q);
 
       return matchesCategory && matchesSearch;
+    }).sort((a, b) => {
+      switch (sortBy) {
+        case "price-low":
+          return a.price - b.price;
+        case "price-high":
+          return b.price - a.price;
+        case "name":
+          return a.name.localeCompare(b.name);
+        case "newest":
+          return new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime();
+        default:
+          return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+      }
     });
-  }, [selectedCategory, searchQuery]);
+  }, [products, selectedCategory, searchQuery, sortBy]);
 
   return (
     <div className="bg-white">
       {/* 1. HERO SECTION (Figma 32:815) */}
-      <section className="relative min-h-[640px] lg:min-h-[720px] flex items-center overflow-hidden bg-[#F8F9FA]">
+      <section className="relative min-h-[580px] lg:min-h-[640px] flex items-center overflow-hidden bg-[#F8F9FA]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/figma/7f58801bb0.jpg"
@@ -127,10 +163,10 @@ export default function ShopPage() {
           <div className="flex flex-wrap items-center gap-2">
             {CATEGORIES.map((cat) => (
               <button
-                key={cat.label}
-                onClick={() => setSelectedCategory(cat.value)}
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2 rounded-xs text-xs uppercase tracking-wider font-semibold transition ${
-                  selectedCategory === cat.value
+                  selectedCategory === cat.id
                     ? "bg-[#183C32] text-white"
                     : "bg-[#F7F6F4] text-[#20211E] hover:bg-[#EAE8E3] border border-[#E5E5E5]"
                 }`}
@@ -141,23 +177,34 @@ export default function ShopPage() {
           </div>
 
           <div className="flex items-center gap-2 text-xs text-[#8A8884]">
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[#705B38]" />
             <span>Sort by:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="bg-[#F7F6F4] border border-[#E5E5E5] px-3 py-1.5 rounded-xs text-xs font-medium text-[#20211E] focus:outline-none"
+              className="bg-[#F7F6F4] border border-[#E5E5E5] px-3 py-1.5 rounded-xs text-xs font-medium text-[#20211E] focus:outline-none cursor-pointer"
             >
-              <option value="featured">Featured</option>
+              <option value="featured">Featured First</option>
               <option value="price-low">Price: Low to High</option>
               <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest Arrivals</option>
+              <option value="name">Alphabetical</option>
             </select>
           </div>
         </div>
 
-        {/* Placeholder disclaimer note matching Figma */}
-        <p className="text-xs text-[#8A8884] italic mb-8">
-          Catalogue images, product names, pricing and availability are sample placeholders only.
-        </p>
+        {/* Count Indicator */}
+        <div className="flex items-center justify-between text-xs text-[#8A8884] mb-8 pb-3 border-b border-[#F0ECE1]">
+          <span>
+            Showing <strong className="text-[#20211E]">{filteredProducts.length}</strong> items in collection
+          </span>
+          {loading && (
+            <span className="flex items-center gap-1.5 text-[11px] text-[#705B38]">
+              <RefreshCw className="w-3 h-3 animate-spin" />
+              <span>Updating...</span>
+            </span>
+          )}
+        </div>
 
         {/* 4-Column Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -174,7 +221,7 @@ export default function ShopPage() {
             </p>
             <button
               onClick={() => {
-                setSelectedCategory("All");
+                setSelectedCategory("all");
                 setSearchQuery("");
               }}
               className="mt-4 text-xs uppercase tracking-wider font-semibold text-[#183C32] underline"

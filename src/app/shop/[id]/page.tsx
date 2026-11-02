@@ -1,7 +1,10 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import { getAllProducts, getProductById, getRelatedProducts } from "@/data/products";
+import { getAllProducts, getRelatedProducts } from "@/data/products";
+import { getProductByIdOrSlug } from "@/lib/db";
 import ProductDetailClient from "./ProductDetailClient";
+
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const products = getAllProducts();
@@ -16,9 +19,9 @@ interface ProductPageProps {
 
 export default async function ProductDetailPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const product = getProductById(id);
+  const product = await getProductByIdOrSlug(id);
 
-  if (!product) {
+  if (!product || !product.isPublished) {
     notFound();
   }
 
