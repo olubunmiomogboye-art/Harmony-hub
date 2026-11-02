@@ -263,15 +263,19 @@ export async function getProducts(options: ProductQueryOptions = {}): Promise<Pr
 }
 
 /**
- * Get product by ID or Slug
+ * Get product by ID or Slug (case-insensitive, URL-decoded, trimmed)
  */
 export async function getProductByIdOrSlug(idOrSlug: string, includeUnpublished = false): Promise<Product | null> {
+  if (!idOrSlug) return null;
+  const raw = idOrSlug.trim();
+  const clean = decodeURIComponent(raw).trim().toLowerCase();
+
   if (isSupabaseServerConfigured && supabaseServer) {
     try {
       let query = supabaseServer
         .from("products")
         .select("*")
-        .or(`id.eq.${idOrSlug},slug.eq.${idOrSlug}`);
+        .or(`id.ilike.${clean},slug.ilike.${clean},id.eq.${raw},slug.eq.${raw}`);
 
       if (!includeUnpublished) {
         query = query.eq("is_published", true);
@@ -287,25 +291,44 @@ export async function getProductByIdOrSlug(idOrSlug: string, includeUnpublished 
   }
 
   const items = readLocalProducts();
-  const found = items.find(
-    (p) => (p.id === idOrSlug || p.slug === idOrSlug) && (includeUnpublished || p.isPublished)
-  );
+  const found = items.find((p) => {
+    if (!includeUnpublished && !p.isPublished) return false;
+    const pId = (p.id || "").trim();
+    const pSlug = (p.slug || "").trim();
+    const pIdLower = pId.toLowerCase();
+    const pSlugLower = pSlug.toLowerCase();
+
+    return (
+      pIdLower === clean ||
+      pSlugLower === clean ||
+      pId === raw ||
+      pSlug === raw
+    );
+  });
   return found || null;
 }
 
 /**
- * Create a new product
+ * Create a new product with clean, unique, and stable identifier
  */
 export async function createProduct(payload: Partial<Product>): Promise<Product> {
   const now = new Date().toISOString();
-  const slug =
-    payload.slug ||
-    (payload.name || "product")
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)+/g, "");
+  const baseSlug = (payload.slug || payload.name || "product")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "") || "product";
 
-  const id = payload.id || `${slug}-${Date.now().toString(36)}`;
+  // Prevent slug collisions
+  const existingItems = readLocalProducts();
+  let slug = baseSlug;
+  let counter = 1;
+  while (existingItems.some((p) => p.slug === slug && p.id !== payload.id)) {
+    counter++;
+    slug = `${baseSlug}-${counter}`;
+  }
+
+  // Stable ID: prefer payload.id if provided, else use the clean unique slug
+  const id = payload.id || slug;
   const category = payload.category || "Adults' Fashion";
   const categorySlug = payload.categorySlug || getCategorySlug(category);
 

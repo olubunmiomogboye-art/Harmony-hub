@@ -1,17 +1,9 @@
 import React from "react";
-import { notFound } from "next/navigation";
-import { getAllProducts, getRelatedProducts } from "@/data/products";
-import { getProductByIdOrSlug } from "@/lib/db";
+import { getProductByIdOrSlug, getProducts } from "@/lib/db";
 import ProductDetailClient from "./ProductDetailClient";
 
-export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  const products = getAllProducts();
-  return products.map((product) => ({
-    id: product.id,
-  }));
-}
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 interface ProductPageProps {
   params: Promise<{ id: string }>;
@@ -19,18 +11,26 @@ interface ProductPageProps {
 
 export default async function ProductDetailPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const product = await getProductByIdOrSlug(id);
+  const decodedId = decodeURIComponent(id || "").trim();
+  const product = await getProductByIdOrSlug(decodedId, false);
 
-  if (!product || !product.isPublished) {
-    notFound();
+  let relatedProducts: any[] = [];
+  if (product) {
+    const allPublished = await getProducts({ includeUnpublished: false });
+    relatedProducts = allPublished
+      .filter((p) => p.id !== product.id && p.categorySlug === product.categorySlug)
+      .slice(0, 4);
+
+    if (relatedProducts.length === 0) {
+      relatedProducts = allPublished.filter((p) => p.id !== product.id).slice(0, 4);
+    }
   }
-
-  const relatedProducts = getRelatedProducts(product.id, 4);
 
   return (
     <ProductDetailClient
-      product={product}
-      relatedProducts={relatedProducts}
+      initialProduct={product}
+      initialRelatedProducts={relatedProducts}
+      productId={decodedId}
     />
   );
 }

@@ -1,9 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, ShoppingBag, ShieldCheck, Truck, MessageCircle, AlertTriangle } from "lucide-react";
+import {
+  ArrowLeft,
+  Check,
+  ShoppingBag,
+  Truck,
+  MessageCircle,
+  AlertTriangle,
+  Loader2,
+  PackageOpen,
+} from "lucide-react";
 import { Product } from "@/types/product";
 import { formatNaira } from "@/lib/formatters";
 import { useCart } from "@/context/CartContext";
@@ -11,26 +20,124 @@ import QuantitySelector from "@/components/QuantitySelector";
 import ProductCard from "@/components/ProductCard";
 
 interface ProductDetailClientProps {
-  product: Product;
-  relatedProducts: Product[];
+  initialProduct: Product | null;
+  initialRelatedProducts?: Product[];
+  productId: string;
 }
 
 export default function ProductDetailClient({
-  product,
-  relatedProducts,
+  initialProduct,
+  initialRelatedProducts = [],
+  productId,
 }: ProductDetailClientProps) {
   const { addToCart, openDrawer } = useCart();
+  const [product, setProduct] = useState<Product | null>(initialProduct);
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>(initialRelatedProducts);
+  const [loading, setLoading] = useState<boolean>(!initialProduct);
+  const [notFound, setNotFound] = useState<boolean>(false);
+
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedSize, setSelectedSize] = useState<string>(
-    product.sizes?.[0] || ""
+    initialProduct?.sizes?.[0] || ""
   );
   const [selectedVariant, setSelectedVariant] = useState<string>(
-    product.variants?.[0]?.options?.[0] || ""
+    initialProduct?.variants?.[0]?.options?.[0] || ""
   );
   const [selectedColor, setSelectedColor] = useState<string>(
-    product.colors?.[0]?.name || ""
+    initialProduct?.colors?.[0]?.name || ""
   );
   const [isAdded, setIsAdded] = useState(false);
+
+  // If server didn't find product (e.g. cold start sync gap), fetch via API
+  useEffect(() => {
+    if (!initialProduct && productId) {
+      let isMounted = true;
+      async function fetchProduct() {
+        try {
+          setLoading(true);
+          const res = await fetch(`/api/products/${encodeURIComponent(productId)}`);
+          if (res.ok) {
+            const data = await res.json();
+            if (isMounted && data.success && data.data && data.data.isPublished) {
+              const liveProd = data.data;
+              setProduct(liveProd);
+              setSelectedSize(liveProd.sizes?.[0] || "");
+              setSelectedVariant(liveProd.variants?.[0]?.options?.[0] || "");
+              setSelectedColor(liveProd.colors?.[0]?.name || "");
+
+              // Fetch related products
+              try {
+                const relRes = await fetch(
+                  `/api/products?category=${encodeURIComponent(liveProd.categorySlug)}`
+                );
+                if (relRes.ok) {
+                  const relData = await relRes.json();
+                  if (isMounted && relData.success && Array.isArray(relData.data)) {
+                    setRelatedProducts(
+                      relData.data.filter((p: Product) => p.id !== liveProd.id).slice(0, 4)
+                    );
+                  }
+                }
+              } catch {
+                // ignore related error
+              }
+              return;
+            }
+          }
+          if (isMounted) setNotFound(true);
+        } catch {
+          if (isMounted) setNotFound(true);
+        } finally {
+          if (isMounted) setLoading(false);
+        }
+      }
+      fetchProduct();
+      return () => {
+        isMounted = false;
+      };
+    }
+  }, [initialProduct, productId]);
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-24 flex flex-col items-center justify-center space-y-4">
+        <Loader2 className="w-8 h-8 text-[#183C32] animate-spin" />
+        <p className="text-sm text-[#4B5563] font-medium">Loading product details...</p>
+      </div>
+    );
+  }
+
+  // Not Found state
+  if (notFound || !product) {
+    return (
+      <div className="max-w-3xl mx-auto px-4 sm:px-8 py-20 text-center space-y-6">
+        <div className="w-16 h-16 rounded-full bg-[#F3F4F6] text-[#4B5563] mx-auto flex items-center justify-center">
+          <PackageOpen className="w-8 h-8" />
+        </div>
+        <div className="space-y-2">
+          <h1 className="font-serif text-3xl sm:text-4xl text-[#183C32]">Product Not Found</h1>
+          <p className="text-sm text-[#666D65] max-w-md mx-auto leading-relaxed">
+            We couldn&apos;t find the product you&apos;re looking for. It may have been relocated, renamed, or is currently unpublished.
+          </p>
+        </div>
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <Link
+            href="/shop"
+            className="w-full sm:w-auto px-6 py-3 rounded-xs bg-[#183C32] hover:bg-[#B96F52] text-white text-xs uppercase tracking-widest font-semibold transition"
+          >
+            Browse All Products
+          </Link>
+          <Link
+            href="/"
+            className="w-full sm:w-auto px-6 py-3 rounded-xs border border-[#DCDDD4] hover:border-[#183C32] text-[#183C32] text-xs uppercase tracking-widest font-semibold transition"
+          >
+            Back to Homepage
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   const isOutOfStock = !product.inStock;
 

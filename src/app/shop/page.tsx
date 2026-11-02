@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
-import { Search, Shield, Truck, RefreshCw, SlidersHorizontal } from "lucide-react";
+import { Search, Shield, Truck, RefreshCw, SlidersHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
 import { PRODUCTS, Product, CATEGORIES } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import PreFooterCTA from "@/components/PreFooterCTA";
@@ -14,6 +14,10 @@ export default function ShopPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("featured");
   const [loading, setLoading] = useState(false);
+
+  // Pagination State
+  const [pageSize, setPageSize] = useState<number>(20);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   // Synchronize with backend database API
   useEffect(() => {
@@ -56,6 +60,11 @@ export default function ShopPage() {
   }, []);
 
 
+  // Reset pagination to first page when filters or options change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, searchQuery, sortBy, pageSize]);
+
   const filteredProducts = useMemo(() => {
     return products.filter((product: Product) => {
       // Must be published for public shop
@@ -90,6 +99,27 @@ export default function ShopPage() {
       }
     });
   }, [products, selectedCategory, searchQuery, sortBy]);
+
+  const totalProducts = filteredProducts.length;
+  const totalPages = Math.max(1, Math.ceil(totalProducts / pageSize));
+  const safeCurrentPage = Math.min(Math.max(1, currentPage), totalPages);
+
+  const paginatedProducts = useMemo(() => {
+    const start = (safeCurrentPage - 1) * pageSize;
+    return filteredProducts.slice(start, start + pageSize);
+  }, [filteredProducts, safeCurrentPage, pageSize]);
+
+  const startIdx = totalProducts === 0 ? 0 : (safeCurrentPage - 1) * pageSize + 1;
+  const endIdx = Math.min(safeCurrentPage * pageSize, totalProducts);
+
+  const handlePageChange = (page: number) => {
+    if (page < 1 || page > totalPages) return;
+    setCurrentPage(page);
+    const catalogEl = document.getElementById("catalog");
+    if (catalogEl) {
+      catalogEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <div className="bg-white">
@@ -210,25 +240,120 @@ export default function ShopPage() {
           </div>
         </div>
 
-        {/* Count Indicator */}
-        <div className="flex items-center justify-between text-xs text-[#8A8884] mb-8 pb-3 border-b border-[#F0ECE1]">
-          <span>
-            Showing <strong className="text-[#20211E]">{filteredProducts.length}</strong> items in collection
-          </span>
-          {loading && (
-            <span className="flex items-center gap-1.5 text-[11px] text-[#705B38]">
-              <RefreshCw className="w-3 h-3 animate-spin" />
-              <span>Updating...</span>
+        {/* Count Indicator & Page Size Selector */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#8A8884] mb-8 pb-3 border-b border-[#F0ECE1]">
+          <div className="flex items-center gap-3">
+            <span>
+              Showing{" "}
+              <strong className="text-[#20211E]">
+                {totalProducts === 0 ? "0" : `${startIdx}–${endIdx}`}
+              </strong>{" "}
+              of <strong className="text-[#20211E]">{totalProducts}</strong> products
             </span>
-          )}
+            {loading && (
+              <span className="flex items-center gap-1.5 text-[11px] text-[#705B38]">
+                <RefreshCw className="w-3 h-3 animate-spin" />
+                <span>Updating...</span>
+              </span>
+            )}
+          </div>
+
+          {/* Page Size Option (20 or 30 per page) */}
+          <div className="flex items-center gap-2">
+            <span className="text-[#8A8884] text-[11px] uppercase tracking-wider font-semibold">
+              Per page:
+            </span>
+            <div className="inline-flex rounded-xs border border-[#E5E5E5] bg-white p-0.5">
+              <button
+                type="button"
+                onClick={() => setPageSize(20)}
+                className={`px-2.5 py-1 text-xs font-semibold rounded-[2px] transition ${
+                  pageSize === 20
+                    ? "bg-[#183C32] text-white shadow-xs"
+                    : "text-[#666D65] hover:text-[#20211E]"
+                }`}
+              >
+                20
+              </button>
+              <button
+                type="button"
+                onClick={() => setPageSize(30)}
+                className={`px-2.5 py-1 text-xs font-semibold rounded-[2px] transition ${
+                  pageSize === 30
+                    ? "bg-[#183C32] text-white shadow-xs"
+                    : "text-[#666D65] hover:text-[#20211E]"
+                }`}
+              >
+                30
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* 4-Column Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
+          {paginatedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+
+        {/* Numbered Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#F0ECE1]">
+            <p className="text-xs text-[#8A8884]">
+              Page <strong className="text-[#20211E]">{safeCurrentPage}</strong> of{" "}
+              <strong className="text-[#20211E]">{totalPages}</strong>
+            </p>
+
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => handlePageChange(safeCurrentPage - 1)}
+                disabled={safeCurrentPage === 1}
+                aria-label="Previous page"
+                className={`flex items-center gap-1 px-3 py-2 rounded-xs border text-xs font-semibold transition ${
+                  safeCurrentPage === 1
+                    ? "border-[#E5E5E5] text-gray-300 bg-gray-50 cursor-not-allowed"
+                    : "border-[#E5E5E5] text-[#20211E] bg-white hover:border-[#183C32] hover:text-[#183C32] cursor-pointer"
+                }`}
+              >
+                <ChevronLeft className="w-4 h-4" />
+                <span className="hidden sm:inline">Previous</span>
+              </button>
+
+              {/* Numbered page buttons */}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <button
+                  key={pageNum}
+                  type="button"
+                  onClick={() => handlePageChange(pageNum)}
+                  className={`w-9 h-9 rounded-xs border text-xs font-semibold transition flex items-center justify-center cursor-pointer ${
+                    safeCurrentPage === pageNum
+                      ? "bg-[#183C32] text-white border-[#183C32] shadow-xs"
+                      : "border-[#E5E5E5] text-[#20211E] bg-white hover:border-[#183C32] hover:text-[#183C32]"
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              ))}
+
+              <button
+                type="button"
+                onClick={() => handlePageChange(safeCurrentPage + 1)}
+                disabled={safeCurrentPage === totalPages}
+                aria-label="Next page"
+                className={`flex items-center gap-1 px-3 py-2 rounded-xs border text-xs font-semibold transition ${
+                  safeCurrentPage === totalPages
+                    ? "border-[#E5E5E5] text-gray-300 bg-gray-50 cursor-not-allowed"
+                    : "border-[#E5E5E5] text-[#20211E] bg-white hover:border-[#183C32] hover:text-[#183C32] cursor-pointer"
+                }`}
+              >
+                <span className="hidden sm:inline">Next</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-24 bg-[#F7F6F4] rounded-xs border border-dashed border-[#DCDDD4]">

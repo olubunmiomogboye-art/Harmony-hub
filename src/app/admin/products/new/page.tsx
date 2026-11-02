@@ -14,6 +14,7 @@ import {
   Loader2,
   Camera,
   Check,
+  Sparkles,
 } from "lucide-react";
 
 export default function AddProductPage() {
@@ -40,6 +41,64 @@ export default function AddProductPage() {
   // Optional Variations
   const [sizes, setSizes] = useState("");
   const [colors, setColors] = useState("");
+
+  // AI Assistant States
+  const [analyzingAI, setAnalyzingAI] = useState(false);
+  const [aiSetupModal, setAiSetupModal] = useState<string | null>(null);
+  const [aiSuccessNote, setAiSuccessNote] = useState<string | null>(null);
+
+  // AI Suggestion Handler
+  const handleAIAssist = async () => {
+    const targetImage = image || previewImage;
+    if (!targetImage) {
+      showToast("error", "Please choose or upload a product photo first.");
+      return;
+    }
+
+    try {
+      setAnalyzingAI(true);
+      setAiSuccessNote(null);
+      const res = await fetch("/api/admin/ai/suggest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ imageUrl: targetImage }),
+      });
+
+      const resJson = await res.json();
+
+      if (resJson.configured === false) {
+        setAiSetupModal(resJson.setupGuide || resJson.error);
+        return;
+      }
+
+      if (resJson.success && resJson.data) {
+        const d = resJson.data;
+        if (d.name) setName(d.name);
+        if (d.subtitle) setSubtitle(d.subtitle);
+        if (d.description) setDescription(d.description);
+        if (d.category) {
+          const matched = categories.find(
+            (c) => c.name.toLowerCase() === d.category.toLowerCase()
+          );
+          if (matched) setCategory(matched.name);
+          else setCategory(d.category);
+        }
+        if (d.colors && Array.isArray(d.colors) && d.colors.length > 0) {
+          setColors(d.colors.join(", "));
+        }
+        setAiSuccessNote(
+          `AI suggestions applied for "${d.name}"! Please review the details and enter your price in Naira (₦).`
+        );
+        showToast("success", "✓ Suggested product information loaded from photo!");
+      } else {
+        showToast("error", resJson.error || "Could not analyze the photo. Please enter details manually.");
+      }
+    } catch {
+      showToast("error", "Network error while calling AI assistant.");
+    } finally {
+      setAnalyzingAI(false);
+    }
+  };
 
   // Fetch categories
   useEffect(() => {
@@ -269,6 +328,7 @@ export default function AddProductPage() {
                     onClick={() => {
                       setImage("");
                       setPreviewImage("");
+                      setAiSuccessNote(null);
                     }}
                     className="p-2 text-red-600 hover:bg-red-50 rounded-xl transition text-xs font-semibold"
                     title="Remove photo"
@@ -279,6 +339,60 @@ export default function AddProductPage() {
               </div>
             </div>
           </div>
+
+          {/* AI Auto-Fill Suggestions from Photo */}
+          {(previewImage || image) && (
+            <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-100">
+              <div className="flex items-start gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-[#0F392B] text-white flex items-center justify-center shrink-0">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-[#0F392B]">
+                    AI Photo Assistant
+                  </p>
+                  <p className="text-[11px] text-slate-600 leading-tight mt-0.5">
+                    Scan this photo to suggest the product name, department, description, and visible color.
+                  </p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleAIAssist}
+                disabled={analyzingAI || uploadingImage}
+                className="px-4 py-2 rounded-xl bg-[#0F392B] hover:bg-[#0b2c21] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition shadow-xs cursor-pointer disabled:opacity-50 shrink-0"
+              >
+                {analyzingAI ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Analysing photo...</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-4 h-4" />
+                    <span>Generate Product Details</span>
+                  </>
+                )}
+              </button>
+            </div>
+          )}
+
+          {aiSuccessNote && (
+            <div className="mt-3 p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 flex items-center justify-between animate-in fade-in duration-200">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>{aiSuccessNote}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setAiSuccessNote(null)}
+                className="text-emerald-700 hover:text-emerald-950 font-semibold text-xs ml-2 cursor-pointer"
+              >
+                Dismiss
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Basic Details */}
@@ -464,6 +578,45 @@ export default function AddProductPage() {
           </button>
         </div>
       </div>
+
+      {/* AI Setup & Information Modal */}
+      {aiSetupModal && (
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4 animate-in fade-in zoom-in-95 duration-150">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-bold text-sm text-slate-900">AI Assistant Configuration</h3>
+                <p className="text-xs text-slate-500">Service setup note</p>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-600 leading-relaxed">
+              {aiSetupModal}
+            </p>
+
+            <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-[11px] text-slate-700 space-y-1.5">
+              <p className="font-bold text-slate-900">How to activate AI photo suggestions:</p>
+              <p>1. Get a free Google Gemini key at <a href="https://aistudio.google.com" target="_blank" rel="noreferrer" className="text-emerald-700 underline font-semibold">aistudio.google.com</a></p>
+              <p>2. Add <code className="bg-slate-200 px-1 py-0.5 rounded text-[10px] font-mono">GEMINI_API_KEY=your_key</code> into your <code className="bg-slate-200 px-1 py-0.5 rounded text-[10px] font-mono">.env.local</code> file</p>
+              <p>3. Restart the server or redeploy to your hosting provider</p>
+            </div>
+
+            <div className="pt-2 flex items-center justify-between">
+              <span className="text-[11px] text-slate-500">You can still type details manually.</span>
+              <button
+                type="button"
+                onClick={() => setAiSetupModal(null)}
+                className="px-4 py-2 rounded-xl bg-[#0F392B] text-white text-xs font-semibold hover:bg-[#0b2c21] transition cursor-pointer"
+              >
+                Got It
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
