@@ -57,6 +57,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           src={product.image}
           alt={product.name}
           fill
+          unoptimized={product.image?.startsWith("data:") || product.image?.startsWith("blob:") ? true : undefined}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
           loading="lazy"
           className="object-cover object-center group-hover:scale-105 transition-transform duration-500"

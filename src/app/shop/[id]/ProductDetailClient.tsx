@@ -94,6 +94,7 @@ export default function ProductDetailClient({
               alt={product.name}
               fill
               priority
+              unoptimized={product.image?.startsWith("data:") || product.image?.startsWith("blob:") ? true : undefined}
               sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover object-center"
             />

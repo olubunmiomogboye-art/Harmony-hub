@@ -4,34 +4,117 @@ import { Product, ProductCategory, ProductCategorySlug, getCategorySlug } from "
 import { supabaseServer, isSupabaseServerConfigured } from "@/lib/supabase/server";
 
 const JSON_DB_PATH = path.join(process.cwd(), "src/data/products.json");
+const TMP_DB_PATH = "/tmp/harmony_products.json";
+
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GITHUB_PAT || "";
+const GITHUB_REPO = "olubunmiomogboye-art/Harmony-hub";
+
+// Global in-memory cache to ensure instant reactivity across API routes
+let memoryProducts: Product[] | null = null;
 
 /**
- * Read local JSON products store
+ * Read products from disk or cached memory
  */
 function readLocalProducts(): Product[] {
+  // 1. If memory cache has items, use it
+  if (memoryProducts && memoryProducts.length > 0) {
+    return memoryProducts;
+  }
+
+  // 2. Try /tmp storage (for serverless environments)
   try {
-    if (!fs.existsSync(JSON_DB_PATH)) {
-      return [];
+    if (fs.existsSync(TMP_DB_PATH)) {
+      const tmpData = fs.readFileSync(TMP_DB_PATH, "utf-8");
+      const parsed = JSON.parse(tmpData) as Product[];
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        memoryProducts = parsed;
+        return parsed;
+      }
     }
-    const data = fs.readFileSync(JSON_DB_PATH, "utf-8");
-    return JSON.parse(data) as Product[];
+  } catch {
+    // ignore tmp read errors
+  }
+
+  // 3. Fallback to bundled JSON database
+  try {
+    if (fs.existsSync(JSON_DB_PATH)) {
+      const data = fs.readFileSync(JSON_DB_PATH, "utf-8");
+      const parsed = JSON.parse(data) as Product[];
+      memoryProducts = parsed;
+      return parsed;
+    }
   } catch (error) {
     console.error("Error reading local products store:", error);
-    return [];
+  }
+
+  return [];
+}
+
+/**
+ * Sync products to GitHub repository for permanent persistence on serverless hosts
+ */
+async function syncToGitHub(products: Product[]) {
+  if (!GITHUB_TOKEN) return;
+
+  try {
+    const fileUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/src/data/products.json`;
+    const headers = {
+      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      "User-Agent": "HarmonyHub-Backend",
+      Accept: "application/vnd.github.v3+json",
+      "Content-Type": "application/json",
+    };
+
+    // Get current file SHA
+    const getRes = await fetch(fileUrl, { headers });
+    if (!getRes.ok) return;
+    const getData = await getRes.json();
+    const sha = getData.sha;
+
+    // Commit updated products.json
+    const content = Buffer.from(JSON.stringify(products, null, 2), "utf-8").toString("base64");
+    await fetch(fileUrl, {
+      method: "PUT",
+      headers,
+      body: JSON.stringify({
+        message: "chore(data): auto-sync products from admin dashboard",
+        content,
+        sha,
+      }),
+    });
+  } catch (err) {
+    console.warn("GitHub data auto-sync notice:", err);
   }
 }
 
 /**
- * Write to local JSON products store
+ * Write products to local, tmp, and remote storage
  */
 function writeLocalProducts(products: Product[]): boolean {
+  memoryProducts = products;
+
+  // 1. Write to /tmp for immediate serverless persistence across requests
+  try {
+    fs.writeFileSync(TMP_DB_PATH, JSON.stringify(products, null, 2), "utf-8");
+  } catch {
+    // ignore
+  }
+
+  // 2. Try writing to src/data/products.json (local development)
+  let wroteDisk = false;
   try {
     fs.writeFileSync(JSON_DB_PATH, JSON.stringify(products, null, 2), "utf-8");
-    return true;
-  } catch (error) {
-    console.error("Error writing to local products store:", error);
-    return false;
+    wroteDisk = true;
+  } catch {
+    // read-only filesystem on Vercel
   }
+
+  // 3. Trigger asynchronous background sync to GitHub if running on serverless
+  if (!wroteDisk && GITHUB_TOKEN) {
+    syncToGitHub(products).catch(() => {});
+  }
+
+  return true;
 }
 
 /**
@@ -102,12 +185,12 @@ export interface ProductQueryOptions {
 }
 
 /**
- * Get products matching options
+ * Fetch products list
  */
 export async function getProducts(options: ProductQueryOptions = {}): Promise<Product[]> {
-  const { categorySlug, includeUnpublished = false, search, sort = "featured" } = options;
+  const { categorySlug, includeUnpublished = false, search, sort } = options;
 
-  // Supabase implementation
+  // Supabase
   if (isSupabaseServerConfigured && supabaseServer) {
     try {
       let query = supabaseServer.from("products").select("*");
@@ -122,40 +205,22 @@ export async function getProducts(options: ProductQueryOptions = {}): Promise<Pr
 
       if (search && search.trim()) {
         const term = search.trim();
-        query = query.or(`name.ilike.%${term}%,description.ilike.%${term}%`);
-      }
-
-      // Sort
-      switch (sort) {
-        case "price-low":
-          query = query.order("price", { ascending: true });
-          break;
-        case "price-high":
-          query = query.order("price", { ascending: false });
-          break;
-        case "name":
-          query = query.order("name", { ascending: true });
-          break;
-        case "newest":
-          query = query.order("created_at", { ascending: false });
-          break;
-        default:
-          query = query.order("featured", { ascending: false }).order("created_at", { ascending: false });
-          break;
+        query = query.or(`name.ilike.%${term}%,description.ilike.%${term}%,category.ilike.%${term}%`);
       }
 
       const { data, error } = await query;
       if (!error && data) {
-        return data.map(mapRowToProduct);
+        const mapped = data.map(mapRowToProduct);
+        memoryProducts = mapped;
+        return mapped;
       }
-      console.warn("Supabase query returned error, using fallback:", error);
     } catch (err) {
-      console.error("Supabase query exception, using fallback:", err);
+      console.warn("Supabase query exception, using local store:", err);
     }
   }
 
-  // Local JSON fallback
-  let items = readLocalProducts();
+  // Local / memory store
+  let items = [...readLocalProducts()];
 
   if (!includeUnpublished) {
     items = items.filter((p) => p.isPublished);
@@ -187,7 +252,7 @@ export async function getProducts(options: ProductQueryOptions = {}): Promise<Pr
       items.sort((a, b) => a.name.localeCompare(b.name));
       break;
     case "newest":
-      items.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      items.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
       break;
     default:
       items.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
@@ -200,25 +265,31 @@ export async function getProducts(options: ProductQueryOptions = {}): Promise<Pr
 /**
  * Get product by ID or Slug
  */
-export async function getProductByIdOrSlug(idOrSlug: string): Promise<Product | null> {
+export async function getProductByIdOrSlug(idOrSlug: string, includeUnpublished = false): Promise<Product | null> {
   if (isSupabaseServerConfigured && supabaseServer) {
     try {
-      const { data, error } = await supabaseServer
+      let query = supabaseServer
         .from("products")
         .select("*")
-        .or(`id.eq.${idOrSlug},slug.eq.${idOrSlug}`)
-        .maybeSingle();
+        .or(`id.eq.${idOrSlug},slug.eq.${idOrSlug}`);
 
+      if (!includeUnpublished) {
+        query = query.eq("is_published", true);
+      }
+
+      const { data, error } = await query.maybeSingle();
       if (!error && data) {
         return mapRowToProduct(data);
       }
     } catch (err) {
-      console.error("Supabase getById error, using fallback:", err);
+      console.warn("Supabase getById error, using local fallback:", err);
     }
   }
 
   const items = readLocalProducts();
-  const found = items.find((p) => p.id === idOrSlug || p.slug === idOrSlug);
+  const found = items.find(
+    (p) => (p.id === idOrSlug || p.slug === idOrSlug) && (includeUnpublished || p.isPublished)
+  );
   return found || null;
 }
 
@@ -250,7 +321,7 @@ export async function createProduct(payload: Partial<Product>): Promise<Product>
     shortDescription: payload.shortDescription || payload.description || "",
     description: payload.description || "",
     inStock: payload.inStock ?? true,
-    stockCount: payload.stockCount ?? 10,
+    stockCount: payload.stockCount ?? 15,
     isPublished: payload.isPublished ?? true,
     featured: payload.featured ?? false,
     badge: payload.badge || undefined,
@@ -262,16 +333,17 @@ export async function createProduct(payload: Partial<Product>): Promise<Product>
     updatedAt: now,
   };
 
+  // 1. Supabase
   if (isSupabaseServerConfigured && supabaseServer) {
     try {
       const row = mapProductToRow(newProduct);
       row.created_at = now;
       const { data, error } = await supabaseServer.from("products").insert([row]).select().single();
       if (!error && data) {
-        // Also sync local file
+        const mapped = mapRowToProduct(data);
         const local = readLocalProducts();
-        writeLocalProducts([newProduct, ...local]);
-        return mapRowToProduct(data);
+        writeLocalProducts([mapped, ...local]);
+        return mapped;
       }
       console.warn("Supabase insert error, falling back to local:", error);
     } catch (err) {
@@ -279,7 +351,7 @@ export async function createProduct(payload: Partial<Product>): Promise<Product>
     }
   }
 
-  // Local fallback
+  // 2. Local & persistent store
   const items = readLocalProducts();
   const updated = [newProduct, ...items];
   writeLocalProducts(updated);
@@ -292,6 +364,7 @@ export async function createProduct(payload: Partial<Product>): Promise<Product>
 export async function updateProduct(id: string, updates: Partial<Product>): Promise<Product | null> {
   const now = new Date().toISOString();
 
+  // 1. Supabase
   if (isSupabaseServerConfigured && supabaseServer) {
     try {
       const rowUpdates = mapProductToRow(updates);
@@ -304,41 +377,32 @@ export async function updateProduct(id: string, updates: Partial<Product>): Prom
         .single();
 
       if (!error && data) {
-        // Also update local file
-        const items = readLocalProducts();
-        const idx = items.findIndex((p) => p.id === id);
-        if (idx !== -1) {
-          items[idx] = { ...items[idx], ...updates, updatedAt: now };
-          writeLocalProducts(items);
-        }
-        return mapRowToProduct(data);
+        const mapped = mapRowToProduct(data);
+        const local = readLocalProducts();
+        const nextLocal = local.map((p) => (p.id === id ? mapped : p));
+        writeLocalProducts(nextLocal);
+        return mapped;
       }
-      console.warn("Supabase update error, falling back to local:", error);
     } catch (err) {
-      console.error("Supabase update exception:", err);
+      console.error("Supabase update error:", err);
     }
   }
 
-  // Local fallback
+  // 2. Local & persistent store
   const items = readLocalProducts();
-  const idx = items.findIndex((p) => p.id === id);
-  if (idx === -1) return null;
+  const index = items.findIndex((p) => p.id === id);
+  if (index === -1) return null;
 
-  const current = items[idx];
-  const category = updates.category || current.category;
-  const categorySlug = updates.category ? getCategorySlug(updates.category) : current.categorySlug;
-
-  const updated: Product = {
-    ...current,
+  const existing = items[index];
+  const updatedProduct: Product = {
+    ...existing,
     ...updates,
-    category,
-    categorySlug,
     updatedAt: now,
   };
 
-  items[idx] = updated;
+  items[index] = updatedProduct;
   writeLocalProducts(items);
-  return updated;
+  return updatedProduct;
 }
 
 /**
@@ -349,54 +413,56 @@ export async function deleteProduct(id: string): Promise<boolean> {
     try {
       const { error } = await supabaseServer.from("products").delete().eq("id", id);
       if (!error) {
-        const items = readLocalProducts().filter((p) => p.id !== id);
-        writeLocalProducts(items);
+        const local = readLocalProducts();
+        writeLocalProducts(local.filter((p) => p.id !== id));
         return true;
       }
-      console.warn("Supabase delete error:", error);
     } catch (err) {
-      console.error("Supabase delete exception:", err);
+      console.error("Supabase delete error:", err);
     }
   }
 
   const items = readLocalProducts();
-  const filtered = items.filter((p) => p.id !== id);
-  if (filtered.length === items.length) return false;
-  return writeLocalProducts(filtered);
+  const next = items.filter((p) => p.id !== id);
+  writeLocalProducts(next);
+  return true;
 }
 
 /**
  * Toggle stock status
  */
-export async function toggleStockStatus(id: string): Promise<Product | null> {
-  const product = await getProductByIdOrSlug(id);
-  if (!product) return null;
-  return updateProduct(id, { inStock: !product.inStock });
+export async function toggleProductStock(id: string): Promise<Product | null> {
+  const p = await getProductByIdOrSlug(id, true);
+  if (!p) return null;
+  return updateProduct(id, { inStock: !p.inStock });
 }
 
 /**
  * Toggle publication status
  */
-export async function togglePublishStatus(id: string): Promise<Product | null> {
-  const product = await getProductByIdOrSlug(id);
-  if (!product) return null;
-  return updateProduct(id, { isPublished: !product.isPublished });
+export async function toggleProductPublish(id: string): Promise<Product | null> {
+  const p = await getProductByIdOrSlug(id, true);
+  if (!p) return null;
+  return updateProduct(id, { isPublished: !p.isPublished });
 }
 
 /**
- * Get dashboard overview metrics
+ * Dashboard stats
  */
-export async function getDashboardStats(): Promise<{
-  total: number;
-  published: number;
-  outOfStock: number;
-  drafts: number;
-}> {
-  const all = await getProducts({ includeUnpublished: true });
+export async function getDashboardStats() {
+  const products = await getProducts({ includeUnpublished: true });
+  const total = products.length;
+  const published = products.filter((p) => p.isPublished).length;
+  const inStock = products.filter((p) => p.inStock).length;
+  const outOfStock = products.filter((p) => !p.inStock).length;
+  const lowStock = products.filter((p) => p.inStock && (p.stockCount ?? 0) <= 10).length;
+
   return {
-    total: all.length,
-    published: all.filter((p) => p.isPublished).length,
-    outOfStock: all.filter((p) => !p.inStock).length,
-    drafts: all.filter((p) => !p.isPublished).length,
+    total,
+    published,
+    drafts: total - published,
+    inStock,
+    outOfStock,
+    lowStock,
   };
 }

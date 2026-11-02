@@ -13,6 +13,12 @@ export interface CategoryItem {
 }
 
 const CATEGORIES_PATH = path.join(process.cwd(), "src/data/categories.json");
+const TMP_CATEGORIES_PATH = "/tmp/harmony_categories.json";
+
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GITHUB_PAT || "";
+const GITHUB_REPO = "olubunmiomogboye-art/Harmony-hub";
+
+let memoryCategories: CategoryItem[] | null = null;
 
 function slugify(text: string): string {
   return text
@@ -23,27 +29,96 @@ function slugify(text: string): string {
     .trim();
 }
 
-export function readLocalCategories(): CategoryItem[] {
+/**
+ * Sync categories to GitHub repository for permanent persistence on serverless hosts
+ */
+async function syncCategoriesToGitHub(cats: CategoryItem[]) {
+  if (!GITHUB_TOKEN) return;
+
   try {
-    if (!fs.existsSync(CATEGORIES_PATH)) {
-      return [];
-    }
-    const data = fs.readFileSync(CATEGORIES_PATH, "utf-8");
-    return JSON.parse(data) as CategoryItem[];
+    const fileUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/src/data/categories.json`;
+    const headers = {
+      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      "User-Agent": "HarmonyHub-Backend",
+      Accept: "application/vnd.github.v3+json",
+      "Content-Type": "application/json",
+    };
+
+    const getRes = await fetch(fileUrl, { headers });
+    if (!getRes.ok) return;
+    const getData = await getRes.json();
+    const sha = getData.sha;
+
+    const content = Buffer.from(JSON.stringify(cats, null, 2), "utf-8").toString("base64");
+    await fetch(fileUrl, {
+      method: "PUT",
+      headers,
+      body: JSON.stringify({
+        message: "chore(data): auto-sync categories from admin dashboard",
+        content,
+        sha,
+      }),
+    });
   } catch (err) {
-    console.error("Error reading categories:", err);
-    return [];
+    console.warn("GitHub category sync notice:", err);
   }
 }
 
+export function readLocalCategories(): CategoryItem[] {
+  if (memoryCategories && memoryCategories.length > 0) {
+    return memoryCategories;
+  }
+
+  // Check /tmp
+  try {
+    if (fs.existsSync(TMP_CATEGORIES_PATH)) {
+      const tmpData = fs.readFileSync(TMP_CATEGORIES_PATH, "utf-8");
+      const parsed = JSON.parse(tmpData) as CategoryItem[];
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        memoryCategories = parsed;
+        return parsed;
+      }
+    }
+  } catch {
+    // ignore
+  }
+
+  // Fallback to bundled JSON
+  try {
+    if (fs.existsSync(CATEGORIES_PATH)) {
+      const data = fs.readFileSync(CATEGORIES_PATH, "utf-8");
+      const parsed = JSON.parse(data) as CategoryItem[];
+      memoryCategories = parsed;
+      return parsed;
+    }
+  } catch (err) {
+    console.error("Error reading categories:", err);
+  }
+
+  return [];
+}
+
 export function writeLocalCategories(cats: CategoryItem[]): boolean {
+  memoryCategories = cats;
+
+  // 1. Write to /tmp
+  try {
+    fs.writeFileSync(TMP_CATEGORIES_PATH, JSON.stringify(cats, null, 2), "utf-8");
+  } catch {
+    // ignore
+  }
+
+  // 2. Write to local repo file if writable
   try {
     fs.writeFileSync(CATEGORIES_PATH, JSON.stringify(cats, null, 2), "utf-8");
-    return true;
-  } catch (err) {
-    console.error("Error writing categories:", err);
-    return false;
+  } catch {
+    // ignore EROFS in serverless environments
   }
+
+  // 3. Fire-and-forget sync to GitHub
+  syncCategoriesToGitHub(cats).catch(() => {});
+
+  return true;
 }
 
 /**
