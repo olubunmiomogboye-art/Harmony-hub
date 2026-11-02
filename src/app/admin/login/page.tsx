@@ -1,14 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Lock, Mail, ArrowRight, ShieldCheck, AlertCircle } from "lucide-react";
+import { Lock, Mail, ArrowRight, ShieldCheck, AlertCircle, Eye, EyeOff, Loader2 } from "lucide-react";
 
-export default function AdminLoginPage() {
+function AdminLoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const nextUrl = searchParams.get("next") || "/admin";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,128 +30,144 @@ export default function AdminLoginPage() {
 
       const data = await res.json();
       if (!res.ok || !data.success) {
-        setError(data.error || "Invalid email or password. Please try again.");
+        setError(data.error || "Invalid administrator credentials. Please verify your email and password.");
         setLoading(false);
         return;
       }
 
-      router.push("/admin");
+      router.push(nextUrl);
       router.refresh();
     } catch {
-      setError("Network error. Please check your connection and try again.");
+      setError("Network connection issue. Please check your internet and try again.");
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFCF9] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <Link href="/" className="inline-block group mb-6">
-          <span className="font-serif italic text-3xl sm:text-4xl text-[#183C32] tracking-tight group-hover:text-[#705B38] transition-colors">
+    <div className="min-h-screen bg-[#F8F9FA] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        {/* Header Branding */}
+        <div className="text-center mb-8">
+          <div className="w-12 h-12 rounded-xl bg-[#0F392B] text-white flex items-center justify-center font-serif font-bold text-2xl shadow-sm mx-auto mb-4">
+            H
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight text-[#0F172A]">
             Harmony Hub
-          </span>
-          <span className="block text-[10px] tracking-[0.25em] uppercase text-[#705B38] font-medium mt-1">
-            Product Management Portal
-          </span>
-        </Link>
-        <h2 className="text-xl font-serif text-[#20211E] font-medium">
-          Owner & Administrator Sign In
-        </h2>
-        <p className="mt-2 text-xs text-[#8A8884] max-w-sm mx-auto">
-          Manage your catalogue, stock status, pricing, and live shop products.
-        </p>
-      </div>
+          </h1>
+          <p className="text-xs uppercase tracking-widest text-[#64748B] font-semibold mt-1">
+            Store Management Console
+          </p>
+        </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-6 shadow-sm border border-[#EBE8E0] rounded-xs sm:px-10">
+        {/* Card */}
+        <div className="bg-white py-8 px-6 sm:px-8 rounded-2xl border border-[#E2E8F0] shadow-sm">
+          <div className="mb-6">
+            <h2 className="text-base font-semibold text-[#0F172A]">
+              Administrator Sign In
+            </h2>
+            <p className="text-xs text-[#64748B] mt-1">
+              Sign in to manage products, categories, stock, and orders.
+            </p>
+          </div>
+
           {error && (
-            <div className="mb-6 p-3.5 bg-red-50 border border-red-200 rounded-xs flex items-start gap-2.5 text-xs text-red-700">
+            <div className="mb-5 p-3 rounded-lg bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-700">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-red-600" />
               <span>{error}</span>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label
-                htmlFor="email"
-                className="block text-xs uppercase tracking-wider text-[#705B38] font-semibold mb-1.5"
-              >
-                Administrator Email
+              <label className="block text-xs font-medium text-[#334155] mb-1.5">
+                Admin Email Address
               </label>
-              <div className="relative rounded-xs shadow-xs">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#8A8884]">
-                  <Mail className="h-4 w-4" />
-                </div>
+              <div className="relative">
+                <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
-                  id="email"
                   type="email"
                   required
+                  placeholder="admin@harmonyhub.ng"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@harmonyhub.ng"
-                  className="block w-full pl-10 pr-3 py-2.5 text-sm bg-[#FAF8F5] border border-[#E5E0D8] rounded-xs placeholder-[#B0ACA5] text-[#20211E] focus:outline-none focus:ring-1 focus:ring-[#183C32] focus:border-[#183C32] transition"
+                  className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg pl-9 pr-3.5 py-2.5 text-xs text-[#0F172A] placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#0F392B] focus:ring-1 focus:ring-[#0F392B] transition"
                 />
               </div>
             </div>
 
             <div>
-              <label
-                htmlFor="password"
-                className="block text-xs uppercase tracking-wider text-[#705B38] font-semibold mb-1.5"
-              >
-                Password
-              </label>
-              <div className="relative rounded-xs shadow-xs">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#8A8884]">
-                  <Lock className="h-4 w-4" />
-                </div>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-xs font-medium text-[#334155]">
+                  Password
+                </label>
+              </div>
+              <div className="relative">
+                <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
-                  id="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   required
+                  placeholder="••••••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••••••"
-                  className="block w-full pl-10 pr-3 py-2.5 text-sm bg-[#FAF8F5] border border-[#E5E0D8] rounded-xs placeholder-[#B0ACA5] text-[#20211E] focus:outline-none focus:ring-1 focus:ring-[#183C32] focus:border-[#183C32] transition"
+                  className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg pl-9 pr-10 py-2.5 text-xs text-[#0F172A] placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#0F392B] focus:ring-1 focus:ring-[#0F392B] transition"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
               </div>
             </div>
 
-            <div className="pt-2">
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-xs shadow-xs text-xs uppercase tracking-widest font-semibold text-white bg-[#183C32] hover:bg-[#122E26] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#183C32] transition disabled:opacity-50"
-              >
-                {loading ? (
-                  <span>Signing In...</span>
-                ) : (
-                  <>
-                    <span>Enter Management Portal</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </>
-                )}
-              </button>
-            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full mt-2 bg-[#0F392B] hover:bg-[#0b2c21] text-white py-2.5 px-4 rounded-lg text-xs font-semibold tracking-wide transition flex items-center justify-center gap-2 shadow-xs disabled:opacity-60 cursor-pointer"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Authenticating...</span>
+                </>
+              ) : (
+                <>
+                  <span>Sign In to Dashboard</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </>
+              )}
+            </button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-[#F0ECE1] text-center">
+          <div className="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#64748B]">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Encrypted Session</span>
+            </span>
             <Link
-              href="/shop"
-              className="text-xs text-[#705B38] hover:text-[#183C32] font-medium transition inline-flex items-center gap-1.5"
+              href="/"
+              className="text-[#0F392B] hover:underline font-medium"
             >
-              <span>Return to Public Website</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              Back to Storefront →
             </Link>
           </div>
         </div>
-
-        <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-[#A09C95]">
-          <ShieldCheck className="w-4 h-4 text-[#705B38]" />
-          <span>Encrypted Administrator Session</span>
-        </div>
       </div>
     </div>
+  );
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#F8F9FA] flex items-center justify-center text-xs text-slate-400">
+          Loading console...
+        </div>
+      }
+    >
+      <AdminLoginForm />
+    </Suspense>
   );
 }

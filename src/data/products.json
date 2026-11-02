@@ -87,7 +87,7 @@
         "value": "Leakproof Lid with Handle"
       }
     ],
-    "flaggedNote": "Original Figma price text contained an additional 'not' (\u20a620,000).",
+    "flaggedNote": "Original Figma price text contained an additional 'not' (₦20,000).",
     "createdAt": "2026-10-21T10:05:00Z",
     "updatedAt": "2026-11-02T12:00:00Z"
   },
@@ -133,7 +133,7 @@
         "value": "High-Gloss Mirror Polish"
       }
     ],
-    "flaggedNote": "Original Figma price text contained an additional 'not' (\u20a630,000).",
+    "flaggedNote": "Original Figma price text contained an additional 'not' (₦30,000).",
     "createdAt": "2026-10-21T10:10:00Z",
     "updatedAt": "2026-11-02T12:00:00Z"
   },
@@ -169,7 +169,7 @@
       },
       {
         "label": "Thermal Shock",
-        "value": "Safe Up to 400\u00b0C"
+        "value": "Safe Up to 400°C"
       }
     ],
     "createdAt": "2026-10-21T10:15:00Z",
@@ -247,9 +247,9 @@
   },
   {
     "id": "mens-corporate-classy-shoes",
-    "name": "Men\u2019s Corporate Classy Shoes",
+    "name": "Men’s Corporate Classy Shoes",
     "slug": "mens-corporate-classy-shoes",
-    "subtitle": "Size 41\u201344 \u2014 Black",
+    "subtitle": "Size 41–44 — Black",
     "price": 25000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -325,7 +325,7 @@
     "id": "toryburch-casual-sandals-men",
     "name": "ToryBurch Casual Sandals for Men",
     "slug": "toryburch-casual-sandals-men",
-    "subtitle": "Black, Brown, Ash \u2014 Sizes 40\u201344",
+    "subtitle": "Black, Brown, Ash — Sizes 40–44",
     "price": 10000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -364,7 +364,7 @@
     "id": "nike-air-force-1-sneakers-unisex",
     "name": "Nike Air Force 1 Sneakers (Unisex)",
     "slug": "nike-air-force-1-sneakers-unisex",
-    "subtitle": "Sizes 42\u201347",
+    "subtitle": "Sizes 42–47",
     "price": 22000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -401,7 +401,7 @@
     "id": "football-design-casual-sneakers",
     "name": "Football-Design Casual Sneakers",
     "slug": "football-design-casual-sneakers",
-    "subtitle": "Sizes 38\u201342",
+    "subtitle": "Sizes 38–42",
     "price": 18000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -430,7 +430,7 @@
   },
   {
     "id": "mens-casual-slip-on-shoes-funci",
-    "name": "Men\u2019s Casual Slip-On Shoes (Funci)",
+    "name": "Men’s Casual Slip-On Shoes (Funci)",
     "slug": "mens-casual-slip-on-shoes-funci",
     "subtitle": "Leather, Black",
     "price": 30000,
@@ -490,9 +490,9 @@
   },
   {
     "id": "mens-fashion-casual-sneakers-white-sole",
-    "name": "Men\u2019s Fashion Casual Sneakers with White Sole",
+    "name": "Men’s Fashion Casual Sneakers with White Sole",
     "slug": "mens-fashion-casual-sneakers-white-sole",
-    "subtitle": "Sizes 41\u201346",
+    "subtitle": "Sizes 41–46",
     "price": 15000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -522,9 +522,9 @@
   },
   {
     "id": "mens-casual-slip-on-shoes",
-    "name": "Men\u2019s Casual Slip-On Shoes",
+    "name": "Men’s Casual Slip-On Shoes",
     "slug": "mens-casual-slip-on-shoes",
-    "subtitle": "Sizes 40\u201346",
+    "subtitle": "Sizes 40–46",
     "price": 25000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -561,7 +561,7 @@
     "id": "clarks-casual-shoes-adult-men",
     "name": "Clarks Casual Shoes for Adult Men",
     "slug": "clarks-casual-shoes-adult-men",
-    "subtitle": "Sizes 41\u201346",
+    "subtitle": "Sizes 41–46",
     "price": 33000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -597,7 +597,7 @@
     "id": "nike-black-sneakers",
     "name": "Nike Black Sneakers",
     "slug": "nike-black-sneakers",
-    "subtitle": "Available in white \u2014 Sizes 41 and 42",
+    "subtitle": "Available in white — Sizes 41 and 42",
     "price": 15000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -627,9 +627,9 @@
   },
   {
     "id": "gino-ventini-leather-moq-mens-shoe",
-    "name": "Gino Ventini Leather MOQ Men\u2019s Shoe",
+    "name": "Gino Ventini Leather MOQ Men’s Shoe",
     "slug": "gino-ventini-leather-moq-mens-shoe",
-    "subtitle": "Sizes 40\u201344 \u2014 Black",
+    "subtitle": "Sizes 40–44 — Black",
     "price": 25000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -658,9 +658,9 @@
   },
   {
     "id": "gino-ventini-leather-mens-shoe",
-    "name": "Gino Ventini Leather Men\u2019s Shoe",
+    "name": "Gino Ventini Leather Men’s Shoe",
     "slug": "gino-ventini-leather-mens-shoe",
-    "subtitle": "Sizes 40\u201344 \u2014 Black",
+    "subtitle": "Sizes 40–44 — Black",
     "price": 25000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -689,7 +689,7 @@
   },
   {
     "id": "womens-and-kids-black-casual-loafers",
-    "name": "Women\u2019s and Kids\u2019 Black Casual Loafers",
+    "name": "Women’s and Kids’ Black Casual Loafers",
     "slug": "womens-and-kids-black-casual-loafers",
     "subtitle": "Sizes 37 and 42 available",
     "price": 7000,
@@ -719,7 +719,7 @@
     "id": "royal-classy-shoe-for-adult-men",
     "name": "Royal Classy Shoe for Adult Men",
     "slug": "royal-classy-shoe-for-adult-men",
-    "subtitle": "Sizes 40\u201345",
+    "subtitle": "Sizes 40–45",
     "price": 35000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -754,9 +754,9 @@
   },
   {
     "id": "ladies-stylish-classy-crossed-open-toe-sandal",
-    "name": "Ladies\u2019 Stylish Classy Crossed Open-Toe Sandal",
+    "name": "Ladies’ Stylish Classy Crossed Open-Toe Sandal",
     "slug": "ladies-stylish-classy-crossed-open-toe-sandal",
-    "subtitle": "Sizes 40\u201345 \u2014 Black, brown, blue, ash",
+    "subtitle": "Sizes 40–45 — Black, brown, blue, ash",
     "price": 12000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -798,7 +798,7 @@
   },
   {
     "id": "womens-corporate-loafers",
-    "name": "Women\u2019s Corporate Loafers",
+    "name": "Women’s Corporate Loafers",
     "slug": "womens-corporate-loafers",
     "subtitle": "Leather, Black",
     "price": 12000,
@@ -830,7 +830,7 @@
   },
   {
     "id": "womens-chunky-sole-loafers-bow-detail",
-    "name": "Women\u2019s Chunky Sole Loafers with Bow Detail",
+    "name": "Women’s Chunky Sole Loafers with Bow Detail",
     "slug": "womens-chunky-sole-loafers-bow-detail",
     "subtitle": "Chunky Sole",
     "price": 25000,
@@ -862,7 +862,7 @@
   },
   {
     "id": "womens-black-office-shoes-rope-bow",
-    "name": "Women\u2019s Black Office Shoes with Rope Bow",
+    "name": "Women’s Black Office Shoes with Rope Bow",
     "slug": "womens-black-office-shoes-rope-bow",
     "subtitle": "Sizes 37, 38, 42, 43",
     "price": 15000,
@@ -894,7 +894,7 @@
     "id": "female-casual-black-shoe-for-adults",
     "name": "Female Casual Black Shoe for Adults",
     "slug": "female-casual-black-shoe-for-adults",
-    "subtitle": "Sizes 36\u201342",
+    "subtitle": "Sizes 36–42",
     "price": 13000,
     "category": "Adults' Fashion",
     "categorySlug": "adults-fashion",
@@ -925,7 +925,7 @@
   },
   {
     "id": "clarks-casual-slip-on-mens-shoe",
-    "name": "Clark\u2019s Casual Slip-On Men\u2019s Shoe",
+    "name": "Clark’s Casual Slip-On Men’s Shoe",
     "slug": "clarks-casual-slip-on-mens-shoe",
     "subtitle": "Size to be confirmed",
     "price": 28000,
@@ -957,7 +957,7 @@
   },
   {
     "id": "pink-tulle-skirt-for-children",
-    "name": "Pink Tulle Skirt for Children (Age 7\u201314)",
+    "name": "Pink Tulle Skirt for Children (Age 7–14)",
     "slug": "pink-tulle-skirt-for-children",
     "subtitle": "Available in 6 colours",
     "price": 16000,
@@ -1008,9 +1008,9 @@
   },
   {
     "id": "kids-casual-sneakers-with-bow-detail",
-    "name": "Kids\u2019 Casual Sneakers with Bow Detail",
+    "name": "Kids’ Casual Sneakers with Bow Detail",
     "slug": "kids-casual-sneakers-with-bow-detail",
-    "subtitle": "Blue, Pink, Purple \u2014 Sizes 25, 30, 31, 36",
+    "subtitle": "Blue, Pink, Purple — Sizes 25, 30, 31, 36",
     "price": 16000,
     "category": "Children's Outfits",
     "categorySlug": "childrens-outfits",
@@ -1046,9 +1046,9 @@
   },
   {
     "id": "kids-chunky-sole-sports-sneakers",
-    "name": "Kids\u2019 Chunky Sole Sports Sneakers",
+    "name": "Kids’ Chunky Sole Sports Sneakers",
     "slug": "kids-chunky-sole-sports-sneakers",
-    "subtitle": "Sizes 38\u201342",
+    "subtitle": "Sizes 38–42",
     "price": 25000,
     "category": "Children's Outfits",
     "categorySlug": "childrens-outfits",
@@ -1079,7 +1079,7 @@
     "id": "casual-sneakers-decorative-lace-detail",
     "name": "Casual Sneakers with Decorative Lace Detail",
     "slug": "casual-sneakers-decorative-lace-detail",
-    "subtitle": "Sizes 25\u201336",
+    "subtitle": "Sizes 25–36",
     "price": 16000,
     "category": "Children's Outfits",
     "categorySlug": "childrens-outfits",
@@ -1119,9 +1119,9 @@
   },
   {
     "id": "new-girls-dressing-shoe-children",
-    "name": "New Girl\u2019s Dressing Shoe for Children",
+    "name": "New Girl’s Dressing Shoe for Children",
     "slug": "new-girls-dressing-shoe-children",
-    "subtitle": "Sizes 21\u201325 \u2014 Black, pink, cream",
+    "subtitle": "Sizes 21–25 — Black, pink, cream",
     "price": 9000,
     "category": "Children's Outfits",
     "categorySlug": "childrens-outfits",
@@ -1158,7 +1158,7 @@
   },
   {
     "id": "girls-mary-jane-shoes-bow-strap",
-    "name": "Girls\u2019 Mary Jane Shoes with Bow and Strap",
+    "name": "Girls’ Mary Jane Shoes with Bow and Strap",
     "slug": "girls-mary-jane-shoes-bow-strap",
     "subtitle": "Sizes 25, 30, 31, 36",
     "price": 10000,
@@ -1196,7 +1196,7 @@
   },
   {
     "id": "kids-unisex-soft-slide-sandals",
-    "name": "Kids\u2019 Unisex Soft Slide Sandals",
+    "name": "Kids’ Unisex Soft Slide Sandals",
     "slug": "kids-unisex-soft-slide-sandals",
     "subtitle": "Sizes 20, 25, 26, 30, 31, 36",
     "price": 8000,
@@ -1236,9 +1236,9 @@
   },
   {
     "id": "kids-brown-leather-school-shoes",
-    "name": "Kids\u2019 Brown Leather School Shoes",
+    "name": "Kids’ Brown Leather School Shoes",
     "slug": "kids-brown-leather-school-shoes",
-    "subtitle": "Sizes 25\u201342",
+    "subtitle": "Sizes 25–42",
     "price": 15000,
     "category": "Children's Outfits",
     "categorySlug": "childrens-outfits",
@@ -1266,7 +1266,7 @@
   },
   {
     "id": "naked-wolfe-kids-casual-shoes-chunky-sole",
-    "name": "Naked Wolfe Kids\u2019 Casual Shoes with Chunky Sole",
+    "name": "Naked Wolfe Kids’ Casual Shoes with Chunky Sole",
     "slug": "naked-wolfe-kids-casual-shoes-chunky-sole",
     "subtitle": "Chunky Sole",
     "price": 25000,

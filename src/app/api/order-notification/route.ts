@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendOrderNotificationEmail, EmailOrderPayload } from "@/lib/email";
+import { saveOrder } from "@/lib/orders";
 
 export async function POST(req: NextRequest) {
   try {
@@ -42,6 +43,19 @@ export async function POST(req: NextRequest) {
       timeZone: "Africa/Lagos",
     });
 
+    // Save order into persistent database for the admin portal
+    try {
+      saveOrder({
+        orderReference: orderId,
+        items,
+        customer,
+        subtotal: Number(subtotal) || 0,
+        deliveryFee: deliveryFee || "To be confirmed",
+      });
+    } catch (saveErr) {
+      console.error("Could not persist order to local store:", saveErr);
+    }
+
     const payload: EmailOrderPayload = {
       orderId,
       items,
@@ -61,6 +75,7 @@ export async function POST(req: NextRequest) {
         ? "Order request email sent to business owner."
         : "Order request recorded on server.",
     });
+
   } catch (error: any) {
     console.error("Order notification API error:", error);
     return NextResponse.json(

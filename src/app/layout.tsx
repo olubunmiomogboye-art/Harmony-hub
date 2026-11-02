@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
-import Toast from "@/components/Toast";
+import StoreShell from "@/components/StoreShell";
 
 export const metadata: Metadata = {
   title: "Harmony Hub — Event Management, Catering, Decor & Quality Home Essentials",
@@ -41,13 +38,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FFFFFF] text-[#20211E] antialiased">
+      <body className="min-h-screen bg-[#FFFFFF] antialiased">
         <CartProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <CartDrawer />
-          <Toast />
+          <StoreShell>{children}</StoreShell>
         </CartProvider>
       </body>
     </html>

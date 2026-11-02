@@ -9,6 +9,7 @@ import PreFooterCTA from "@/components/PreFooterCTA";
 
 export default function ShopPage() {
   const [products, setProducts] = useState<Product[]>(PRODUCTS);
+  const [categories, setCategories] = useState<{ id: string; label: string }[]>(CATEGORIES);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("featured");
@@ -20,11 +21,26 @@ export default function ShopPage() {
     async function loadLiveProducts() {
       try {
         setLoading(true);
-        const res = await fetch("/api/products");
-        if (res.ok) {
-          const data = await res.json();
+        const [prodRes, catRes] = await Promise.all([
+          fetch("/api/products"),
+          fetch("/api/categories")
+        ]);
+
+        if (prodRes.ok) {
+          const data = await prodRes.json();
           if (isMounted && data.success && Array.isArray(data.data)) {
             setProducts(data.data);
+          }
+        }
+
+        if (catRes.ok) {
+          const catData = await catRes.json();
+          if (isMounted && catData.success && Array.isArray(catData.data)) {
+            const dynamicCats = [
+              { id: "all", label: "All" },
+              ...catData.data.map((c: any) => ({ id: c.slug, label: c.name })),
+            ];
+            setCategories(dynamicCats);
           }
         }
       } catch (e) {
@@ -38,6 +54,7 @@ export default function ShopPage() {
       isMounted = false;
     };
   }, []);
+
 
   const filteredProducts = useMemo(() => {
     return products.filter((product: Product) => {
@@ -161,7 +178,7 @@ export default function ShopPage() {
         {/* Filter Pills and Sort Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 py-6">
           <div className="flex flex-wrap items-center gap-2">
-            {CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
