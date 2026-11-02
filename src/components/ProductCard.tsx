@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Product } from "@/types/product";
+import { Product, hasAnyVariationAvailable } from "@/types/product";
 import { formatNaira } from "@/lib/formatters";
 import { useCart } from "@/context/CartContext";
 
@@ -38,7 +38,7 @@ const getBadgeStyle = (category: string, badge?: string) => {
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
   const badgeLabel = product.badge || product.category;
-  const isOutOfStock = !product.inStock;
+  const isOutOfStock = !product.inStock || !hasAnyVariationAvailable(product);
 
   return (
     <div

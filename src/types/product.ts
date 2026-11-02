@@ -42,12 +42,89 @@ export interface Product {
   featured?: boolean;
   badge?: string;
   sizes?: string[];
+  unavailableSizes?: string[]; // Sizes marked Out of Stock by admin
   colors?: ProductColor[];
+  combinationAvailability?: Record<string, boolean>; // e.g. "Black-Size 41": false
   variants?: ProductVariant[];
   specs?: { label: string; value: string }[];
   flaggedNote?: string; // For data validation flags (e.g. unconfirmed size, description review)
   createdAt: string;
   updatedAt: string;
+}
+
+/**
+ * Check if an individual size is available for a product
+ */
+export function isSizeAvailable(product: Product, sizeName: string): boolean {
+  if (!product.inStock) return false;
+  const unavailable = product.unavailableSizes || [];
+  return !unavailable.includes(sizeName);
+}
+
+/**
+ * Check if an individual colour is available for a product
+ */
+export function isColorAvailable(product: Product, colorName: string): boolean {
+  if (!product.inStock) return false;
+  if (!product.colors || product.colors.length === 0) return true;
+  const match = product.colors.find((c) => c.name.toLowerCase() === colorName.toLowerCase());
+  if (!match) return true;
+  return match.inStock !== false;
+}
+
+/**
+ * Check if a specific colour and size combination is available
+ */
+export function isCombinationAvailable(
+  product: Product,
+  colorName?: string,
+  sizeName?: string
+): boolean {
+  if (!product.inStock) return false;
+
+  // 1. Check explicit combination override if present
+  if (colorName && sizeName && product.combinationAvailability) {
+    const key = `${colorName}-${sizeName}`;
+    if (key in product.combinationAvailability) {
+      return Boolean(product.combinationAvailability[key]);
+    }
+  }
+
+  // 2. Fall back to individual color & size status
+  if (colorName && !isColorAvailable(product, colorName)) return false;
+  if (sizeName && !isSizeAvailable(product, sizeName)) return false;
+
+  return true;
+}
+
+/**
+ * Returns true if the product has at least one purchasable variation
+ */
+export function hasAnyVariationAvailable(product: Product): boolean {
+  if (!product.inStock) return false;
+  const hasSizes = Array.isArray(product.sizes) && product.sizes.length > 0;
+  const hasColors = Array.isArray(product.colors) && product.colors.length > 0;
+
+  if (!hasSizes && !hasColors) return product.inStock;
+
+  if (hasColors && hasSizes) {
+    for (const c of product.colors || []) {
+      for (const s of product.sizes || []) {
+        if (isCombinationAvailable(product, c.name, s)) return true;
+      }
+    }
+    return false;
+  }
+
+  if (hasSizes) {
+    return (product.sizes || []).some((s) => isSizeAvailable(product, s));
+  }
+
+  if (hasColors) {
+    return (product.colors || []).some((c) => isColorAvailable(product, c.name));
+  }
+
+  return product.inStock;
 }
 
 export const CATEGORIES: { id: "all" | ProductCategorySlug; label: string }[] = [

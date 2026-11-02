@@ -13,7 +13,13 @@ import {
   Loader2,
   PackageOpen,
 } from "lucide-react";
-import { Product } from "@/types/product";
+import {
+  Product,
+  isSizeAvailable,
+  isColorAvailable,
+  isCombinationAvailable,
+  hasAnyVariationAvailable,
+} from "@/types/product";
 import { formatNaira } from "@/lib/formatters";
 import { useCart } from "@/context/CartContext";
 import QuantitySelector from "@/components/QuantitySelector";
@@ -37,15 +43,22 @@ export default function ProductDetailClient({
   const [notFound, setNotFound] = useState<boolean>(false);
 
   const [quantity, setQuantity] = useState<number>(1);
-  const [selectedSize, setSelectedSize] = useState<string>(
-    initialProduct?.sizes?.[0] || ""
-  );
-  const [selectedVariant, setSelectedVariant] = useState<string>(
-    initialProduct?.variants?.[0]?.options?.[0] || ""
-  );
-  const [selectedColor, setSelectedColor] = useState<string>(
-    initialProduct?.colors?.[0]?.name || ""
-  );
+
+  // Initialize selected color & size to the first available options
+  const initialAvailableColor =
+    initialProduct?.colors?.find((c) => c.inStock !== false)?.name ||
+    initialProduct?.colors?.[0]?.name ||
+    "";
+
+  const initialAvailableSize =
+    initialProduct?.sizes?.find((s) =>
+      initialProduct ? isCombinationAvailable(initialProduct, initialAvailableColor || undefined, s) : true
+    ) ||
+    initialProduct?.sizes?.[0] ||
+    "";
+
+  const [selectedSize, setSelectedSize] = useState<string>(initialAvailableSize);
+  const [selectedColor, setSelectedColor] = useState<string>(initialAvailableColor);
   const [isAdded, setIsAdded] = useState(false);
 
   // If server didn't find product (e.g. cold start sync gap), fetch via API
@@ -59,11 +72,22 @@ export default function ProductDetailClient({
           if (res.ok) {
             const data = await res.json();
             if (isMounted && data.success && data.data && data.data.isPublished) {
-              const liveProd = data.data;
+              const liveProd: Product = data.data;
               setProduct(liveProd);
-              setSelectedSize(liveProd.sizes?.[0] || "");
-              setSelectedVariant(liveProd.variants?.[0]?.options?.[0] || "");
-              setSelectedColor(liveProd.colors?.[0]?.name || "");
+
+              const firstColor =
+                liveProd.colors?.find((c) => c.inStock !== false)?.name ||
+                liveProd.colors?.[0]?.name ||
+                "";
+              const firstSize =
+                liveProd.sizes?.find((s) =>
+                  isCombinationAvailable(liveProd, firstColor || undefined, s)
+                ) ||
+                liveProd.sizes?.[0] ||
+                "";
+
+              setSelectedColor(firstColor);
+              setSelectedSize(firstSize);
 
               // Fetch related products
               try {
@@ -79,7 +103,7 @@ export default function ProductDetailClient({
                   }
                 }
               } catch {
-                // ignore related error
+                // ignore
               }
               return;
             }
@@ -139,18 +163,36 @@ export default function ProductDetailClient({
     );
   }
 
-  const isOutOfStock = !product.inStock;
+  const isProductOutOfStock = !product.inStock || !hasAnyVariationAvailable(product);
+  const isSelectedOptionAvailable = !isProductOutOfStock && isCombinationAvailable(
+    product,
+    selectedColor || undefined,
+    selectedSize || undefined
+  );
+
+  // When changing color, if previous size is unavailable in this color, select first available size
+  const handleSelectColor = (colorName: string) => {
+    setSelectedColor(colorName);
+    if (product.sizes && product.sizes.length > 0) {
+      const isCurrentSizeStillAvailable = isCombinationAvailable(product, colorName, selectedSize);
+      if (!isCurrentSizeStillAvailable) {
+        const nextAvailSize = product.sizes.find((s) =>
+          isCombinationAvailable(product, colorName, s)
+        );
+        if (nextAvailSize) setSelectedSize(nextAvailSize);
+      }
+    }
+  };
 
   const handleAddToCart = () => {
-    if (isOutOfStock) return;
+    if (isProductOutOfStock || !isSelectedOptionAvailable) return;
     if (product.colors && product.colors.length > 0 && !selectedColor) {
       return;
     }
-    const variantOrSize = selectedSize || selectedVariant || undefined;
     addToCart(
       product,
       quantity,
-      variantOrSize,
+      selectedSize || undefined,
       selectedColor || undefined
     );
     setIsAdded(true);
@@ -158,9 +200,13 @@ export default function ProductDetailClient({
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Harmony Hub, I would like to enquire about "${product.name}" (${formatNaira(product.price)})${
-      selectedSize ? ` in size ${selectedSize}` : ""
-    }${selectedColor ? ` in colour ${selectedColor}` : ""}. Is it available?`
+    isSelectedOptionAvailable
+      ? `Hello Harmony Hub, I would like to enquire about "${product.name}" (${formatNaira(product.price)})${
+          selectedSize ? ` in size ${selectedSize}` : ""
+        }${selectedColor ? ` in colour ${selectedColor}` : ""}. Is it available?`
+      : `Hello Harmony Hub, I noticed that "${product.name}"${
+          selectedSize ? ` in size ${selectedSize}` : ""
+        }${selectedColor ? ` in colour ${selectedColor}` : ""} is currently out of stock. When will it be available?`
   );
   const whatsappUrl = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2348165982112"}?text=${whatsappMessage}`;
 
@@ -210,7 +256,7 @@ export default function ProductDetailClient({
                 {product.badge}
               </span>
             )}
-            {isOutOfStock && (
+            {isProductOutOfStock && (
               <span className="absolute top-4 right-4 bg-red-700 text-white text-xs uppercase font-bold tracking-widest px-3 py-1.5 rounded-xs shadow-md">
                 Out of Stock
               </span>
@@ -253,36 +299,6 @@ export default function ProductDetailClient({
             )}
           </div>
 
-          {/* Sizes Selector (if product has sizes) */}
-          {product.sizes && product.sizes.length > 0 && (
-            <div className="space-y-2 pt-2">
-              <div className="flex items-center justify-between">
-                <label className="text-xs uppercase tracking-wider font-semibold text-[#183C32]">
-                  Available Sizes
-                </label>
-                <span className="text-xs text-[#20211E] font-medium">
-                  {selectedSize ? `Selected: ${selectedSize}` : "Select a size"}
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {product.sizes.map((sz) => (
-                  <button
-                    key={sz}
-                    type="button"
-                    onClick={() => setSelectedSize(sz)}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-xs border transition ${
-                      selectedSize === sz
-                        ? "bg-[#183C32] text-white border-[#183C32] shadow-xs"
-                        : "bg-white text-[#4B5563] border-[#D1C7B7] hover:border-[#183C32]"
-                    }`}
-                  >
-                    {sz}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Colour Swatch Selector (if product has colors) */}
           {product.colors && product.colors.length > 0 && (
             <div className="space-y-2 pt-2">
@@ -297,16 +313,21 @@ export default function ProductDetailClient({
               <div className="flex flex-wrap items-center gap-2.5">
                 {product.colors.map((c) => {
                   const isSelected = selectedColor === c.name;
+                  const isColInStock = isColorAvailable(product, c.name);
+
                   return (
                     <button
                       key={c.name}
                       type="button"
-                      onClick={() => setSelectedColor(c.name)}
-                      title={c.name}
+                      disabled={!isColInStock}
+                      onClick={() => handleSelectColor(c.name)}
+                      title={isColInStock ? c.name : `${c.name} (Out of Stock)`}
                       className={`group flex items-center gap-2 px-3 py-2 rounded-xs border text-xs font-medium transition ${
-                        isSelected
-                          ? "border-[#183C32] bg-[#F7F6F4] text-[#183C32] shadow-xs"
-                          : "border-[#E5E5E5] bg-white text-[#4B5563] hover:border-[#183C32]"
+                        !isColInStock
+                          ? "border-gray-200 bg-gray-100 text-gray-400 opacity-60 line-through cursor-not-allowed"
+                          : isSelected
+                          ? "border-[#183C32] bg-[#F7F6F4] text-[#183C32] shadow-xs cursor-pointer font-bold"
+                          : "border-[#E5E5E5] bg-white text-[#4B5563] hover:border-[#183C32] cursor-pointer"
                       }`}
                     >
                       {c.hex && (
@@ -318,6 +339,11 @@ export default function ProductDetailClient({
                         />
                       )}
                       <span>{c.name}</span>
+                      {!isColInStock && (
+                        <span className="text-[10px] text-red-600 no-underline font-semibold">
+                          (Out of Stock)
+                        </span>
+                      )}
                     </button>
                   );
                 })}
@@ -325,20 +351,83 @@ export default function ProductDetailClient({
             </div>
           )}
 
-          {/* Availability / Stock Status */}
+          {/* Sizes Selector (if product has sizes) */}
+          {product.sizes && product.sizes.length > 0 && (
+            <div className="space-y-2 pt-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs uppercase tracking-wider font-semibold text-[#183C32]">
+                  Available Sizes
+                </label>
+                <span className="text-xs text-[#20211E] font-medium">
+                  {selectedSize ? `Selected: ${selectedSize}` : "Select a size"}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {product.sizes.map((sz) => {
+                  const isSzInStock = isCombinationAvailable(
+                    product,
+                    selectedColor || undefined,
+                    sz
+                  );
+                  const isSelected = selectedSize === sz;
+
+                  if (!isSzInStock) {
+                    return (
+                      <button
+                        key={sz}
+                        type="button"
+                        disabled
+                        title={`${sz} is currently out of stock`}
+                        className="px-3 py-1.5 text-xs font-medium rounded-xs border border-dashed border-gray-300 text-gray-400 bg-gray-50 line-through cursor-not-allowed flex items-center gap-1"
+                      >
+                        <span>{sz}</span>
+                        <span className="text-[9px] no-underline text-red-500 font-normal">
+                          (Out of stock)
+                        </span>
+                      </button>
+                    );
+                  }
+
+                  return (
+                    <button
+                      key={sz}
+                      type="button"
+                      onClick={() => setSelectedSize(sz)}
+                      className={`px-3 py-1.5 text-xs font-semibold rounded-xs border transition cursor-pointer ${
+                        isSelected
+                          ? "bg-[#183C32] text-white border-[#183C32] shadow-xs"
+                          : "bg-white text-[#4B5563] border-[#D1C7B7] hover:border-[#183C32]"
+                      }`}
+                    >
+                      {sz}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Availability / Stock Status Indicator */}
           <div className="flex items-center gap-2 text-xs">
-            {isOutOfStock ? (
+            {isProductOutOfStock ? (
               <>
                 <span className="w-2 h-2 rounded-full bg-red-600" />
                 <span className="text-red-700 font-semibold">
-                  Currently Out of Stock
+                  Entire Product Currently Out of Stock
+                </span>
+              </>
+            ) : !isSelectedOptionAvailable ? (
+              <>
+                <span className="w-2 h-2 rounded-full bg-amber-500" />
+                <span className="text-amber-800 font-semibold">
+                  Selected size/colour combination is Out of Stock
                 </span>
               </>
             ) : (
               <>
                 <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
                 <span className="text-emerald-800 font-medium">
-                  In Stock ({product.stockCount} available)
+                  In Stock & Ready for Delivery
                 </span>
               </>
             )}
@@ -346,14 +435,16 @@ export default function ProductDetailClient({
 
           {/* Purchasing Controls */}
           <div className="pt-4 border-t border-[#DCDDD4] space-y-4">
-            {isOutOfStock ? (
+            {isProductOutOfStock || !isSelectedOptionAvailable ? (
               <div className="space-y-3">
                 <button
                   disabled
                   className="w-full h-11 flex items-center justify-center gap-2 rounded-xs text-xs uppercase tracking-widest font-semibold bg-gray-200 text-gray-500 cursor-not-allowed border border-gray-300"
                 >
                   <AlertTriangle className="w-4 h-4" />
-                  <span>Item Currently Out of Stock</span>
+                  <span>
+                    {isProductOutOfStock ? "Product Out of Stock" : "Selected Option Out of Stock"}
+                  </span>
                 </button>
                 <a
                   href={whatsappUrl}
@@ -375,7 +466,7 @@ export default function ProductDetailClient({
                     <QuantitySelector
                       quantity={quantity}
                       onChange={setQuantity}
-                      max={product.stockCount}
+                      max={product.stockCount || 20}
                       min={1}
                     />
                   </div>
@@ -386,7 +477,7 @@ export default function ProductDetailClient({
                     </span>
                     <button
                       onClick={handleAddToCart}
-                      className={`w-full h-11 flex items-center justify-center gap-2 rounded-xs text-xs uppercase tracking-widest font-semibold transition shadow-sm ${
+                      className={`w-full h-11 flex items-center justify-center gap-2 rounded-xs text-xs uppercase tracking-widest font-semibold transition shadow-sm cursor-pointer ${
                         isAdded
                           ? "bg-emerald-700 text-white"
                           : "bg-[#183C32] hover:bg-[#B96F52] text-white"
@@ -412,7 +503,7 @@ export default function ProductDetailClient({
                   <button
                     type="button"
                     onClick={openDrawer}
-                    className="text-[#183C32] hover:text-[#B96F52] font-semibold underline underline-offset-4 decoration-[#B96F52]"
+                    className="text-[#183C32] hover:text-[#B96F52] font-semibold underline underline-offset-4 decoration-[#B96F52] cursor-pointer"
                   >
                     View Bag & Checkout
                   </button>

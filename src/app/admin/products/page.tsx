@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { Product } from "@/types/product";
 import { formatNaira } from "@/lib/formatters";
+import ProductVariationEditor, { ColorItem } from "@/components/admin/ProductVariationEditor";
 
 function AdminProductsContent() {
   const router = useRouter();
@@ -59,9 +60,13 @@ function AdminProductsContent() {
     inStock: true,
     isPublished: true,
     image: "",
-    sizes: "",
-    colors: "",
   });
+
+  // Variation States
+  const [sizes, setSizes] = useState<string[]>([]);
+  const [unavailableSizes, setUnavailableSizes] = useState<string[]>([]);
+  const [colors, setColors] = useState<ColorItem[]>([]);
+  const [combinationAvailability, setCombinationAvailability] = useState<Record<string, boolean>>({});
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
@@ -120,19 +125,26 @@ function AdminProductsContent() {
     setEditingProduct(p);
     setPreviewImage(p.image || "");
     setFormData({
-      name: p.name,
+      name: p.name || "",
       subtitle: p.subtitle || "",
-      category: p.category,
-      price: p.price.toString(),
+      category: p.category || "Adults' Fashion",
+      price: (p.price ?? 0).toString(),
       description: p.description || p.shortDescription || "",
-      inStock: p.inStock,
-      isPublished: p.isPublished,
+      inStock: p.inStock ?? true,
+      isPublished: p.isPublished ?? true,
       image: p.image || "",
-      sizes: Array.isArray(p.sizes) ? p.sizes.join(", ") : "",
-      colors: Array.isArray(p.colors)
-        ? p.colors.map((c: any) => (typeof c === "string" ? c : c.name)).join(", ")
-        : "",
     });
+
+    setSizes(Array.isArray(p.sizes) ? p.sizes : []);
+    setUnavailableSizes(Array.isArray(p.unavailableSizes) ? p.unavailableSizes : []);
+    setColors(
+      Array.isArray(p.colors)
+        ? p.colors.map((c: any) =>
+            typeof c === "string" ? { name: c, inStock: true } : { ...c, inStock: c.inStock !== false }
+          )
+        : []
+    );
+    setCombinationAvailability(p.combinationAvailability || {});
     setIsModalOpen(true);
   };
 
@@ -194,16 +206,14 @@ function AdminProductsContent() {
         category: formData.category,
         price: parseFloat(formData.price),
         description: formData.description.trim(),
-        shortDescription: formData.description.trim().slice(0, 160),
+        shortDescription: formData.description.trim().slice(0, 160) || formData.name.trim(),
         inStock: formData.inStock,
         isPublished: formData.isPublished,
         image: formData.image || previewImage || "/images/products/container.jpg",
-        sizes: formData.sizes
-          ? formData.sizes.split(",").map((s) => s.trim()).filter(Boolean)
-          : [],
-        colors: formData.colors
-          ? formData.colors.split(",").map((c) => ({ name: c.trim() })).filter((c) => c.name)
-          : [],
+        sizes: sizes,
+        unavailableSizes: unavailableSizes,
+        colors: colors,
+        combinationAvailability: combinationAvailability,
       };
 
       if (!editingProduct) return;
@@ -679,6 +689,62 @@ function AdminProductsContent() {
 
             {/* Modal Form */}
             <form onSubmit={handleSaveProduct} className="flex-1 overflow-y-auto p-6 space-y-4">
+              {/* Product Name (Clear, prominent, editable) */}
+              <div>
+                <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                  Product Name *
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Stainless Steel Cutlery Set"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:bg-white focus:border-[#0F392B]"
+                />
+              </div>
+
+              {/* Price & Category */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                    Price in Naira (₦) *
+                  </label>
+                  <div className="relative">
+                    <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-400">
+                      ₦
+                    </span>
+                    <input
+                      type="number"
+                      required
+                      min="0"
+                      step="100"
+                      placeholder="e.g. 25000"
+                      value={formData.price}
+                      onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                      className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl pl-9 pr-4 py-2.5 text-xs text-slate-900 font-bold focus:outline-none focus:bg-white focus:border-[#0F392B]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-800 mb-1.5">
+                    Department / Category *
+                  </label>
+                  <select
+                    value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
+                    className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-semibold focus:outline-none focus:bg-white focus:border-[#0F392B]"
+                  >
+                    {categories.map((c) => (
+                      <option key={c.id} value={c.name}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
               {/* Product Photo Upload with Live Preview */}
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-4">
                 <div className="relative w-20 h-20 rounded-xl bg-white border border-slate-200 overflow-hidden flex items-center justify-center shrink-0">
@@ -697,7 +763,7 @@ function AdminProductsContent() {
                 </div>
 
                 <div className="space-y-1.5 flex-1">
-                  <p className="text-xs font-semibold text-slate-800">
+                  <p className="text-xs font-bold text-slate-800">
                     Product Photo
                   </p>
                   <p className="text-[11px] text-slate-500">
@@ -710,78 +776,57 @@ function AdminProductsContent() {
                     onChange={handleImageUpload}
                     className="hidden"
                   />
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    disabled={uploadingImage}
-                    className="px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:bg-slate-100 text-xs font-semibold text-slate-700 flex items-center gap-1.5 cursor-pointer"
-                  >
-                    {uploadingImage ? (
-                      <>
-                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                        <span>Uploading...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Upload className="w-3.5 h-3.5" />
-                        <span>Change Photo</span>
-                      </>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      disabled={uploadingImage}
+                      className="px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:bg-slate-100 text-xs font-semibold text-slate-700 flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                    >
+                      {uploadingImage ? (
+                        <>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          <span>Uploading...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="w-3.5 h-3.5" />
+                          <span>Change Photo</span>
+                        </>
+                      )}
+                    </button>
+                    {previewImage && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setFormData((prev) => ({ ...prev, image: "" }));
+                          setPreviewImage("");
+                        }}
+                        className="px-2 py-1 text-xs text-red-600 hover:bg-red-50 rounded-lg transition"
+                      >
+                        Remove
+                      </button>
                     )}
-                  </button>
+                  </div>
                 </div>
               </div>
 
+              {/* Subtitle & Description */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Product Name *
+                <label className="block text-xs font-bold text-slate-800 mb-1">
+                  Size, Capacity or Type Note (Optional)
                 </label>
                 <input
                   type="text"
-                  required
-                  placeholder="e.g. Stainless Steel Cutlery Set"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:bg-white focus:border-[#0F392B]"
+                  placeholder="e.g. 800 ML or 16-piece complete dining set"
+                  value={formData.subtitle}
+                  onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
+                  className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:bg-white focus:border-[#0F392B]"
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Price in Naira (₦) *
-                  </label>
-                  <input
-                    type="number"
-                    required
-                    min="0"
-                    step="100"
-                    placeholder="e.g. 25000"
-                    value={formData.price}
-                    onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                    className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-bold focus:outline-none focus:bg-white focus:border-[#0F392B]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Category *
-                  </label>
-                  <select
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
-                    className="w-full bg-[#F8FAFC] border border-slate-200 rounded-xl px-3 py-2.5 text-xs text-slate-900 focus:outline-none focus:bg-white focus:border-[#0F392B]"
-                  >
-                    {categories.map((c) => (
-                      <option key={c.id} value={c.name}>
-                        {c.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-bold text-slate-800 mb-1">
                   Description
                 </label>
                 <textarea
@@ -793,33 +838,42 @@ function AdminProductsContent() {
                 />
               </div>
 
-              {/* Availability & Visibility */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
-                <div className="flex items-center gap-2 pt-2">
-                  <input
-                    type="checkbox"
-                    id="editInStock"
-                    checked={formData.inStock}
-                    onChange={(e) => setFormData({ ...formData, inStock: e.target.checked })}
-                    className="w-4 h-4 text-[#0F392B] rounded border-slate-300"
-                  />
-                  <label htmlFor="editInStock" className="text-xs font-semibold text-slate-700 cursor-pointer">
-                    Available in Store
-                  </label>
+              {/* Product Variation Manager (Sizes, Colours, and Availability) */}
+              <ProductVariationEditor
+                sizes={sizes}
+                onChangeSizes={setSizes}
+                unavailableSizes={unavailableSizes}
+                onChangeUnavailableSizes={setUnavailableSizes}
+                colors={colors}
+                onChangeColors={setColors}
+                combinationAvailability={combinationAvailability}
+                onChangeCombinationAvailability={setCombinationAvailability}
+                inStock={formData.inStock}
+                onChangeInStock={(val) => setFormData({ ...formData, inStock: val })}
+              />
+
+              {/* Website Visibility */}
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-bold text-slate-800">
+                    Website Visibility
+                  </p>
+                  <p className="text-[11px] text-slate-500">
+                    Control whether customers can view this product in the shop.
+                  </p>
                 </div>
 
-                <div className="flex items-center gap-2 pt-2">
-                  <input
-                    type="checkbox"
-                    id="editPublished"
-                    checked={formData.isPublished}
-                    onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
-                    className="w-4 h-4 text-[#0F392B] rounded border-slate-300"
-                  />
-                  <label htmlFor="editPublished" className="text-xs font-semibold text-slate-700 cursor-pointer">
-                    Visible on Website
-                  </label>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setFormData({ ...formData, isPublished: !formData.isPublished })}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+                    formData.isPublished
+                      ? "bg-slate-100 text-slate-800 border border-slate-300"
+                      : "bg-amber-50 text-amber-800 border border-amber-200"
+                  }`}
+                >
+                  {formData.isPublished ? "Visible on Website" : "Hidden (Draft)"}
+                </button>
               </div>
 
               {/* Modal Footer */}

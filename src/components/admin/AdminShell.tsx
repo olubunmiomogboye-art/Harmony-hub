@@ -47,7 +47,8 @@ export default function AdminShell({ children }: AdminShellProps) {
 
   const isActive = (href: string) => {
     if (href === "/admin") return pathname === "/admin";
-    return pathname.startsWith(href);
+    if (href === "/admin/products") return pathname === "/admin/products";
+    return pathname === href || pathname.startsWith(href + "/");
   };
 
   return (

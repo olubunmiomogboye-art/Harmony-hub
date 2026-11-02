@@ -16,6 +16,7 @@ import {
   Check,
   Sparkles,
 } from "lucide-react";
+import ProductVariationEditor, { ColorItem } from "@/components/admin/ProductVariationEditor";
 
 export default function AddProductPage() {
   const router = useRouter();
@@ -38,9 +39,11 @@ export default function AddProductPage() {
   const [image, setImage] = useState("");
   const [previewImage, setPreviewImage] = useState("");
 
-  // Optional Variations
-  const [sizes, setSizes] = useState("");
-  const [colors, setColors] = useState("");
+  // Variation States
+  const [sizes, setSizes] = useState<string[]>([]);
+  const [unavailableSizes, setUnavailableSizes] = useState<string[]>([]);
+  const [colors, setColors] = useState<ColorItem[]>([]);
+  const [combinationAvailability, setCombinationAvailability] = useState<Record<string, boolean>>({});
 
   // AI Assistant States
   const [analyzingAI, setAnalyzingAI] = useState(false);
@@ -84,7 +87,7 @@ export default function AddProductPage() {
           else setCategory(d.category);
         }
         if (d.colors && Array.isArray(d.colors) && d.colors.length > 0) {
-          setColors(d.colors.join(", "));
+          setColors(d.colors.map((c: string) => ({ name: c, inStock: true })));
         }
         setAiSuccessNote(
           `AI suggestions applied for "${d.name}"! Please review the details and enter your price in Naira (₦).`
@@ -187,12 +190,10 @@ export default function AddProductPage() {
         stockCount: inStock ? 20 : 0,
         isPublished: publishState,
         image: image || previewImage || "/images/products/container.jpg",
-        sizes: sizes
-          ? sizes.split(",").map((s) => s.trim()).filter(Boolean)
-          : [],
-        colors: colors
-          ? colors.split(",").map((c) => ({ name: c.trim() })).filter((c) => c.name)
-          : [],
+        sizes: sizes,
+        unavailableSizes: unavailableSizes,
+        colors: colors,
+        combinationAvailability: combinationAvailability,
       };
 
       const res = await fetch("/api/admin/products", {
@@ -265,7 +266,63 @@ export default function AddProductPage() {
 
       {/* Main Form Container */}
       <div className="bg-white p-6 sm:p-8 rounded-2xl border border-[#E2E8F0] shadow-xs space-y-6">
-        {/* Photo Upload Section */}
+        {/* 1. Product Name (Clear, bold, prominent at the top) */}
+        <div>
+          <label className="block text-xs font-bold text-slate-800 mb-1.5">
+            Product Name *
+          </label>
+          <input
+            type="text"
+            required
+            placeholder="e.g. Quality SMP Food Storage Container"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#0F392B] font-bold"
+          />
+        </div>
+
+        {/* 2. Price & Category */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-xs font-bold text-slate-800 mb-1.5">
+              Price in Naira (₦) *
+            </label>
+            <div className="relative">
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-400">
+                ₦
+              </span>
+              <input
+                type="number"
+                required
+                min="0"
+                step="100"
+                placeholder="e.g. 18000"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl pl-9 pr-4 py-2.5 text-sm text-slate-900 font-bold focus:outline-none focus:bg-white focus:border-[#0F392B]"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold text-slate-800 mb-1.5">
+              Department / Category *
+            </label>
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-2.5 text-xs text-slate-900 font-semibold focus:outline-none focus:bg-white focus:border-[#0F392B]"
+            >
+              {categories.map((c) => (
+                <option key={c.id} value={c.name}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* 3. Photo Upload Section with AI Assistant */}
         <div>
           <label className="block text-xs font-bold text-slate-800 mb-2">
             Product Photo
@@ -395,69 +452,15 @@ export default function AddProductPage() {
           )}
         </div>
 
-        {/* Basic Details */}
+        {/* 4. Subtitle & Description */}
         <div className="space-y-4">
-          <div>
-            <label className="block text-xs font-bold text-slate-800 mb-1.5">
-              Product Name *
-            </label>
-            <input
-              type="text"
-              required
-              placeholder="e.g. Quality SMP Food Storage Container"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:bg-white focus:border-[#0F392B] font-medium"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                Price in Naira (₦) *
-              </label>
-              <div className="relative">
-                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-400">
-                  ₦
-                </span>
-                <input
-                  type="number"
-                  required
-                  min="0"
-                  step="100"
-                  placeholder="e.g. 18000"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                  className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl pl-9 pr-4 py-3 text-sm text-slate-900 font-bold focus:outline-none focus:bg-white focus:border-[#0F392B]"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1.5">
-                Category / Department *
-              </label>
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-3 text-sm text-slate-900 font-medium focus:outline-none focus:bg-white focus:border-[#0F392B]"
-              >
-                {categories.map((c) => (
-                  <option key={c.id} value={c.name}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
           <div>
             <label className="block text-xs font-bold text-slate-800 mb-1.5">
               Size, Capacity or Color Note (Optional)
             </label>
             <input
               type="text"
-              placeholder="e.g. 800 ML or Size 41 - 44"
+              placeholder="e.g. 800 ML or 16-piece complete dining set"
               value={subtitle}
               onChange={(e) => setSubtitle(e.target.value)}
               className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:bg-white focus:border-[#0F392B]"
@@ -478,72 +481,35 @@ export default function AddProductPage() {
           </div>
         </div>
 
-        {/* Optional Variations */}
-        <div className="pt-4 border-t border-slate-100 space-y-3">
+        {/* 5. Product Sizes, Colours & Availability Manager */}
+        <ProductVariationEditor
+          sizes={sizes}
+          onChangeSizes={setSizes}
+          unavailableSizes={unavailableSizes}
+          onChangeUnavailableSizes={setUnavailableSizes}
+          colors={colors}
+          onChangeColors={setColors}
+          combinationAvailability={combinationAvailability}
+          onChangeCombinationAvailability={setCombinationAvailability}
+          inStock={inStock}
+          onChangeInStock={setInStock}
+        />
+
+        {/* 6. Visibility Settings */}
+        <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
           <div>
-            <h3 className="text-xs font-bold text-slate-800">
-              Sizes & Colours (Optional)
-            </h3>
+            <p className="text-xs font-bold text-slate-800">
+              Publishing Options
+            </p>
             <p className="text-[11px] text-slate-500">
-              Only fill these in if your item comes in different shoe sizes or clothing colours.
+              You can publish directly to the shop or keep this item as a draft.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1">
-                Available Sizes
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. 40, 41, 42, 43"
-                value={sizes}
-                onChange={(e) => setSizes(e.target.value)}
-                className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-3.5 py-2 text-xs text-slate-900"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1">
-                Available Colours
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. Black, Brown, Navy"
-                value={colors}
-                onChange={(e) => setColors(e.target.value)}
-                className="w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl px-3.5 py-2 text-xs text-slate-900"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Stock & Visibility Settings */}
-        <div className="pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-            <input
-              type="checkbox"
-              id="stockCheck"
-              checked={inStock}
-              onChange={(e) => setInStock(e.target.checked)}
-              className="w-4 h-4 text-[#0F392B] rounded border-slate-300"
-            />
-            <label htmlFor="stockCheck" className="text-xs font-bold text-slate-800 cursor-pointer">
-              Product is Available in Store
-            </label>
-          </div>
-
-          <div className="flex items-center gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-            <input
-              type="checkbox"
-              id="publishCheck"
-              checked={isPublished}
-              onChange={(e) => setIsPublished(e.target.checked)}
-              className="w-4 h-4 text-[#0F392B] rounded border-slate-300"
-            />
-            <label htmlFor="publishCheck" className="text-xs font-bold text-slate-800 cursor-pointer">
-              Show Product on Public Website
-            </label>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-semibold text-slate-700">
+              {isPublished ? "Visible on Website" : "Hidden (Draft)"}
+            </span>
           </div>
         </div>
 

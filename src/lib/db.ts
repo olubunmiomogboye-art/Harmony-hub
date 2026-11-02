@@ -138,7 +138,13 @@ function mapRowToProduct(row: any): Product {
     featured: Boolean(row.featured),
     badge: row.badge || undefined,
     sizes: Array.isArray(row.sizes) ? row.sizes : [],
+    unavailableSizes: Array.isArray(row.unavailable_sizes)
+      ? row.unavailable_sizes
+      : Array.isArray(row.unavailableSizes)
+      ? row.unavailableSizes
+      : [],
     colors: Array.isArray(row.colors) ? row.colors : [],
+    combinationAvailability: row.combination_availability || row.combinationAvailability || {},
     specs: Array.isArray(row.specs) ? row.specs : [],
     flaggedNote: row.flagged_note || undefined,
     createdAt: row.created_at || new Date().toISOString(),
@@ -170,7 +176,9 @@ function mapProductToRow(p: Partial<Product>): Record<string, any> {
   if (p.featured !== undefined) row.featured = p.featured;
   if (p.badge !== undefined) row.badge = p.badge;
   if (p.sizes !== undefined) row.sizes = p.sizes;
+  if (p.unavailableSizes !== undefined) row.unavailable_sizes = p.unavailableSizes;
   if (p.colors !== undefined) row.colors = p.colors;
+  if (p.combinationAvailability !== undefined) row.combination_availability = p.combinationAvailability;
   if (p.specs !== undefined) row.specs = p.specs;
   if (p.flaggedNote !== undefined) row.flagged_note = p.flaggedNote;
   row.updated_at = new Date().toISOString();
@@ -349,7 +357,9 @@ export async function createProduct(payload: Partial<Product>): Promise<Product>
     featured: payload.featured ?? false,
     badge: payload.badge || undefined,
     sizes: payload.sizes || [],
+    unavailableSizes: payload.unavailableSizes || [],
     colors: payload.colors || [],
+    combinationAvailability: payload.combinationAvailability || {},
     specs: payload.specs || [],
     flaggedNote: payload.flaggedNote || undefined,
     createdAt: now,
