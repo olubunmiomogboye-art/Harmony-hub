@@ -46,3 +46,4 @@ public/images/_originals/
 /*Delicious*
 /UI/
 npm-cache/
+scripts/*.json
