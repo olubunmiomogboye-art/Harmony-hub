@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: "Harmony Hub — Premier Event Management and Curated Living in Ibadan, Nigeria",
+        width: 1024,
+        height: 511,
+        alt: "Harmony Hub — For the moments you host. And the life you live.",
       },
     ],
   },
@@ -55,6 +55,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/icon.png", type: "image/png", sizes: "32x32" },
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
     ],

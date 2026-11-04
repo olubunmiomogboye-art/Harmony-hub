@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="hh-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#183C32" />
+      <stop offset="100%" stop-color="#112922" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="100" fill="url(#hh-grad)" />
+  <text x="256" y="240" font-family="Georgia, 'Times New Roman', serif" font-size="106" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1.5">Harmony</text>
+  <text x="256" y="380" font-family="Georgia, 'Times New Roman', serif" font-size="120" font-weight="bold" fill="#CD927C" text-anchor="middle" letter-spacing="-1.5">Hub</text>
+</svg>
