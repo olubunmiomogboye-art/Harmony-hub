@@ -5,9 +5,18 @@ import { siteConfig } from "@/config/site";
 import { Shield, FileCheck, AlertCircle, Clock, ChevronRight, Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — Harmony Hub",
+  title: "Terms of Use",
   description:
     "Review the terms, conditions, ordering protocols, advance notice expectations, and inspection policies governing Harmony Hub and Flair & Flavors services.",
+  alternates: {
+    canonical: "/terms-of-use",
+  },
+  openGraph: {
+    title: "Terms of Use — Harmony Hub",
+    description:
+      "Review the terms, conditions, ordering protocols, advance notice expectations, and inspection policies governing Harmony Hub and Flair & Flavors services.",
+    url: "/terms-of-use",
+  },
 };
 
 const SECTIONS = [

@@ -5,9 +5,18 @@ import { siteConfig } from "@/config/site";
 import { Shield, Lock, FileText, ChevronRight, Mail, Phone, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Harmony Hub",
+  title: "Privacy Policy",
   description:
-    "Learn how Harmony Hub collects, uses, and protects your personal information when you browse our website, place orders, or make event enquiries.",
+    "Learn how Harmony Hub collects, uses, and protects your personal information when you browse our website, place orders, or make event enquiries in compliance with NDPA 2023.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy — Harmony Hub",
+    description:
+      "Learn how Harmony Hub collects, uses, and protects your personal information when you browse our website, place orders, or make event enquiries.",
+    url: "/privacy-policy",
+  },
 };
 
 const SECTIONS = [

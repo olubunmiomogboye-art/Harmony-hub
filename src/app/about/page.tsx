@@ -1,9 +1,25 @@
 import React from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import PreFooterCTA from "@/components/PreFooterCTA";
 import Accordion, { AccordionItem } from "@/components/Accordion";
+
+export const metadata: Metadata = {
+  title: "About Our Founder & Enterprise",
+  description:
+    "Meet Olubunmi Folorunsho, founder and creative director of Harmony Hub and Flair & Flavors in Ibadan, Nigeria. Over 12+ years of culinary, decor, and event excellence.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Harmony Hub & Olubunmi Folorunsho",
+    description:
+      "A passion for bringing people together. Discover the story, values, and 12+ year legacy of thoughtful hospitality and curated living behind Harmony Hub.",
+    url: "/about",
+  },
+};
 
 const executiveAccordions: AccordionItem[] = [
   {

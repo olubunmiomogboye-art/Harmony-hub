@@ -6,6 +6,8 @@
 export const siteConfig = {
   name: "Harmony Hub",
   tagline: "For the moments you host. And the life you live.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://harmonyhub.com.ng",
+  ogImage: "/images/uploaded/about-hero-founder.jpg",
   founder: {
     name: "Olubunmi Folorunsho",
     title: "Founder & Creative Director",

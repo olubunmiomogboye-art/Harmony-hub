@@ -2,9 +2,14 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import StoreShell from "@/components/StoreShell";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Harmony Hub — Event Management, Catering, Decor & Quality Home Essentials",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "Harmony Hub — Event Management, Catering, Decor & Quality Home Essentials",
+    template: "%s | Harmony Hub",
+  },
   description:
     "Based in Ibadan, Nigeria. Harmony Hub offers delicious catering, event planning and decor with Flair & Flavors, alongside quality kitchenware and essentials for your home.",
   keywords: [
@@ -20,6 +25,54 @@ export const metadata: Metadata = {
     "Baby Products",
   ],
   authors: [{ name: "Olubunmi Folorunsho" }],
+  alternates: {
+    canonical: "./",
+  },
+  openGraph: {
+    title: "Harmony Hub — Event Management, Catering, Decor & Quality Home Essentials",
+    description:
+      "Based in Ibadan, Nigeria. Harmony Hub offers delicious catering, event planning and decor with Flair & Flavors, alongside quality kitchenware and essentials for your home.",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "en_NG",
+    type: "website",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Harmony Hub — Premier Event Management and Curated Living in Ibadan, Nigeria",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Harmony Hub — Event Management, Catering, Decor & Quality Home Essentials",
+    description:
+      "Based in Ibadan, Nigeria. Harmony Hub offers delicious catering, event planning and decor with Flair & Flavors, alongside quality kitchenware and essentials for your home.",
+    images: [siteConfig.ogImage],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {

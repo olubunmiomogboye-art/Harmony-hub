@@ -225,7 +225,7 @@ export default function CheckoutPage() {
               <ExternalLink className="w-4 h-4 ml-1" />
             </a>
             <p className="text-xs text-[#666D65]">
-              Tapping above will open WhatsApp directly with your prefilled order message. Please press <strong>Send</strong> in WhatsApp.
+              Tapping above will open WhatsApp directly with your prefilled order message. Please press <strong>Send</strong> in WhatsApp. Our team will verify item availability, calculate any delivery fee, and share official bank transfer details for payment.
             </p>
           </div>
 
@@ -270,7 +270,7 @@ export default function CheckoutPage() {
               </p>
             ) : (
               <p>
-                ✓ Order #{orderReference || "HH-ORD"} logged to server records for {siteConfig.contact.email}. (To receive live email alerts, SMTP can be configured in <code className="bg-gray-100 px-1 py-0.5 rounded">.env.local</code>).
+                ✓ Order #{orderReference || "HH-ORD"} has been logged to Harmony Hub records for prompt fulfillment.
               </p>
             )}
           </div>

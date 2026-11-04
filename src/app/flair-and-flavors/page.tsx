@@ -1,9 +1,33 @@
 import React from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import PreFooterCTA from "@/components/PreFooterCTA";
 import Accordion, { AccordionItem } from "@/components/Accordion";
+
+export const metadata: Metadata = {
+  title: "Flair & Flavors — Event Planning, Catering, Decor & Cakes",
+  description:
+    "Delicious catering, beautiful event decoration, and custom celebration cakes made with care for weddings, birthdays, and special gatherings in Ibadan and across Nigeria.",
+  alternates: {
+    canonical: "/flair-and-flavors",
+  },
+  openGraph: {
+    title: "Flair & Flavors — Events & Hospitality by Harmony Hub",
+    description:
+      "Transform your celebration with turnkey event management, authentic Nigerian & continental catering, luxury decor styling, and custom celebration cakes in Ibadan.",
+    url: "/flair-and-flavors",
+    images: [
+      {
+        url: "/images/events/white-wedding.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Flair & Flavors Event Management & Decor",
+      },
+    ],
+  },
+};
 
 const BEFORE_WE_BEGIN_FAQS: AccordionItem[] = [
   {
